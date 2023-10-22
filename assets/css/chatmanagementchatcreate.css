@@ -1,0 +1,190 @@
+/* css for create and edit chat blade */
+/* td {
+    padding-right: 10;
+    padding-right: 41px;
+    padding: 10px;
+    } */
+
+select {
+    padding: 6px;
+    width: 200px;
+}
+
+input[type="text"] {
+    padding: 6px;
+    width: 280px;
+}
+
+#input {
+    font-size: 1rem;
+    color: #475F7B;
+}
+
+select.form-control {
+    padding: 6px;
+    width: 280px;
+}
+
+table#dataTable2 {
+    margin-bottom: 30px;
+    /* margin-top: 50px; */
+}
+
+select.selection-value {
+    width: 162px;
+    margin-left: 31px;
+    padding: 1px 18px 0px 5px;
+}
+
+td.redytrue {
+    display: none;
+}
+
+label {
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important;
+}
+
+
+.basic,
+.key {
+    color: #003865;
+    ;
+}
+
+.list {
+    font-size: 20px;
+}
+
+.star {
+    color: red;
+}
+
+@media only screen and (max-width: 760px) {
+    .position {
+        padding-left: 0px !important;
+    }
+}
+
+#name {
+    margin-top: 5px;
+}
+
+#one {
+    /* display: flex; */
+    padding-bottom: 40px;
+    position: relative;
+    left: 10px;
+}
+
+#input {
+    outline: none;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    height: 36px;
+}
+
+.line_of {
+    margin-bottom: 15px !important;
+}
+
+.bxs-minus-circle,
+.bxs-plus-circle {
+    cursor: pointer;
+}
+
+#queue {
+    margin-left: 0px !important;
+}
+
+.bxs-minus-circle {
+    font-size: 22px;
+    margin-right: 10px;
+    padding-top: 25px;
+}
+
+.bxs-plus-circle {
+    font-size: 22px;
+    padding-top: 25px;
+}
+
+@media only screen and (max-width: 680px) {
+    .list {
+        font-size: 17px !important;
+    }
+}
+
+.form-control {
+    display: block;
+    /* width: 100%; */
+}
+
+select.form-control {
+    padding: 6px;
+    /* width: 200px; */
+}
+
+/* 6-july-2022 */
+@media only screen and (max-width: 500px) {
+    #child_queue_name {
+        width: 100% !important;
+    }
+}
+
+#table {
+    overflow-x: auto;
+}
+
+/* Text and Text Divider code  05-Jan-2023 */
+.text-start {
+    text-align: left !important;
+}
+
+.divider {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+    padding-left: 0;
+}
+
+.divider .divider-text {
+    position: relative;
+    display: inline-block;
+    font-size: .8rem;
+    padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+    right: 100%;
+}
+
+.divider .divider-text:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+    left: 100%;
+}
+
+.divider .divider-text:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #003865;
+}
+
+.divider-text {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: #003865;
+}

@@ -1,0 +1,113 @@
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important; 
+}
+
+body > div.app-content.content > div.content-wrapper > div.container > div:nth-child(3){
+  margin-top: -3.1rem !important;
+}
+
+body > div.app-content.content > footer > div{
+  position: relative !important;
+  right: 25px;
+  bottom: -20px;
+    }
+
+body > div.app-content.content > footer > div > div.col-md-4.text-left{
+  position: relative !important;
+  left: -212px;
+}
+
+body > div.app-content.content > footer > div > div.col-md-4.text-center{
+  position: relative !important;
+  right: 80px;
+}
+
+
+/* 7-7-2022 */
+body > div.app-content.content > div.content-wrapper > div.container > div:nth-child(3) > div > div > div.card-body{
+  overflow-x: auto !important;
+}
+
+@media only screen and (max-width: 800px) {
+    body > div.app-content.content > footer > div{
+      display: flex;
+    flex-direction: column;
+  }
+
+  #copy{
+    position: relative !important;
+    left: 121px;
+      }
+
+      #aycent{
+      position: relative !important;
+      right: -110px;
+      }
+  }
+
+@media only screen and (max-width: 525px){
+  #version{
+    position: relative;
+    left: 120px;
+        }
+  }
+
+  /* 13-Dec-2022    */
+.card {
+  box-shadow: none !important;
+  border-bottom: 2px solid #cddef1 !important;
+  }  
+
+/* Text and Text Divider code  13-Dec-2022 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+.divider-text{
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}

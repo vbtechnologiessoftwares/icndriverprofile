@@ -1,0 +1,24 @@
+/* 24-August-2022 by Sourav */
+#popupclick > div.toast-body{
+  margin-bottom: -15px !important;
+  background-color: #014493;
+  color: #fff;
+  padding: 15px;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+#popupclick > div > p{
+  margin-bottom: 5px !important;
+}
+
+#toast{
+  right: 20px !important;
+  bottom: 20px !important;
+}
+
+#liveToastBtn{
+  display: none !important;
+}

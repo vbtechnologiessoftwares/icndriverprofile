@@ -1,0 +1,314 @@
+/* opportunity index and edit css file */
+
+#hidden_div {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.error {
+  color: red;
+}
+
+.star {
+  color: red;
+}
+
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+@media only screen and (max-width:760px) {
+  .right-side {
+    padding-left: 0px !important;
+  }
+}
+
+/* 5-8-2022 */
+body>div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_comments_dialog>table {
+  z-index: 10010;
+  margin: 0 140px;
+  max-width: 80%;
+  overflow-x: hidden;
+  min-height: 380px;
+}
+
+/* 14-Dec-2022 */
+.opport {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  color: #003865;
+}
+
+.add_pre {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #003865;
+}
+
+/* Text and Text Divider code  14-Dec-2022 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+
+.divider-text {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}
+
+
+/* workspace history css*/
+/* call history or agent history */
+
+/* For Create */
+
+/* 1st box  */
+.left_icon_box {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #19b319;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side_line {
+  border-style: dashed;
+  position: absolute;
+  top: 32px;
+  left: 30px;
+  z-index: 1;
+  height: 100%;
+  width: 1px;
+  border: 0;
+  border-left: 1px solid #d4d8dd;
+  content: "";
+}
+
+.left_icon_box>.bx-plus {
+  color: #19b319 !important;
+  font-size: 1rem;
+}
+
+.card_box {
+  background-color: rgba(57, 218, 138, .1);
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.card_box::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 32px;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-top: 1rem solid rgba(0, 0, 0, 0);
+  border-right: 1rem solid;
+  border-left: 0 solid;
+  border-bottom: 1rem solid rgba(0, 0, 0, 0);
+  border-left-color: rgba(57, 218, 138, .1);
+  border-right-color: rgba(57, 218, 138, .1);
+  margin-left: -2.1rem;
+}
+
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.timeline>h6 {
+  font-weight: 600;
+}
+
+/* 2nd box */
+
+/* For Edit */
+.left_icon_box2 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #5a8dee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_icon_box2>.bx-edit-alt {
+  color: #5a8dee !important;
+  font-size: 1rem;
+}
+
+.card_box2 {
+  background-color: rgba(0, 207, 221, .1);
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.card_box2::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 32px;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-top: 1rem solid rgba(0, 0, 0, 0);
+  border-right: 1rem solid;
+  border-left: 0 solid;
+  border-bottom: 1rem solid rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 207, 221, .1) !important;
+  border-right-color: rgba(0, 207, 221, .1) !important;
+  margin-left: -2.1rem;
+}
+
+/* 3rd box */
+
+/* For Delete */
+.left_icon_box3 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #FB2576;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_icon_box3>.bxs-trash {
+  color: #cf145a !important;
+  font-size: 1rem;
+}
+
+.card_box3 {
+  background-color: rgba(255, 91, 92, .1);
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.card_box3::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 32px;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-top: 1rem solid rgba(0, 0, 0, 0);
+  border-right: 1rem solid;
+  border-left: 0 solid;
+  border-bottom: 1rem solid rgba(0, 0, 0, 0);
+  border-left-color: rgba(255, 91, 92, .1);
+  border-right-color: rgba(255, 91, 92, .1);
+  margin-left: -2.1rem;
+}
+
+/* 4th box  */
+
+/* For Commented */
+.left_icon_box4 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #495563;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_icon_box4>.bx-comment-detail {
+  color: #495563 !important;
+  font-size: 1rem;
+}
+
+.card_box4 {
+  background-color: rgba(73, 85, 99, .1);
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+
+.card_box4::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 32px;
+  right: 100%;
+  width: 0;
+  height: 0;
+  border-top: 1rem solid rgba(0, 0, 0, 0);
+  border-right: 1rem solid;
+  border-left: 0 solid;
+  border-bottom: 1rem solid rgba(0, 0, 0, 0);
+  border-left-color: rgba(73, 85, 99, .1) !important;
+  border-right-color: rgba(73, 85, 99, .1) !important;
+  margin-left: -2.1rem;
+}
+
+/* 5th box */
+.left_icon_box5 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #5a8dee;
+  background-color: #f2f2f6 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_icon_box5>.bx-check {
+  color: #5a8dee !important;
+  font-size: 1rem;
+}

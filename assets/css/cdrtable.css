@@ -1,0 +1,69 @@
+label{
+text-transform: capitalize !important;
+font-size: 0.9rem !important; 
+}
+
+.fill{
+font-size: 1.2rem;
+font-weight: 500;
+color: #6193F3;
+}
+
+.seprate{
+color: #014493;
+border: 1px solid #014493;
+width: 100%;
+}
+
+.star{
+color: red;
+}
+
+#play_a{
+color: red;
+background-color: transparent;
+text-decoration: none;
+cursor: pointer;
+font-size: 1rem !important;
+}
+
+#example_wrapper > div.dataTables_scroll > div.dataTables_scrollHead > div > table > thead > tr > th{
+font-size: .8rem !important;
+}
+
+#example > tbody > tr > td{
+font-size: .8rem !important;
+font-weight: 600;
+}
+
+.close{
+color: red !important;
+}
+
+.bx-play-circle{
+position: relative;
+top: 9px;
+right: 5px;
+}
+
+#column-selectors > div > div > div > div > div > hr{
+    border-top: 1px solid #014493;
+}
+
+/* 27-7-2022 */
+#reportSearchFilter > div > div > div > label {
+    width: 100%;
+    
+}   
+
+@media only screen and (max-width: 767px) {
+    #reportSearchFilter > div > div > div > label{
+        margin-top: 5px;
+    }
+
+    #reportSearchFilter > div > div:nth-child(1) > div.col-md-3{
+        margin-top: 5px;
+    }
+}
+
+

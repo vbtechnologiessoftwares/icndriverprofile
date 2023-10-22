@@ -1,0 +1,159 @@
+
+.email-action{
+    background-color: #014493 !important;
+    }   
+
+
+.mail-items > table > tbody > tr:nth-child(1){
+    background-color: #014493;
+       }
+
+.mail-items > table > tbody > tr:nth-child(1) > th{
+    color: aliceblue;
+    font-size: 13px;
+    }
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.mail-items > table > tbody > tr:nth-child(2) > td{
+    padding: 20px;
+    }   
+
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.mail-items > table > tbody > tr:nth-child(2) > td{
+    border: 1px solid #014493 !important;
+    font-size: 14px !important;
+    color: black;
+    }   
+
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > div{
+    font-size: 14px !important;
+    background-color: #f8f8f8;
+    min-height: 50px;
+    color: black;
+    padding-left: 20px !important;
+    padding-top: 15px !important;
+      }
+
+
+body > div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_ScriptMaster_scr_text_dialog{
+    /* border: 2px solid black; */
+    z-index: 10010;
+    margin: 0 140px;
+    max-width: 80%;
+    overflow-x: hidden;
+    min-height: 380px;
+    }
+
+
+    body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.row > div:nth-child(1) > p > span:nth-child(11) > label > a{
+        color: red;
+         }
+
+
+    body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div.row > div:nth-child(1) > p > span:nth-child(11) > label{
+        color: red;
+         }
+
+
+         body > div.app-content.content > div{
+            margin-top: 90px !important;
+            }
+    
+        label{
+            text-transform: capitalize !important;
+            font-size: 0.9rem !important; 
+            }
+    
+       .email-user-list.list-group.ps.ps--active-y > div.ps__rail-y{
+            display: none !important;
+            }   
+    
+       .email-user-list.list-group.ps.ps--active-y{
+            overflow-y: scroll !important;
+            }
+    
+        #attach{
+          color: #fff !important;
+          }   
+         
+          #files-names > span > span.file-delete > span{
+            color: red;
+            font-size: 20px;
+            padding: 2px;
+            cursor: pointer;
+           }
+        
+           #files-names > span{
+              margin-right: 10px;
+            }
+
+         /* 31-August-2022 */
+        div > div.email-user-list.list-group.ps.ps--active-y > ul > table > tbody > tr > td > li > div{
+            overflow-x: auto;
+            width: 800px;
+        }
+
+
+
+         /* 1-Sept-2022 */
+         div.email-user-list.list-group.ps.ps--active-x.ps--active-y > ul > li > div > div > div.row > div > p{
+            color:  #03264e !important;
+         }
+
+
+         div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div.mail-items > table > tbody > tr:nth-child(1) > th{
+            border: 1px solid #014493;
+         }
+       
+         div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div.row > div > p{
+            color:  #03264e !important;
+         }
+
+          div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div > span{
+            white-space: normal !important;
+         }
+
+         /* Head of ticket top */
+          div.email-action{
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+           }
+
+         /* Icon color */
+        .d-flex > li > button > span > i{
+            color: #fff;
+         }
+
+         /* Icon padding */
+       .email-action > ul:nth-child(2) > li > a > span > i{
+            padding: 2px !important;
+            color: #fff;
+         }
+
+         /* reply subject */
+        div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div > span{
+            color:  #03264e !important;
+         }
+
+        div.email-user-list.list-group.ps.ps--active-y > ul > span > label > a{
+            margin-left: 20px !important;
+            margin-right: 20px !important;
+         }
+
+       /* leave a comment */
+        #leave_comment{
+            font-size: 17px !important;
+            color:  #03264e !important;
+            margin-bottom: 15px !important;
+            margin-left: 20px !important;
+         }
+
+
+      /* 2-Sept-2022 */
+      #reply > h4{
+            margin-top: 15px !important;
+            margin-left: 20px !important;
+            font-weight: 600 !important;
+            color:  #03264e !important;
+          }

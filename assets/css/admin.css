@@ -1,0 +1,19 @@
+@media only screen and (max-width: 560px){
+    #copy{
+        padding-bottom: 5px !important;
+    }
+    
+    #aycent{
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: 5px !important;
+    }
+
+    #version{
+        display: flex;
+        justify-content: flex-start;
+        padding-bottom: 5px !important;
+    }
+
+    
+}

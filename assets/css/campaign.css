@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 15, 2021, 8:19:59 PM
+    Author     : huffa
+*/
+
+.mar-left-20{
+    margin-left: 20px;
+}
+.add-more-list-selection{
+    cursor: pointer;
+}
+select option:disabled {
+    background: #ccc;
+    font-weight: bold;
+}
+.remove-list-selection{
+    cursor: pointer;
+    margin-left: 5px;
+}
+.time_condition_h{
+    margin-left: 15px; 
+    color: #666;
+}
+.calling_list{
+    margin-left: 20px; 
+    color: #666;
+}
+.option_time_condition_no_hover{
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    padding: 0px 8px; 
+    display: inline-block;
+    cursor: pointer;
+}
+.option_time_condition{
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    padding: 0px 9px; 
+    display: inline-block;
+    cursor: pointer;
+}
+.option_time_condition:hover:not(.disabled){
+    background-color: #990;
+}
+.option_time_condition:hover:not(.disabled) i{
+    color: #ff0;
+}
+.bordered{
+    border: 1px solid #999; 
+}
+.text-grey{
+    color: #999;
+}
+.disabled{
+    border: 1px solid #ccc; 
+    cursor: default;
+}
+.text-disabled{
+    color: #ccc;
+}

@@ -1,0 +1,100 @@
+/* 26-7-2022 */
+
+#reportSearchFilter > div > div > div > label{
+    width: 100% !important;
+}
+
+
+@media only screen and (max-width: 370px){
+    #column-selectors > div > div > div > div{
+        padding: 1rem !important;
+    }
+}
+
+
+/* 2-8-2022 */
+
+.fill{
+font-size: 1.2rem;
+font-weight: 500;
+color: #6193F3;
+}
+
+.seprate{
+color: #014493;
+border: 1px solid #014493;
+width: 100%;
+}
+
+label{
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important; 
+  }
+  
+/* 9-August-2022 Sourav */
+
+#reportSearchFilter > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-danger.refresh.ml-1{
+    margin-right: -10px !important;
+}
+
+@media only screen and (max-width: 767px){
+    #reportSearchFilter > div > div:nth-child(1) > div:nth-child(2){
+        margin-top: 5px;
+    }
+
+    #reportSearchFilter > div > div.row > div:nth-child(3){
+        margin-top: 5px;
+    }
+
+    #reportSearchFilter > div > div:nth-child(1) > div:nth-child(4){
+        margin-top: 8px;
+    }
+
+    #reportSearchFilter > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-danger.refresh.ml-1{
+        float: left !important;
+        margin-left: -1.02rem!important;
+    }
+
+    #reportSearchFilter > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-primary{
+        float: left !important;
+        margin-left: 2rem;
+    }
+    
+   }
+
+    /* 22-Sept-2022 */
+    /* #example > tbody > tr > td > a{
+        color: #727E8C;
+    } */
+
+    #example > tbody > tr > td > a:hover{
+        color: #0808b1;
+        text-decoration: underline;
+    }
+
+    /* media querry for responsive */
+    /* buttons  */
+    @media only screen and (max-width: 500px) {
+        #column-selectors > div > div > div > div > div > div:nth-child(1) > a:nth-child(1){
+            padding: 7px 10px !important;
+            margin-left: 26px;
+        }  
+
+       
+        #column-selectors > div > div > div > div > div > div:nth-child(1) > a:nth-child(1){
+            padding: 7px 10px !important;
+            margin-right: 10px !important;
+        }
+        #column-selectors > div > div > div > div > div > div:nth-child(1){
+            display: flex;
+        }
+    }
+
+    @media only screen and (max-width: 350px) {
+        #reportSearchFilter > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-primary{
+            float: right !important;
+            margin-left: .5rem;
+        }
+    }
+
+ 

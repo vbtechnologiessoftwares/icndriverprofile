@@ -1,0 +1,84 @@
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+.star {
+  color: red;
+}
+
+.card {
+  margin-bottom: .5rem;
+  box-shadow: none;
+  border-bottom: 2px solid #cddef1;
+}
+
+
+body>footer>div>div.col-md-4.text-left {
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+
+body>footer>div>div.col-md-4.text-center {
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+
+body>footer>div>div.col-md-4.text-right {
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+
+/* Text and Text Divider code  05-Jan-2023 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+
+.divider-text {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}

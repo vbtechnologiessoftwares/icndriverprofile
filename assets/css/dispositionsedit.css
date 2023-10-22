@@ -1,0 +1,32 @@
+/* dispositions edit */
+
+label{
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important; 
+  }
+
+  .add{
+       font-size: 19px;
+       font-weight: 500;
+       color: darkgray;
+       margin-bottom: 20px;
+       }
+
+    .edit{
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #6193F3;   
+        }
+  .seprate{
+        color: #014493;
+        border: 1px solid #014493;
+        width: 100%;
+      }
+      .star{
+        color: red;
+        }
+  @media only screen and (max-width: 768px){
+    .right{
+        padding-left: 0px !important;
+}
+  }

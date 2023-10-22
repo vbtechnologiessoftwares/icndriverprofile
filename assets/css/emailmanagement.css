@@ -1,0 +1,290 @@
+/* email queues add & edit blade css*/
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+.smtp {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.convert {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+@media only screen and (max-width: 766px) {
+  .right_side {
+    padding-left: 0 !important;
+  }
+
+  .right {
+    padding-left: 0 !important;
+  }
+}
+
+.star {
+  color: red;
+}
+
+@media only screen and (max-width: 760px) {
+  #left_side {
+    padding-left: 0px !important;
+  }
+}
+
+
+/* 21-Oct-2022 */
+#attach {
+  color: #fff;
+}
+
+#files-names>span>span.file-delete>span>i {
+  position: relative;
+  top: 4px;
+  color: red;
+  font-size: 20px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+
+/* 30-Nov-2022 */
+/* Email template */
+/* First Template  */
+.email_temp_design {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #250C77;
+  padding: 25px 15px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.email_temp_design>p {
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 0;
+  text-align: center;
+}
+
+.template_comp_name {
+  text-transform: uppercase;
+}
+
+.template_content {
+  padding: 25px;
+  background-color: #eff3f6;
+}
+
+.content_heading {
+  color: #0a101a;
+  font-size: 22px;
+}
+
+.template_content>p {
+  padding-top: 15px;
+  margin: 0;
+  font-size: 15px;
+  color: #485c76 !important;
+}
+
+.template_d_logo {
+  text-align: center;
+  padding: 5px;
+}
+
+.email_template_footer {
+  background-color: #250C77;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+}
+
+.email_template_footer>p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+
+
+/* Second Template  */
+.email_temp_design2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ED642B;
+  padding: 25px 15px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.email_temp_design2>p {
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 0;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.content_heading2 {
+  color: #000102;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.email_template_footer2 {
+  background-color: #ED642B;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+}
+
+.email_template_footer2>p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* Third Template */
+.email_temp_design3 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #D8318A;
+  padding: 25px 15px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+}
+
+.email_temp_design3>p {
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 0;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.content_heading3 {
+  color: #000102;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.email_template_footer3 {
+  background-color: #D8318A;
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+}
+
+.email_template_footer3>p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+}
+
+
+/* 5-Dec-2022 */
+/* .happy_template{
+   -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+   -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    border-radius: 20px;
+    padding: 20px 25px;
+}
+
+.happy_temp_name{
+    color: #250c77;
+    font-weight: 600;
+}
+
+.happy_send_name{
+  color: #333333;
+  margin-top: 15px;
+}
+
+.happy_wishing{
+  color: black;
+  font-size: 16px;
+  margin: 0;
+}
+
+.happy_regards{
+  color: black;
+} */
+
+
+
+/* Text and Text Divider code 02-Jan-2023 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+
+.divider-text {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}
+
+/* 6-Feb-2023 */
+.new_schedule {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.new_schedule>h6 {
+  color: black;
+  font-weight: 600;
+}
+
+.new_schedule>.bx-question-mark {
+  color: black;
+}

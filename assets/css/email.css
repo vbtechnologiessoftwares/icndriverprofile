@@ -1,0 +1,68 @@
+div#cke_ScriptMaster_scr_text\ opo {
+    display: none !important;
+    }
+    body > div.app-content.content > div{
+        margin-top: 90px !important;
+    }
+   div.mail-items > span:nth-child(3) > b{
+        white-space: normal !important;
+        }
+
+  .email-action{
+        border-bottom: 2px solid #6da4db !important;
+        }
+
+   div.mail-items > span:nth-child(1){
+       font-weight: 700 !important;
+       font-size: 15px !important;
+       }
+
+   div.mail-items > span:nth-child(1) > b{
+       font-weight: 500 !important;
+       font-size: 15px !important;
+       }
+    div.mail-items > span:nth-child(3){
+        font-weight: 700 !important;
+        font-size: 15px !important;
+        }
+
+ div.mail-items > span:nth-child(3) > b{
+    font-weight: 500 !important;
+    font-size: 15px !important;
+     }
+
+   div.mail-items > span:nth-child(5){
+    font-weight: 700 !important;
+    font-size: 15px !important;
+   }
+
+ div.mail-items > span:nth-child(5) > b{
+    font-weight: 500 !important;
+    font-size: 15px !important;
+ }
+
+ body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div{
+    display: flex !important;
+    flex-direction: column !important;
+
+ }
+
+ body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul{
+    border-bottom: 2px solid #6da4db !important;
+    margin-bottom: 5px !important;
+ }
+
+ body > div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_ScriptMaster_scr_text_dialog{
+    /* border: 2px solid black; */
+    z-index: 10010;
+    margin: 0 140px;
+    max-width: 80%;
+    overflow-x: hidden;
+    min-height: 380px;
+   }
+
+   #box{
+       background-color: #6da4db !important;
+  }
+
+

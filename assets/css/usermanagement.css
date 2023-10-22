@@ -1,0 +1,219 @@
+/* permission create and edit css file */
+/* roles create and edit css file */
+/* user create and edit css file */
+/* duplicate */
+
+label{
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important; 
+}
+
+.star{
+    color: red;
+    }
+
+/* roles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 2.75rem;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    height: 20px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    top: 1px;
+    width: 18px;
+    left: 2px;
+    bottom: 5px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider{ 
+    background-color: #2196F3; 
+}
+
+input:focus + .slider{ 
+    box-shadow: 0 0 1px #2196F3; 
+}
+
+input:checked + .slider:before{ 
+    left: -5px;-webkit-transform: translateX(26px);-ms-transform: translateX(26px);transform: translateX(26px); 
+}
+
+.slider.round{ 
+    border-radius: 34px; 
+}
+
+.slider.round:before{ 
+    border-radius: 50%; 
+}
+
+input:checked + .slider:after{
+    color: #fff;padding: 0 0 0 9px;
+}
+
+.slider:after{
+    color: #fff;padding-left: 30px;
+}
+
+
+/* user */
+.input_field{
+    display: flex;
+}
+
+#select{
+   border: 1px solid lightgray;
+   border-radius: 4px;
+   outline: none;
+}
+@media only screen and (max-width: 765px){
+    .right_side{
+        padding-left: 0px !important;
+    }
+}
+
+
+#gap{
+    margin-top: -13px !important;
+}
+
+/* 29-6-2022 */
+#column-selectors > div > div > div > div.card-body.card-dashboard > div > a:nth-child(2){
+    margin-right: 15px !important;
+}
+
+/* Disable user file */
+#DataTables_Table_0_length > label{
+    margin-left: 30px !important;
+  }
+
+  #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.btn-danger.ml-1.mr-1{
+    display: none !important;
+  }
+
+  #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-all{
+    margin-left: 15px !important;
+  }
+
+/* 28-7-2022 */
+/* Add role Edit role or show or duplicate role */
+ div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center > div > div.card-body.py-1{
+    display: contents !important; 
+}
+
+ div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center > div > div.card-body.py-1 > ul{
+    padding-left: 12px !important;
+    padding-bottom: 5px !important;
+    display: inline;
+}
+
+ div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center > div > div.card-body.py-1 > ul > li{
+    max-width: 100% !important;
+}
+
+/* @media only screen and (max-width: 1025px){
+   div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center > div > div.card-body.py-1 > ul{
+        padding-right: 12px !important;
+    }
+} */
+
+
+@media only screen and (max-width: 767px){
+     div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center > div > div.card-body.py-1 > ul{
+        padding-right: 0px !important;
+    }
+
+    div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12.border-right.text-center{
+        border-right: none !important;
+    }
+
+   div.col-xl-7.col-lg-7.col-md-7.col-sm-12.col-12.border-left{
+        border-left: none !important;
+    }
+
+}
+
+/* media querry for page edit role */
+@media only screen and (max-width: 575px) {
+    div.col-sm-11.d-flex.justify-content-end.ml-1 > a{
+      margin-right: 25px !important;
+    }
+}
+
+
+/* Text and Text Divider code  15-Dec-2022 */
+.text-start {
+    text-align: left !important;
+  }
+  
+  .divider {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .divider.text-start .divider-text {
+    padding-left: 0;
+  }
+  
+  .divider .divider-text {
+    position: relative;
+    display: inline-block;
+    font-size: .8rem;
+    padding: 0rem 1rem;
+  }
+  
+  .divider .divider-text:before {
+    right: 100%;
+  }
+  
+  .divider .divider-text:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #d4d8dd;
+  }
+  
+  .divider .divider-text:after {
+    left: 100%;
+  }
+  
+  .divider .divider-text:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #003865;
+  }
+  
+  .divider-text{
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: #003865;
+  }

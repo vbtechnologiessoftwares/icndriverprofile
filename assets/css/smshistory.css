@@ -1,0 +1,96 @@
+.testing {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+}
+
+body>div.app-content.content>div {
+  margin-top: 90px !important;
+}
+
+.email-action>div.action-left.d-flex.align-items-center>div>label {
+  position: relative;
+  left: -20px;
+  top: -10px;
+}
+
+.email-app-area>div>div>div.email-action {
+  background-color: #014493;
+}
+
+.email-action>div.action-left.d-flex.align-items-center>ul>li.list-inline-item.mail-unread>button>span>i {
+  color: aliceblue;
+  top: -2px;
+}
+
+.action-left.d-flex.align-items-center>ul>li:nth-child(2)>button>span>i {
+  position: relative;
+  top: -1px !important;
+}
+
+.action-right.d-flex.flex-grow-1.align-items-center.justify-content-end>span {
+  color: aliceblue !important;
+}
+
+.email-pagination-prev.d-none.d-sm-block>i {
+  color: aliceblue !important;
+  top: 0px !important;
+}
+
+.email-pagination-next.d-none.d-sm-block>i {
+  color: aliceblue !important;
+  top: 0px !important;
+}
+
+/* 06-Jan-2023 */
+.email-user-list.list-group.ps.ps--active-y {
+  /* background-color: #7FB5FF !important; */
+  color: #003865 !important;
+
+}
+
+.email-user-list.list-group.ps.ps--active-y>div.ps__rail-y {
+  display: none !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y {
+  overflow-y: scroll !important;
+}
+
+
+div.mail-meta-item>span>span:nth-child(1)>form>button>i {
+  display: none !important;
+}
+
+.email-user-list.list-group.ps>ul>li>div>a {
+
+  padding-bottom: 10px !important;
+}
+
+.email-user-list.list-group.ps>ul>li>div>a>div:nth-child(2) {
+  padding-left: 20px !important;
+}
+
+.email-user-list.list-group.ps>ul>li>div>a>div:nth-child(3) {
+  padding-left: 38px !important;
+}
+
+.email-user-list.list-group.ps>ul>li>div>a>div:nth-child(4) {
+  padding-left: 57px !important;
+}
+
+/* 7-Sept-2022 */
+/* inbox background */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li {
+  background-color: #F9F9F9 !important;
+}
+
+#pagination {
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+/* 06-Jan-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area {
+  margin-top: 35px !important;
+}

@@ -1,0 +1,252 @@
+/* server configuration file*/
+/* 8-Nov-2022 AWS CSS file */
+
+label {
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important;
+}
+
+.seprate {
+    color: #014493;
+    border: 1px solid #014493;
+    width: 100%;
+}
+
+@media only screen and (max-width: 760px) {
+    .right_side {
+        padding-left: 0px !important;
+    }
+}
+
+.star {
+    color: red;
+}
+
+#ami_password {
+    padding-right: 32px;
+}
+
+#basic-horizontal-layouts>div>div>div>div>form>div>div>div:nth-child(14)>span {
+    color: black !important;
+    cursor: pointer !important;
+}
+
+#sftp_password {
+    padding-right: 32px !important;
+}
+
+#hideValuesOnSelect>div:nth-child(10)>span {
+    color: black !important;
+    cursor: pointer !important;
+}
+
+#ari_password {
+    padding-right: 32px !important;
+}
+
+#hideValuesOnSelect>div:nth-child(14)>span {
+    color: black !important;
+    cursor: pointer !important;
+}
+
+/* carrier configuration */
+
+#password {
+    padding-right: 32px !important;
+}
+
+#disable_ip>span {
+    color: black !important;
+    cursor: pointer !important;
+}
+
+#heading5>span>i {
+    color: #014493;
+}
+
+
+#heading6>span>i {
+    color: #014493;
+}
+
+/* Extenstion */
+#basic-horizontal-layouts>div>div>div>div>form>div>div>div:nth-child(9)>span {
+    color: black !important;
+    cursor: pointer !important;
+}
+
+#weekdays {
+    height: 25px;
+}
+
+#month_name {
+    height: 25px !important;
+}
+
+#day {
+    height: 15px !important;
+    margin-top: 2px !important;
+    margin-bottom: 10px !important;
+}
+
+/* 30-6-2022  */
+/* system management / time conditions */
+@media only screen and (max-width: 500px) {
+    #accordion5>div>div>div:nth-child(2)>div>div {
+        font-size: 13px !important;
+    }
+
+    #basic-horizontal-layouts>div>div>div>div>form>div>div>div.col-md-10.form-group>div>div {
+        font-size: 13px !important;
+    }
+}
+
+
+/* 4-july-2022 */
+#heading5>span>i {
+    margin-right: 0rem !important;
+}
+
+#time_condition_did>div:nth-child(2)>div.row.d-flex.justify-content-center {
+    overflow: auto;
+}
+
+#time_condition_did>div:nth-child(2)>div.row.d-flex.justify-content-center {
+    overflow: auto;
+}
+
+@media only screen and (max-width: 422px) {
+    #weekdays_update {
+        max-width: 10%;
+    }
+
+    #by_week_update>div>div>div {
+        font-size: 13px;
+    }
+}
+
+
+@media only screen and (max-width: 375px) {
+    #by_week_update>div>div>div {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 385px) {
+    #by_week_update>div>div>div {
+        float: none !important;
+        margin-left: 8px;
+        margin-top: 3px;
+    }
+
+    #weekdays_update {
+        max-width: 8%;
+    }
+}
+
+/* radio buttons */
+@media only screen and (max-width: 400px) {
+    #frequency_update {
+        max-width: 10%;
+    }
+
+    #newTimeConditionsModal>div>div>div.modal-body>div:nth-child(6)>div>div:nth-child(1)>div {
+        font-size: 13;
+    }
+}
+
+/* exculude */
+@media only screen and (max-width: 422px) {
+    #newTimeConditionsModal>div>div>div.modal-body>div:nth-child(9) {
+        position: relative;
+        top: 36px;
+    }
+
+}
+
+
+#newTimeConditionsModal {
+    padding-left: 13px !important;
+}
+
+/* 18 july 2022 */
+@media only screen and (min-width: 1200px) {
+    #time_condition_did>div:nth-child(2)>div.col-sm-12.d-flex.justify-content-end {
+        position: relative;
+        right: 50px;
+    }
+}
+
+/* 2-8-2022 */
+@media only screen and (max-width: 767px) {
+    #basic-horizontal-layouts>div>div>div>div>form>div>div>span {
+        display: none;
+    }
+}
+
+/* 3-8-2022 */
+#basic-horizontal-layouts>div>div>div>div>form>div>div>div:nth-child(6)>span {
+    cursor: pointer;
+}
+
+
+/* 8-Nov-2022 AWS CSS */
+.input-border {
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Text and Text Divider code  19-Dec-2022 */
+.text-start {
+    text-align: left !important;
+}
+
+.divider {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+    padding-left: 0;
+}
+
+.divider .divider-text {
+    position: relative;
+    display: inline-block;
+    font-size: .8rem;
+    padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+    right: 100%;
+}
+
+.divider .divider-text:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+    left: 100%;
+}
+
+.divider .divider-text:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    border-top: 1px solid #003865;
+}
+
+.divider-text {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: #003865;
+}

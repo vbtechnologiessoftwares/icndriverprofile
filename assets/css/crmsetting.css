@@ -1,0 +1,63 @@
+/* crm settings css */
+label {
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important;
+  }
+
+  html {
+      scroll-behavior: smooth;
+      }
+
+  .error {
+        color: red;
+        }
+
+  .settings{
+      color: #6193F3;
+        }
+
+  /* .card {
+    margin-bottom: .5rem;
+    box-shadow: none;
+    border-bottom: 2px solid #5684b8;
+    } */
+
+    .add_pre,.add_setting,
+    .globel,.add_currency{
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #6193F3; 
+        }
+
+    .star{
+      color: red;
+      }
+    
+    body > footer > div > div.col-md-4.text-left, 
+    body > footer > div > div.col-md-4.text-center,
+    body > footer > div > div.col-md-4.text-right{
+      margin-top: 2.5rem !important;
+      margin-bottom: 1rem !important;
+        }
+
+ @media only screen and (max-width: 575px){
+  #copy{
+    margin-top: 3rem !important;
+  }
+  
+  #aycent{
+    text-align: left !important;
+    margin-top: 0.3rem !important;
+  }
+
+  #version{
+    text-align: left !important;
+    margin-top: 0.3rem !important;
+  }
+ }       
+
+ /* 5-8-2022 */
+ #company_logo{
+    padding-top: 5px;
+    padding-left: 5px;
+ }

@@ -1,0 +1,179 @@
+/* leadmanagement contact list, selections, and dnc list css file */
+label{
+    text-transform: capitalize !important;
+    font-size: 0.9rem !important; 
+  }
+
+.star{
+    color: red;
+    }
+
+    /* show */
+#hidden_div {
+      display: none;
+  }
+
+  /* Add this attribute to the element that needs a tooltip */
+  [data-tooltip] {
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+  }
+  /* Hide the tooltip content by default */
+  [data-tooltip]:before,
+  [data-tooltip]:after {
+      visibility: hidden;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+      opacity: 0;
+      pointer-events: none;
+  }
+  /* Position tooltip above the element */
+  [data-tooltip]:before {
+      position: absolute;
+      bottom: 150%;
+      left: 50%;
+      margin-bottom: 5px;
+      margin-left: -80px;
+      padding: 7px;
+      width: 160px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      background-color: #000;
+      background-color: hsla(0, 0%, 20%, 0.9);
+      color: #fff;
+      content: attr(data-tooltip);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.2;
+  }
+  /* Show tooltip content on hover */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+      visibility: visible;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1;
+  }
+
+ #fields{
+     position: absolute;
+     right: 10px;
+     top: 10px !important;
+     margin-bottom: 15px !important;
+    }
+
+  #contactlist_search{
+      height: 30px !important;
+  }  
+
+  @media only screen and (max-width: 767px){
+    .right{
+      padding-left: 0px !important;
+    }
+  }
+
+    .error {
+      color: red;
+    }
+
+  /* for responsive */
+  @media only screen and (max-width: 917px){
+    #fields{
+      position: relative !important;
+      top: -20px;
+    }
+  }
+
+  @media only screen and (max-width: 600px){
+    #show_entries_div{
+      margin-bottom: 4px !important;
+    }
+    #fields > a:nth-child(1){
+      margin-right: -10px !important;
+    }
+
+    #example_wrapper > div.dt-buttons > a.btn.btn-sm.btn-danger.ml-1.mr-1{
+        margin-top: 4px;
+    }
+    #example_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-all{
+      margin-top: 4px;
+    }
+    #example_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-none.disabled{
+      margin-top: 4px;
+    }
+
+  }
+
+  @media only screen and (max-width: 505px){
+    #fields > a:nth-child(2){
+      margin-right: -0.5rem;
+    }
+
+    #fields > a:nth-child(3){
+      margin-right: -0.5rem;
+    }
+  }
+
+  @media only screen and (max-width: 490px){
+    #fields > a:nth-child(3){
+      margin-top: -5px !important;
+    }
+  }
+   
+ /* Text and Text Divider code  16-Dec-2022 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+
+.divider-text{
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}   
+    
+    

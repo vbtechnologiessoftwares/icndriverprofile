@@ -1,0 +1,11 @@
+.active {
+    background-color: #F00;
+    }
+  #basic-horizontal-layouts > div > div > div > div > div.card > div.card-body.mt-1 > div > form > input.form-control.chat-message-demo.mr-75{
+      width: 93% !important;
+     }
+  #basic-horizontal-layouts > div > div > div > div > div.card > div.card-body.mt-1 > div > form > button{
+      margin-top: -40px !important;
+      margin-left: -30px !important;
+     }
+

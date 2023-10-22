@@ -1,0 +1,124 @@
+/* dispositions edit css file*/
+/* breaks css file*/
+/* forms css file*/
+/* scripts css file*/
+/* phone strategies css file*/
+/* campaigns css file*/
+
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+.star {
+  color: red;
+}
+
+@media only screen and (max-width: 768px) {
+  .right {
+    padding-left: 0px !important;
+  }
+
+  #right_side {
+    padding-left: 0px !important;
+  }
+}
+
+.listing {
+  height: 30px
+}
+
+#table_data {
+  display: flex;
+}
+
+.bxs-plus-circle {
+  font-size: 25px !important;
+}
+
+
+.list-name {
+  font-size: 1.2rem;
+}
+
+#dataTable2>tbody>tr>td:nth-child(7)>i {
+  cursor: pointer !important;
+}
+
+#dataTable2>tbody>tr>td:nth-child(8)>i {
+  cursor: pointer !important;
+}
+
+/* 6-july-2022 */
+#basic-horizontal-layouts>div>div>div>div>form>div>div>div:nth-child(19)>div>div.card-body>div:nth-child(2) {
+  overflow-x: auto;
+}
+
+#basic-horizontal-layouts>div>div>div>div>form>div>div>div:nth-child(35)>div>div.card-body>div:nth-child(2) {
+  overflow-x: auto;
+}
+
+#tab {
+  overflow-x: auto;
+}
+
+/* 9-Nov-2022 */
+.listing {
+  padding: 6px;
+  height: 35px;
+}
+
+
+/* Text and Text Divider code  21-Dec-2022 */
+.text-start {
+  text-align: left !important;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.divider.text-start .divider-text {
+  padding-left: 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: .8rem;
+  padding: 0rem 1rem;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #d4d8dd;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100vw;
+  border-top: 1px solid #003865;
+}
+
+.divider-text {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: #003865;
+}

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap');
+
+* {
+    /* font-family: 'Bangers', cursive; */
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo-img {
+    width: 200px;
+    height: auto;
+}
+
+.card-box {
+    background-color: #0E2052;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px black;
+    color: aliceblue;
+    padding: 4rem;
+}
+
+#card_box {
+    background-color: #5197f3;
+    padding: 20px;
+    border-radius: 25px;
+    border: 5px solid #cecece;
+}
+
+.box-images {
+    width: 100px;
+}
+
+#footer-back {
+    background-image: url("./images/footer-no-content.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#contact-us {
+    background-color: #cb961f;
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* For Auto-coverage */
+.aa {
+    font-size: 65px;
+    color: #0e2052;
+    font-weight: 700;
+}
+
+.auto_coverage_btn {
+    background-color: #0e2052;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.auto_coverage_btn:hover {
+    background-color: #0e2052;
+    color: white;
+}
+
+
+/* media querry for responsive */
+@media only screen and (max-width: 600px) {
+    #top-nav {
+        padding: 0 2rem !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #top-nav {
+        padding: 0 1rem !important;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    .card-box {
+        padding: 2rem
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .cc {
+        font-size: 40px !important;
+    }
+}

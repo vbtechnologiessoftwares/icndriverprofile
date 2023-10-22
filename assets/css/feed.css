@@ -1,0 +1,164 @@
+#feed{
+    background-color: #014493;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+}   
+
+#cls_btn{
+    color: red;
+    font-weight: 500;
+    font-size: 25px;
+}
+   
+.textpart{
+    outline: none;
+    padding: 10px;
+    border: none;
+    width: 948px;
+    transition: all 0.5s;
+}
+
+
+#fileclip{
+    background-color: #2067b0;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#paperclip{
+    transform: rotate(45deg);
+}
+
+.image-upload>input {
+    display: none;
+  }
+
+  label{
+    text-transform: capitalize;
+  }
+
+  #send_box{
+    background-color: #2067b0;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  /* feed  */
+  .feed_img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .feed_img > img{
+    max-width: 60px;
+    cursor: pointer;
+  }
+
+  .feed_box{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .feed_name{
+    color: #2067b0;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+
+  .feed_name:hover{
+    text-decoration: underline;
+    
+  }
+
+  .feed_time{
+    font-size: 13px;
+  }
+
+  .feed_text{
+    background-color: #f3f5f7;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .feed_text > p {
+    color: #151515;
+  }
+
+  /* for img  */
+  .feed_text_img > img{
+    max-width: 300px;
+    border-radius: 5px;
+  }
+
+  #basic-horizontal-layouts > div > div > div > div > form > div > div.row.mt-2 > div > div.feed_box > div.btn-group.show > div{
+    position: absolute !important;
+    left: -40px !important;
+    top: -15px !important;
+  }
+
+  #basic-horizontal-layouts > div > div > div > div > form > div > div.row.mt-2 > div > div.feed_box > div.btn-group.show > div > a{
+    padding: 10px 15px;
+    /* justify-content: center; */
+  }
+
+  /* 18-Oct-2022 */
+  /* profile picture change css */
+  .profile-pic {
+    color: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .profile-pic input {
+    display: none;
+  }
+
+  .profile-pic img {
+    position: absolute;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    z-index: 0;
+  }
+
+  .profile-pic .-label {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+  }
+
+  .profile-pic:hover .-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    color: #fafafa;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 100px;
+    margin-bottom: 0;
+  }
+
+
+   /* tooltip */
+   div.tooltip-inner{
+    max-width: 150px !important;
+  }

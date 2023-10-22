@@ -1,0 +1,9 @@
+/* contactsajax css file */
+.card{
+   margin-left: 35px;
+   margin-right: 35px;
+}
+
+#hidden_div {
+   display: none;
+}

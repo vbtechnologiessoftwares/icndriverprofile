@@ -1,0 +1,127 @@
+.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.row > div:nth-child(2) > p > span{
+    color: black !important;
+     }
+
+.bold_text{
+    color:  black !important;
+     }
+
+.email-action{
+    background-color: #014493 !important;
+    }   
+
+.email-action > div.action-left.d-flex.align-items-center > ul > li > button{
+    border: 1px solid white !important;
+    }
+
+.email-action > div.action-left.d-flex.align-items-center > ul > li > button > span > i{
+    color: aliceblue !important;
+        }
+
+.action-right.d-flex.flex-grow-1.align-items-center.justify-content-end > ul > li > a{
+    border: 1px solid white !important;
+    width: 38px;
+    }
+
+.action-right.d-flex.flex-grow-1.align-items-center.justify-content-end > ul > li > a > span > i{
+    color: aliceblue !important;
+        }
+
+.mail-items > table > tbody > tr:nth-child(1){
+    background-color: #014493;
+       }
+
+.mail-items > table > tbody > tr:nth-child(1) > th{
+    color: aliceblue;
+    font-size: 13px;
+        }
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.mail-items > table > tbody > tr:nth-child(2) > td{
+    padding: 20px;
+     }   
+
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.mail-items > table > tbody > tr:nth-child(2) > td{
+    border: 1px solid #014493 !important;
+    font-size: 14px !important;
+    color: black;
+        }   
+
+
+body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > div{
+    font-size: 14px !important;
+    background-color: #f8f8f8;
+    min-height: 50px;
+    color: black;
+    padding-left: 20px !important;
+    padding-top: 15px !important;
+      }
+
+
+#reply > form > div.card-body.row > div:nth-child(1) > label{
+    margin-left: -12px;
+    }  
+
+#reply > form > div.card-body.row > div:nth-child(2) > label{
+    margin-left: -12px;
+    }
+
+body > div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_ScriptMaster_scr_text_dialog{
+    /* border: 2px solid black; */
+    z-index: 10010;
+    margin: 0 140px;
+    max-width: 80%;
+    overflow-x: hidden;
+    min-height: 380px;
+    }
+
+  .email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.row{
+        color: black;
+        }
+
+   .email-user-list.list-group.ps.ps--active-y > ul > li.media.border-top-0.border-bottom > div > div > div > span > p{
+        color: black;
+         }
+
+
+    body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li:nth-child(1) > div > div > div.row > div:nth-child(1) > p > span:nth-child(11) > label > a{
+        color: red;
+         }
+
+
+    body > div.app-content.content > div > div > div.content-wrapper > div.content-body > div.email-app-area > div > div > div.email-user-list.list-group.ps.ps--active-y > ul > li > div > div > div.row > div:nth-child(1) > p > span:nth-child(11) > label{
+        color: red;
+         }
+
+
+         body > div.app-content.content > div{
+            margin-top: 90px !important;
+            }
+    
+        label{
+            text-transform: capitalize !important;
+            font-size: 0.9rem !important; 
+            }
+    
+       .email-user-list.list-group.ps.ps--active-y > div.ps__rail-y{
+            display: none !important;
+            }   
+    
+       .email-user-list.list-group.ps.ps--active-y{
+            overflow-y: scroll !important;
+            }
+    
+        #attach{
+          color: #fff !important;
+          }   
+         
+          #files-names > span > span.file-delete > span{
+            color: red;
+            font-size: 20px;
+            padding: 2px;
+            cursor: pointer;
+           }
+        
+           #files-names > span{
+              margin-right: 10px;
+            }

@@ -1,0 +1,76 @@
+/* bulk email css file */
+
+label {
+	text-transform: capitalize !important;
+	font-size: 0.9rem !important;
+}
+
+
+.edit {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #6193F3;
+}
+
+
+.gateway {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #6193F3;
+}
+
+.seprate {
+	color: #014493;
+	border: 1px solid #014493;
+	width: 100%;
+}
+
+@media only screen and (max-width: 760px) {
+	.right {
+		padding-left: 0px !important;
+	}
+}
+
+.star {
+	color: red;
+}
+
+.error {
+	color: red;
+}
+
+.center_icon {
+	background-color: #bbb5b5;
+	width: 10%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#mesg {
+	background-color: #FBE5E5 !important;
+	padding: 8px;
+	font-size: 15px;
+	color: rgb(39, 98, 175);
+}
+
+.input_field {
+	display: flex;
+}
+
+#select {
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	outline: none;
+	width: 35%;
+}
+
+/* 12th Sept by Dan */
+.note {
+	background: #1f5597 !important;
+	height: 45px;
+	border-radius: 5px;
+	padding: 0.8rem !important;
+	color: white;
+}

@@ -1,0 +1,72 @@
+  #top {
+    background-color: #014493;
+    margin-top: 25px;
+  }
+
+  .bxs-bell {
+    color: #ffff;
+    cursor: pointer;
+    font-size: 22px;
+  }
+
+  #notification {
+    color: #ffff;
+    font-size: 21px;
+  }
+
+  #pic {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #fname {
+    display: block;
+    height: 40px;
+    width: 40px;
+    background-color: #764af1;
+    padding: 7px 14px;
+    border-radius: 50%;
+    font-weight: 500;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 3px;
+  }
+
+  #name {
+    padding: 0px 5px 0px 12px;
+    color: #014493;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  #message {
+    margin-left: 52px;
+    margin-top: -19px;
+    margin-bottom: 2px;
+    font-size: 14px;
+  }
+
+  #time{
+    text-align: center;
+  }
+  .bxs-x-circle {
+    font-size: 20px;
+  }
+
+  .bxs-x-circle:hover {
+    color: red !important;
+  }
+
+  #circle {
+    position: relative;
+    top: 4px;
+  }
+
+  #border {
+    margin-bottom: 1px;
+  }
+
+  body > div.app-content.content > div.content-wrapper > div{
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }

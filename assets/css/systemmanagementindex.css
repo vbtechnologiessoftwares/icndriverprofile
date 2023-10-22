@@ -1,0 +1,46 @@
+
+/* 30-6-2022 */
+
+/*system management index files */
+/* for responsive */
+
+@media only screen and (max-width: 637px){
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.btn-danger.ml-1.mr-1{
+        margin-top: 3px;
+    }
+
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-all{
+        margin-top: 3px;
+    }
+
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-none.disabled{
+        margin-top: 3px;
+    }
+}
+
+@media only screen and (max-width: 615px){
+    #DataTables_Table_0_wrapper > div.dt-buttons{
+        display: contents;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.btn-danger.ml-1.mr-1{
+    margin-top: 5px;
+    margin-right: .5rem !important;
+    margin-left: -1px !important;
+    }
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-all{
+        margin-top: 5px;
+        margin-right: .5rem !important;
+    }
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.buttons-select-none.disabled{
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    #DataTables_Table_0_wrapper > div.dt-buttons > a.btn.btn-sm.btn-danger.ml-1.mr-1{
+        margin-left: 4px !important
+    }
+}

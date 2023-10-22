@@ -1,0 +1,373 @@
+div#cke_ScriptMaster_scr_text\ opo {
+  display: none !important;
+}
+
+div.email-action {
+  background-color: #014493 !important;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* 16-Jan-2023 */
+body>div.app-content.content>div {
+  margin-top: 125px !important;
+  margin-bottom: 50px !important;
+}
+
+div.mail-items>span:nth-child(3)>b {
+  white-space: normal !important;
+}
+
+div.email-user-list.list-group.ps.ps--active-y {
+  background-color: #ffffff !important;
+  font-family: 'IBM Plex Sans', Helvetica, Arial, serif !important;
+}
+
+
+/* 11-Oct-2022 */
+#data::before {
+  content: "< ";
+}
+
+#data::after {
+  content: " >";
+}
+
+#data {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#data:hover {
+  text-decoration: none;
+}
+
+#data>b,
+#data2>b,
+#data3>b {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+}
+
+div.mail-items>span:nth-child(6)>b {
+  font-weight: 500;
+}
+
+/* 12-August-2022 */
+.email-user-list.list-group.ps.ps--active-y>ul>li>div>div {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body>div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_ScriptMaster_scr_text_dialog {
+  z-index: 10010;
+  margin: 0 140px;
+  max-width: 80%;
+  overflow-x: hidden;
+  min-height: 380px;
+}
+
+div.action-left.d-flex.align-items-center>ul>li:nth-child(1)>button>span>i {
+  color: aliceblue !important;
+}
+
+#tag>span>i {
+  color: aliceblue !important;
+}
+
+div.action-right.d-flex.flex-grow-1.align-items-center.justify-content-around>ul>li:nth-child(1)>a>span>i {
+  color: aliceblue !important;
+}
+
+div.action-right.d-flex.flex-grow-1.align-items-center.justify-content-around>ul>li:nth-child(2)>a>span>i {
+  color: aliceblue !important;
+  padding: 1px;
+  position: relative;
+  top: 0.8px;
+}
+
+/* 13-Oct-2022 */
+div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span:nth-child(8) {
+  line-height: 1.5rem !important;
+}
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span:nth-child(8)>p:nth-child(25)>span>span>span>span>span>span>span>i>span>span {
+  font-family: Helvetica, Arial, sans-serif !important;
+}
+
+html p {
+  line-height: 1.3rem !important;
+}
+
+
+div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span:nth-child(8)>p:nth-child(14) {
+  margin-top: 20px !important;
+}
+
+div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span:nth-child(8)>p:nth-child(25)>span>span>span>span>span>span>span>i>span {
+  font-size: 13px !important;
+}
+
+
+#gmail-\:10h>p.MsoNormal>b>span {
+  font-size: 13px !important;
+  font-family: 'IBM Plex Sans', Helvetica, Arial, serif !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y>div.ps__rail-y {
+  display: none !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y {
+  overflow-y: auto !important;
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span:nth-child(8)>table>tbody>tr>td>table:nth-child(2)>tbody>tr>td>table>tbody>tr>td>table>tbody>tr>th:nth-child(2)>div:nth-child(1)>table>tbody>tr>td>table>tbody>tr>th>a>img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* 12-August-2022 */
+#reply>span {
+  color: #03264e;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  font-size: 18px;
+  position: relative;
+  top: -3px;
+}
+
+
+/* 13-Oct-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li.media.border-bottom>div>div>div.mail-items>span {
+  /* color: #03264e; */
+  /* color: black; */
+  color: #324356;
+}
+
+
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+#ticket>h4 {
+  color: #03264e;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+
+/* 2-Sept-2022 */
+div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span {
+  white-space: normal !important;
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span>p {
+  font-weight: 500 !important;
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>a>li>div>div>div.mail-items>span {
+  white-space: normal !important;
+}
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>div.row.col-md-12.mt-1 {
+  display: contents !important;
+}
+
+
+/* For responsive */
+@media only screen and (max-width: 992px) {
+
+  /* Icon hide */
+  body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-action>div.action-right.d-flex.flex-grow-1.align-items-center.justify-content-around>div>div>i {
+    display: none;
+  }
+
+
+  /* set left side both Icon */
+  body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-action>div.action-left.d-flex.align-items-center {
+    position: absolute;
+    top: 17px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+
+  /* Email Info */
+  body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li.media.border-bottom>div>div>div.mail-items {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span>h1,
+h2 {
+  font-size: 1.3rem !important;
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li {
+  border-bottom: 2px solid #03264e;
+}
+
+/* 5-Sept-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-action>div.action-right.d-flex.flex-grow-1.align-items-center.justify-content-around {
+  margin-bottom: 0.3rem !important;
+}
+
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span>div>span {
+  color: #03264e !important;
+}
+
+/* 12-Sept-2022 */
+#reply>span>i {
+  font-size: 1.5rem !important;
+}
+
+/* 13-Sept-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-action>div.action-left.d-flex.align-items-center>ul>li>div>div>a {
+  padding: 0.5rem 1.6rem !important;
+}
+
+/* 20-Sept-2022 */
+
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li {
+  transition: none !important;
+  z-index: 5;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
+#mail-items {
+  margin: 15px 20px !important;
+}
+
+.name_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mail_name {
+  font-size: 17px !important;
+  font-weight: 600;
+  color: #03264e;
+  margin-bottom: -1px;
+}
+
+.time {
+  font-size: 14px;
+  color: #03264e;
+}
+
+.mail_button {
+  color: #2e4b63 !important;
+}
+
+.mail_button:hover {
+  color: #003865 !important
+}
+
+.your_message {
+  color: #003865;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.share>a {
+  font-size: 20px !important;
+  padding-left: 10px;
+  color: #03264e !important;
+}
+
+#mail-items>div>div>a {
+  padding: 8px 15px;
+  font-size: 12px;
+}
+
+/* 22-Sept-2022 */
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(214, 212, 212);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: #B2B1B9;  */
+  background: #a4a2b6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7d7b92;
+}
+
+/* 27-Sept-2022 */
+#reply {
+  margin-top: 20px !important;
+}
+
+/* Sent 7-Oct-2022 */
+body>div.app-content.content>div.content-area-wrapper>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps>ul>li {
+  transform: translateY(0px) !important;
+  box-shadow: none !important;
+  transition: none;
+  z-index: 5;
+}
+
+body>div.app-content.content>div.content-area-wrapper>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps>ul>li>div>div>div.mail-items>span.dropdown.show>div>a {
+  padding: 10px 15px !important;
+}
+
+/* 11-Oct-2022 */
+/* image fixed in email content */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.mail-items>span>div>div>table>tbody>tr>td>div>table>tbody>tr>td>table>tbody>tr>td>a>img {
+  max-width: 160px !important;
+  height: 60px;
+}
+
+/* fixed aycent icon css */
+body>div.main-menu.menu-fixed.menu-light.menu-accordion.menu-shadow>div.navbar-header>ul>li.nav-item.mr-auto>a>img {
+  max-width: 160px !important;
+  height: 60px;
+}
+
+
+/* 17-Oct-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li>div {
+  cursor: default !important;
+}
+
+/* 5-Nov-2022 */
+#reply>form {
+  margin-top: 15px;
+}
+
+
+/* 14-Nov-2022 */
+#files-names>span>span.file-delete>span {
+  color: red;
+  font-size: 20px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+#files-names>span {
+  margin-right: 10px;
+}

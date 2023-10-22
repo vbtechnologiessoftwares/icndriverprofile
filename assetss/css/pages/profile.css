@@ -1,0 +1,9 @@
+.card-body.call-history, .card-body.driver-messages, .card-body.driver-locations, .card-body.payment-history {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.form-check-input.bg-primary-checkbox:checked {
+    background-color: #5a8dee;
+    border-color: #5a8dee;
+}

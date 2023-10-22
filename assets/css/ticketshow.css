@@ -1,0 +1,178 @@
+.email-action {
+  background-color: #014493 !important;
+  border-radius: 5px;
+}
+
+.email-action>div.action-left.d-flex.align-items-center>ul>li>button {
+  border: 1px solid white !important;
+}
+
+.email-action>div.action-left.d-flex.align-items-center>ul>li>button>span>i {
+  color: aliceblue !important;
+}
+
+.action-right.d-flex.flex-grow-1.align-items-center.justify-content-end>ul>li>a {
+  border: 1px solid white !important;
+  width: 38px;
+}
+
+.action-right.d-flex.flex-grow-1.align-items-center.justify-content-end>ul>li>a>span>i {
+  color: aliceblue !important;
+}
+
+.mail-items>table>tbody>tr:nth-child(1) {
+  background-color: #014493;
+  border: 1.5px solid #014493;
+}
+
+.mail-items>table>tbody>tr:nth-child(1)>th {
+  color: aliceblue;
+  font-size: 13px;
+}
+
+/* 8-august-2022 */
+div.mail-items>table>tbody>tr:nth-child(2)>td {
+  border: 1px solid #bfc4c9 !important;
+  font-size: 14px !important;
+  color: black;
+}
+
+/* 8-august-2022 */
+.email-user-list.list-group.ps.ps--active-y>ul>div {
+  font-size: 14px !important;
+  /* background-color: #f8f8f8; */
+  min-height: 50px;
+  color: black;
+  padding-left: 20px !important;
+  padding-top: 15px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#reply>form>div.card-body.row>div:nth-child(1)>label {
+  margin-left: -12px;
+}
+
+#reply>form>div.card-body.row>div:nth-child(2)>label {
+  margin-left: -12px;
+}
+
+body>div.cke_reset_all.cke_dialog_container.cke_1.cke_editor_ScriptMaster_scr_text_dialog {
+  z-index: 10010;
+  margin: 0 140px;
+  max-width: 80%;
+  overflow-x: hidden;
+  min-height: 380px;
+}
+
+.email-user-list.list-group.ps.ps--active-y>ul>li.media.border-top-0.border-bottom>div>div>div>span>p {
+  color: #03264e !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div.row>div:nth-child(1)>p>span:nth-child(11)>label {
+  color: red;
+}
+
+/* 13-Jan-2023 */
+body>div.app-content.content>div {
+  margin-top: 125px !important;
+}
+
+label {
+  text-transform: capitalize !important;
+  font-size: 0.9rem !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y>div.ps__rail-y {
+  display: none !important;
+}
+
+.email-user-list.list-group.ps.ps--active-y {
+  overflow-y: scroll !important;
+}
+
+/* 12-Oct-2022 */
+#attach {
+  color: #fff !important;
+  font-size: 16px;
+}
+
+#files-names>span>span.file-delete>span {
+  color: red;
+  font-size: 20px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+#files-names>span {
+  margin-right: 10px;
+}
+
+/* 30-August-2022 by Sourav */
+div.email-user-list.list-group.ps.ps--active-y>ul>span {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* =================================== */
+/* 2-Sept-2022 */
+div.email-user-list.list-group.ps.ps--active-y>ul>li>div>div>div>span {
+  white-space: normal !important;
+}
+
+/* ===================================== */
+
+/* 21-Sept-2022 */
+div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li {
+  transition: none !important;
+  z-index: 5;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+div.email-app-area>div>div>div.email-action>div.action-left.d-flex.align-items-center {
+  position: absolute !important;
+  top: 16px;
+}
+
+@media only screen and (max-width: 766px) {
+  #reply>form>div>div {
+    margin-bottom: 1rem;
+  }
+}
+
+/* 22-Sept-2022 */
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(214, 212, 212);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: #B2B1B9;  */
+  background: #a4a2b6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7d7b92;
+}
+
+/* 19-Oct-2022 */
+body>div.app-content.content>div>div>div.content-wrapper>div.content-body>div.email-app-area>div>div>div.email-user-list.list-group.ps.ps--active-y>ul>li {
+  cursor: default !important;
+}
+
+/* 04-Jan-2023 */
+/* body > div.main-menu.menu-fixed.menu-light.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.mr-auto > a > img{
+  max-width: 100% !important;
+  height: auto !important;
+} */

@@ -1,0 +1,41 @@
+/* login logout index */
+/* agent activity session report */
+/* agent break time report */
+/* agent summary break time */
+
+#example_filter {
+    display: none;
+}
+
+#reportSearchFilter > div > div > div{
+    margin-bottom: 5px !important;
+}
+
+.seprate{
+    color: #014493;
+    border: 1px solid #014493;
+    width: 100%;
+    }
+
+.add{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #6193F3;  
+    }    
+
+ 
+/* 28-7-2022 */
+
+@media only screen and (max-width: 767px){
+   
+#reportSearchFilter > div > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-primary{
+        float: left !important;
+       }
+       
+#reportSearchFilter > div > div > div.col-md-12.mt-1 > button.btn.btn-sm.btn-danger.refresh.ml-1{
+        float: left !important;
+        margin-right: 15px;
+        margin-left: 1px !important;
+       }
+    }
+    
