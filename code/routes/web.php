@@ -30,19 +30,7 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth:driveruser'); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-/*Route::get('auto_index', [AutoController::class, 'index'])->name('auto.index')->middleware('auth');
-Route::get('auto_show/{id}', [AutoController::class, 'show'])->name('auto.show')->middleware('auth');
-Route::post('autosubmit', [AutoController::class, 'autosubmit'])->name('auto.autosubmit');
-Route::get('auto-coverage', [AutoController::class, 'autocoverage'])->name('auto-coverage');
-Route::get('testing', [AutoController::class, 'testing'])->name('testing');
-Route::post('testingsub', [AutoController::class, 'testingsub'])->name('testingsub');
-Route::post('testingsubsub', [AutoController::class, 'testingsubsub'])->name('testingsubsub');
-Route::post('testingsubsubvin', [AutoController::class, 'testingsubsubvin'])->name('testingsubsubvin');*/
 
-/*Route::get('helth_index', [HelthController::class, 'index'])->name('helth.index')->middleware('auth');
-Route::get('helth_show/{id}', [HelthController::class, 'show'])->name('helth.show')->middleware('auth');
-Route::post('formsubmit', [HelthController::class, 'formsubmit'])->name('formsubmit');
-Route::get('helth-coverage', [HelthController::class, 'helthcoverage'])->name('helth-coverage');*/
 
 Route::post('contactus', [ContactusController::class, 'store'])->name('contactus');
 Route::get('contactusindex', [ContactusController::class, 'contactusindex'])->name('contactusindex');
@@ -68,11 +56,15 @@ Route::middleware('auth:driveruser')->group( function(){
 	});
 	//license route group ends
 	//edit history route group starts
-    Route::prefix('edit-history')->group( function(){    
+    Route::prefix('change-applications')->group( function(){    
 	    Route::get('/', [ EditHistoryController::class, 'index'])
 	    ->name('edit_history');
 	    Route::post('/listing', [ EditHistoryController::class, 'getListing'])
 	    ->name('edit_history.listing');
+	    Route::post('/listing2', [ EditHistoryController::class, 'getListing2'])
+	    ->name('edit_history.listing2');
+	    Route::post('/change-status', [ EditHistoryController::class, 'changeStatus'])
+	    ->name('edit_history.change_status');
 	});
 	//edit history route group ends
 });
