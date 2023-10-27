@@ -23,15 +23,28 @@ class DashboardController extends Controller
     public function index()
     {
         $driver = auth()->guard('driveruser')->user();
-        $driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
+        /*$driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
 
         $driver->calls = $driver->calls->sortByDesc('datetime');
         $driver->payments = $driver->payments->sortByDesc('paymentdatetime');
-        $driver->messages = $driver->messages->sortByDesc('messages');
+        $driver->messages = $driver->messages->sortByDesc('messages');*/
 
-        $locations = Location::all();
+        $data['locations']=$locations = Location::all();
+        $data['driver']=Driver::where('driverid',$driver->driverid)        
+        ->with([
+            'photo',
+            'calls.location',
+            'payments',
+            'license',
+            'messages'=>function($q){
+                $q->where('messagestatus','0');
+                $q->orderBy('messagedatetime','desc');
+            }
+        ])
+        ->first();
         
-        return view('drivers.profile', compact('driver', 'locations'));
+        //return view('drivers.profile', compact('driver', 'locations'));
+        return view('drivers.profile')->with($data);
 
 
         return redirect("login")->withSuccess('Opps! You do not have access');

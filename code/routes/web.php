@@ -13,6 +13,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EditHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\MessageController;
+
 
 
 /*
@@ -80,36 +82,33 @@ Route::middleware('auth:driveruser')->group( function(){
 	//dashboard route group starts
     Route::prefix('dashboard')->group( function(){    
 	    Route::get('/', [ DashboardController::class, 'index'])
-	    ->name('dashboard');
-	    
+	    ->name('dashboard');	    
 	    Route::get('/edit-profile', [ DashboardController::class, 'editProfile'])
 	    ->name('dashboard.editprofile');
 	    Route::post('/update-profile', [ DashboardController::class, 'updateProfile'])
 	    ->name('dashboard.updateprofile');
-	    
-	    
-
 	});
 	//dashboard route group ends
 
-	//dashboard route group starts
+	//change password route group starts
     Route::prefix('change-password')->group( function(){    
 	    Route::get('/', [ ChangePasswordController::class, 'index'])
-	    ->name('change_password');
-	    
+	    ->name('change_password');	    
 	    Route::post('/save', [ ChangePasswordController::class, 'store'])
 	    ->name('change_password.store');
-	    
-	    
-
 	});
-	//dashboard route group ends
+	//change password route group ends
 
+	//messages route group starts
+    Route::prefix('messages')->group( function(){    
+	    Route::get('/', [ MessageController::class, 'index'])
+	    ->name('messages');	    
+	    Route::post('/listing', [ MessageController::class, 'getListing'])
+	    ->name('messages.listing');
+	});
+	//messages route group ends
 	
-});
-
-
-
+});//middleware auth driver group 
 
 
 /*Route::get('/', function () {

@@ -142,14 +142,16 @@
                     </div>
                     <div class="card-body driver-messages">
 
-                        <div class="table-actions-jsn mb-2">
-                            <div class="form-check mt-3">
+                        <div class="table-actions-jsn mb-2" style="text-align:right">
+                            {{-- <div class="form-check mt-3">
                                 <input class="form-check-input bg-primary-checkbox" type="checkbox" value=""
                                     id="defaultCheck1" onchange="toggleUnreadMessages()" />
                                 <label class="form-check-label" for="defaultCheck1">
                                     Show only unread messages
+                                    <a href="#">Show all Messages</a>
                                 </label>
-                            </div>
+                            </div> --}}
+                            <a href="{{route('messages')}}" class="btn btn-primary" >All Messages</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
