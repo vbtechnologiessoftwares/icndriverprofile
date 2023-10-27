@@ -12,6 +12,8 @@ use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EditHistoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChangePasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +91,21 @@ Route::middleware('auth:driveruser')->group( function(){
 
 	});
 	//dashboard route group ends
+
+	//dashboard route group starts
+    Route::prefix('change-password')->group( function(){    
+	    Route::get('/', [ ChangePasswordController::class, 'index'])
+	    ->name('change_password');
+	    
+	    Route::post('/save', [ ChangePasswordController::class, 'store'])
+	    ->name('change_password.store');
+	    
+	    
+
+	});
+	//dashboard route group ends
+
+	
 });
 
 

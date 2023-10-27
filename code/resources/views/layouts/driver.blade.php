@@ -531,6 +531,17 @@
 
                                         </li>
                                         <li>
+                                            <a class="dropdown-item" href="{{route('change_password')}}">
+                                                <div class="d-flex">
+                                                    <div class="flex-grow-1">
+                                                        <span class="fw-semibold d-block lh-1">Change Password</span>
+                                                        <small></small>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                        </li>
+                                        <li>
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         {{-- <li>
