@@ -55,7 +55,9 @@
                             <div
                                 class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                                 <div class="user-profile-info">
-                                    <h4>{{ $driver->full_name }} <a href="{{route('edit_history')}}"><i class="fa fa-clock" title="Edit History"></i></a> </h4>
+                                    <h4>{{ $driver->full_name }} 
+                                        <a href="javascript:void(0)" class="edit-profile-btn"><i class="fa fa-pencil" title="Edit profile picture"></i></a> 
+                                        <a href="{{route('edit_history')}}"><i class="fa fa-clock" title="Edit History"></i></a> </h4>
                                     <ul
                                         class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                         {{--  <li class="list-inline-item fw-semibold">
@@ -597,8 +599,84 @@
                 });
             });
 
+            //open popup on profile button click STARTS here
+            $('.edit-profile-btn').on('click', function(e) {
+                e.preventDefault();
+                var url = '{{ route('dashboard.editprofile') }}';
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    datatype: 'html',
+                    data: {},
+                    success: function(response) {
+                        console.log(response);
+                        $('#commonModal .modal-content').html(response);
+                        $('#commonModal').modal('show');
+                    },
+
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+            //open popup on profile button click ENDS here
+
+            //profile image form submit STARTS here
+            $('body').on('submit', '#profile-edit-form', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+
+                $.ajax({
+                    url: $this.prop('action'),
+                    method: $this.prop('method'),
+                    dataType: 'json',
+                    data: new FormData(this), //4
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                }).done(function(response) {
+                    console.log(response);
+                    $(".invalid-feedback").html('');
+                    $(".invalid-feedback").css('display', 'none');
+                    if (response.status == 1) {
+                        //$(".closeModal").trigger('click');
+                        Swal.fire({
+                            html:response.alert_message,
+                            icon: 'success',
+                            confirmButtonText: 'Close',
+                        }).then((result) => {
+                          
+                          if (result.isConfirmed) {
+                            //Swal.fire('Saved!', '', 'success')
+                            $(".closeModal").trigger('click');
+                          } else if (result.isDenied) {
+                            $(".closeModal").trigger('click');
+                          }
+                        })
+                    }
+                    if (response.alert_class && response.alert_message) {
+                        var alertdata = '<div class="alert ' + response.alert_class + '">' +
+                            response.alert_message + '</div>';
+                        //$('.license-flash').html(alertdata);
+                    }
+                    if (response.status == 2) {
+
+                        $.each(response.errors, function(key, error) {
+                            $("#profile-edit-form #" + key + "").css('display',
+                                'inline-block');
+                            $("#profile-edit-form #" + key + "").html('<strong>' + error[
+                                0] + '</strong>');
+                        });
+                    }
+                });
+            });
+            //profile image form submit ENDS here
+
             $('body').on('change', '#licenseimage', function() {
-                readURL(this);
+                readURL(this,'licenseimage_show');
+            });
+            $('body').on('change', '#profileimage', function() {
+                readURL(this,'profileimage_show');
             });
 
             $('body').on('submit', '#license-edit-form', function(e) {
@@ -696,11 +774,11 @@
             })
         }
 
-        function readURL(input) {
+        function readURL(input,id) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#licenseimage_show').attr('src', e.target.result);
+                    $('#'+id).attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }

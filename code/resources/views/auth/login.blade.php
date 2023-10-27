@@ -20,9 +20,8 @@
 								{{ session()->get('message') }}
 							</div>
 						@endif
-                        <div class="d-flex flex-md-row flex-column justify-content-around">
-                          {{-- <a href="{{ url('auth/google') }}" style="margin-top: 20px;" class="btn btn-lg btn-success btn-block">
-                          <strong>Login With Google</strong> --}}
+                        {{-- <div class="d-flex flex-md-row flex-column justify-content-around">
+                          
                           <a href="{{ url('auth/google') }}"
                             class="btn btn-social btn-google btn-block font-small-3 mr-md-1 mb-md-0 mb-1">
                           <i class="bx bxl-google font-medium-3"></i><span
@@ -30,9 +29,9 @@
                           <a href="{{ route('register') }}" class="btn btn-social btn-block mt-0 btn-facebook font-small-3">
                           <i class='bx bx-user font-medium-3'></i><span
                             class="pl-50 d-block text-center">Signup</span></a>
-                        </div>
+                        </div> --}}
                         <div class="divider">
-                          <div class="divider-text text-uppercase text-muted"><small>or login with
+                          <div class="divider-text text-uppercase text-muted"><small>Login with
                             username</small>
                           </div>
                         </div>
@@ -84,6 +83,8 @@
                         <hr>
                         <div class="text-center"><small class="mr-25">Don't have an account?</small><a
                           href="{{ route('register') }}"><small>Sign up</small></a></div>
+                          <div class="text-center"><a
+                          href="{{ route('forget.password.get') }}"><small>Forgot Password</small></a></div>
                       </div>
                     </div>
                   </div>

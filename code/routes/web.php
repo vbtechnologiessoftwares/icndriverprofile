@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 
   
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\AutoController;
 use App\Http\Controllers\HelthController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EditHistoryController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.pos
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 
-Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth:driveruser'); 
+//Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth:driveruser'); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
@@ -38,6 +40,11 @@ Route::get('contactusshow/{id}', [ContactusController::class, 'contactusshow'])-
 
 Route::get('terms', [ContactusController::class, 'terms'])->name('terms');
 Route::get('privacy', [ContactusController::class, 'policy'])->name('policy');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::middleware('auth:driveruser')->group( function(){
 
@@ -67,13 +74,29 @@ Route::middleware('auth:driveruser')->group( function(){
 	    ->name('edit_history.change_status');
 	});
 	//edit history route group ends
+
+	//dashboard route group starts
+    Route::prefix('dashboard')->group( function(){    
+	    Route::get('/', [ DashboardController::class, 'index'])
+	    ->name('dashboard');
+	    
+	    Route::get('/edit-profile', [ DashboardController::class, 'editProfile'])
+	    ->name('dashboard.editprofile');
+	    Route::post('/update-profile', [ DashboardController::class, 'updateProfile'])
+	    ->name('dashboard.updateprofile');
+	    
+	    
+
+	});
+	//dashboard route group ends
 });
 
 
 
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [AuthController::class, 'index']);
 

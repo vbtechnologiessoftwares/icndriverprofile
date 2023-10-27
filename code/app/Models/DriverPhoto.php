@@ -12,6 +12,8 @@ class DriverPhoto extends Model
     protected $table = 'driver_photos';
 
     protected $primaryKey = 'photoid';
+    protected $fillable = ['driverid', 'driversphoto'];
+    public $timestamps = false;
 
 
     /**
