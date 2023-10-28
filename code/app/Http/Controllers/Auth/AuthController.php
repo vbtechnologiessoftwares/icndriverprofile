@@ -176,8 +176,8 @@ class AuthController extends Controller
 
     public function driverRegistrationForm()
     {
-        $data['locations']=$locations = Location::get();
-        return view('drivers.signup')->with($data);
+        //$data['locations']=array();
+        return view('drivers.signup');
 
     }
     public function driverRegistrationFormStore(Request $request)
@@ -323,5 +323,16 @@ class AuthController extends Controller
         
         //return view('drivers.drivercreate');
 
+    }
+
+    public function listLocations(Request $request)
+    {
+        info("Request data: ". json_encode($request->all()));
+        $locations = Location::query();
+        if ( $request->filled('search') ){
+            $locations->where('town','like', "%{$request->search}%");
+        }
+
+        return response()->json($locations->paginate(20));
     }
 }

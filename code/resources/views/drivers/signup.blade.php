@@ -51,11 +51,11 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script
       type="text/javascript"
-      src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"
+      src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"
     ></script>
     <script
       type="text/javascript"
-      src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"
+      src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"
     ></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -261,7 +261,9 @@
       <div class="row justify-content-center pt-3">
         <div class="col-md-12">
           <h1 class="cc">Driver Details</h1>
+
         </div>
+        
         <div class="col-md-10">
           <div id="progressBar" class="progress-bar">
             <div class="progress-bar__steps"></div>
@@ -643,9 +645,9 @@
                           >Locations</label
                         >
                         <select id="selectNewLocation" class="select2 form-select form-select-lg" data-allow-clear="true" name="locations[]" multiple>
-                          @foreach($locations as $key =>$value)
+                          {{-- @foreach($locations as $key =>$value)
                           <option value="{{$value->locationid}}">{{$value->town}},{{$value->country}}</option>
-                          @endforeach
+                          @endforeach --}}
                         </select>
                       </div>
                      {{--  <div class="col-md-6">
@@ -951,7 +953,47 @@
                 });
             });
 
+        $("#selectNewLocation").select2({
+                //dropdownParent: $('#addLocationModal'),
+                ajax: {
+                    url: "{{ route('guest_locations.list') }}",
+                    data: function(params) {
+                        var query = {
+                            search: params.term,
+                            page: params.page || 1
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: (data) => {
+                        data = parseLocationsForSelect2(data);
+                        return data;
+
+                    },
+                }
+            });
+
       });//ready
+
+function parseLocationsForSelect2(locations) {
+            let results = locations.data.map((location) => {
+                return {
+                    id: location.locationid,
+                    text: location.town
+                };
+            });
+            console.log('results', results);
+
+            let more = locations.current_page < locations.last_page;
+
+            return {
+                results,
+                pagination: {
+                    more
+                }
+            };
+        }
 
 
 
