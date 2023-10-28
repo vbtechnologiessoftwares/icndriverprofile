@@ -33,6 +33,9 @@ Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.pos
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 
+Route::get('/signup', [ AuthController::class, 'driverRegistrationForm'])->name('driver_signup');
+Route::post('/signup', [ AuthController::class, 'driverRegistrationFormStore'])->name('driver_signup.store');
+
 //Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('auth:driveruser'); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -107,6 +110,8 @@ Route::middleware('auth:driveruser')->group( function(){
 	    ->name('messages.listing');
 	});
 	//messages route group ends
+
+
 	
 });//middleware auth driver group 
 

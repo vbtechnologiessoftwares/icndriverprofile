@@ -96,7 +96,7 @@
 
 
             <!-- Layout container -->
-            <div class="">
+            {{-- <div class=""> --}} {{-- abhishek commented div --}}
 
 
                 <!-- Navbar -->
@@ -657,7 +657,7 @@
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!-- Content wrapper -->
-            </div>
+            {{-- </div> --}} {{-- abhishek commented div --}}
             <!-- / Layout page -->
         </div>
 

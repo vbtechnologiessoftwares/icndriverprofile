@@ -409,7 +409,10 @@
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
                                                     class="fw-semibold mx-2">Expiry:</span>
-                                                <span>{{ $driver->licenseexpiry->toFormattedDateString() }}</span>
+                                                @if(isset($driver->licenseexpiry) && $driver->licenseexpiry!='')
+                                                <span>{{  $driver->licenseexpiry->toFormattedDateString() }}</span>
+                                                @else
+                                                @endif
                                             </li>
                                             <a href="javascript:void(0)"
                                                 class="btn rounded-pill btn-primary license-edit-btn"

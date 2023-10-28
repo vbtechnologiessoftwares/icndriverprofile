@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class License extends Model
+class DriverLocation extends Model
 {
 
-    protected $table = 'driver_licences';
+    protected $table = 'driver_locations';
 
-    protected $primaryKey = 'licenseid';
-    protected $fillable = ['driverid', 'licensephoto'];
+    protected $primaryKey = 'driverlocationid';
+    protected $fillable =['driverid','locationid'];
     public $timestamps = false;
 
     /**

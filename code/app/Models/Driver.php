@@ -17,7 +17,7 @@ class Driver extends Authenticatable
     protected $table = 'driver_details';
 	protected $primaryKey = 'driverid';
 
-    protected $fillable = ['driverid', 'username ', 'password', 'signupdate','email'];
+    protected $fillable = ['driverid', 'username', 'password', 'signupdate','email','phone','businessurl','4seatervehicle','8seatervehicle','estatevehicle','courier','easyaccessvehicle','airportruns'];
 	
 	protected $guard = 'driveruser';
 
