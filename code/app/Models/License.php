@@ -12,7 +12,7 @@ class License extends Model
     protected $table = 'driver_licences';
 
     protected $primaryKey = 'licenseid';
-    protected $fillable = ['driverid', 'licensephoto'];
+    protected $fillable = ['driverid', 'licensephoto','licensenumber','licenseexpiry'];
     public $timestamps = false;
 
     /**

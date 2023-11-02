@@ -22,6 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $driver = auth()->guard('driveruser')->user();
         /*$driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
 

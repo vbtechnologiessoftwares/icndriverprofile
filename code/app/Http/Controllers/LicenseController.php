@@ -76,6 +76,7 @@ class LicenseController extends Controller
             $already_in_queue_to_approve=1;
         }
         $license_query=License::where('driverid',$driverid)->first();
+
         $driver_query=Driver::where('driverid',$driverid)->first();
 
         
@@ -95,6 +96,7 @@ class LicenseController extends Controller
      */
     public function update(Request $request)
     {
+        
         DB::beginTransaction();
         $exception="";
         try{

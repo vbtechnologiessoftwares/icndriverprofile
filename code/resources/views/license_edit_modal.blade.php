@@ -16,12 +16,14 @@
               <div class="col-12">
                 <div class="form-group">
                   <label class="form-label">License Number</label>
-                  <input type="text" class="form-control" name="licensenumber" value="{{$driver_query->licensenumber}}"/>
+                  <input type="text" class="form-control" name="licensenumber" value="{{$license_query->licensenumber}}"/>
                   <span class="invalid-feedback" id="licensenumber"></span>
                 </div>
                 <div class="form-group">
                   <label class="form-label">License Expiry</label>
-                  <input type="date" class="form-control"  name="licenseexpiry" value="{{$driver_query->licenseexpiry->format('Y-m-d')}}"/>
+                    @isset($license_query->licenseexpiry)
+                  <input type="date" class="form-control"  name="licenseexpiry" value="{{$license_query->licenseexpiry}}"/>
+                  @endisset
                   <span class="invalid-feedback" id="licenseexpiry"></span>
                 </div>
                 <div class="form-group">

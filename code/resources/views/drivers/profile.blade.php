@@ -215,7 +215,7 @@
   <h2 class="accordion-header">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#driver-info" aria-expanded="true">
-                                Driver Info
+                                Driver Location
                             </button>
                         </h2>
 
@@ -405,12 +405,12 @@
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
                                                     class="fw-semibold mx-2">Number:</span>
-                                                <span>{{ $driver->licensenumber }}</span>
+                                                <span>{{ $driver->license->licensenumber }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
                                                     class="fw-semibold mx-2">Expiry:</span>
-                                                @if(isset($driver->licenseexpiry) && $driver->licenseexpiry!='')
-                                                <span>{{  $driver->licenseexpiry->toFormattedDateString() }}</span>
+                                                @if(isset($driver->license->licenseexpiry) && $driver->license->licenseexpiry!='')
+                                                <span>{{  $driver->license->licenseexpiry}}</span>
                                                 @else
                                                 @endif
                                             </li>
@@ -432,7 +432,7 @@
 
                    
                 </div>
-                <!-- Accordion end -->
+               <div class="abc" style="margin-bottom: 15px;"></div>                <!-- Accordion end -->
                      <div class="accordion-item card">
                         <h2 class="accordion-header">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
