@@ -1,2 +1,5 @@
 ALTER TABLE `driver_licences_edits` ADD `licensenumber` VARCHAR(100) NULL DEFAULT NULL AFTER `licensephoto`, ADD `licenseexpiry` DATE NULL DEFAULT NULL AFTER `licensenumber`;
 
+
+ALTER TABLE `driver_details` ADD `offtime_timestamp` TIMESTAMP NULL DEFAULT NULL AFTER `dutystatus`, ADD `offtime_timestamp_created_at` TIMESTAMP NULL DEFAULT NULL AFTER `offtime_timestamp`;
+

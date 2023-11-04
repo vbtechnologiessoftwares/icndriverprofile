@@ -123,6 +123,33 @@
 
                         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
+                            <!--menubar starts-->
+                            <ul class="navbar-nav flex-row align-items-center">
+          
+                             
+                              <li class="nav-item dropdown me-2 me-xl-0">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" title="menu bar">
+                                  <i class='fa fa-bars'></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                  <li>
+                                    <a class="dropdown-item" href="{{route('edit_history')}}" >
+                                      <i class="fa fa-clock"></i>
+                                      <span class="align-middle">Change Applications</span>
+                                    </a>
+                                  </li>
+                                  
+                                 
+                                  
+                                 
+                                </ul>
+                              </li>
+                              
+          
+
+                            </ul>
+                            <!--menubar ends-->
+
 
                             <!-- Search -->
                             {{-- <div class="navbar-nav align-items-center">
@@ -680,7 +707,8 @@
 
   <!--common modal starts-->
 
-  <div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="commonModalLabel" aria-hidden="true">
+  <div class="modal fade" id="commonModal" tabindex="-1" aria-labelledby="commonModalLabel" aria-hidden="true" data-bs-backdrop="static" 
+            data-bs-keyboard="false">
       <div class="modal-dialog">
         <div class="modal-content">
             

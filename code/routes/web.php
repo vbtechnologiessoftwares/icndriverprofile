@@ -14,6 +14,8 @@ use App\Http\Controllers\EditHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\DutyController;
+use App\Http\Controllers\CronController;
 
 
 
@@ -53,10 +55,28 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('/list-locations', [ AuthController::class, 'listLocations'])->name('guest_locations.list');
+Route::get('/check-if-email-exists', [ AuthController::class, 'checkIfEmailExists'])->name('driver_signup.check_if_email_exists');
+Route::get('/check-if-username-exists', [ AuthController::class, 'checkIfUsernameExists'])->name('driver_signup.check_if_username_exists');
+
+
+Route::prefix('cron')->group( function(){
+	Route::get('/turn-off-duty', [CronController::class, 'turnOffDuty']);
+});
+
 
 Route::middleware('auth:driveruser')->group( function(){
 
-    Route::get('/change-duty-status', [AuthController::class, 'toggleDutyStatus'])->name('change-duty-status');
+    //Route::post('/change-duty-status', [AuthController::class, 'toggleDutyStatus'])->name('change-duty-status');
+    Route::prefix('duty')->group( function(){
+    	Route::get('/hours', [DutyController::class, 'openHoursModal'])->name('duty.hours');
+    	Route::post('/hours/update', [DutyController::class, 'hoursUpdate'])->name('duty.hours.update');
+    	Route::post('/change-duty-status', [DutyController::class, 'toggleDutyStatus'])->name('duty.changeStatus');
+    	Route::get('/get-driver-duty-status', [DutyController::class, 'getDriverDutyStatus'])->name('duty.get_driver_duty_status');
+    	
+    });
+    
+
+
     Route::get('/messages/seen/{driver_message}', [ AuthController::class, 'markMessageAsSeen'])->name('messages.mark-as-seen');
 	Route::get('/locations', [ ProfileController::class, 'listLocations'])->name('locations.list');
 	Route::post('/locations', [ ProfileController::class, 'storeLocations'])->name('locations.store');

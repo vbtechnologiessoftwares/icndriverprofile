@@ -119,11 +119,11 @@ class LicenseController extends Controller
             $driver = auth()->guard('driveruser')->user();
             $driverid=$driver->driverid;
             $licensephoto = 
-            base64_encode(
+            //base64_encode(
                 file_get_contents(
                     $request->file('licensephoto')->path()
-                )
-            );
+                );
+            //);
             $create_data=array(
                 'driverid'=>$driverid,
                 'licensenumber'=>$request->input('licensenumber'),

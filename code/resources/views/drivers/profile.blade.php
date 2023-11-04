@@ -57,7 +57,7 @@
                                 <div class="user-profile-info">
                                     <h4>{{ $driver->full_name }} 
                                         <a href="javascript:void(0)" class="edit-profile-btn"><i class="fa fa-pencil" title="Edit profile picture"></i></a> 
-                                        <a href="{{route('edit_history')}}"><i class="fa fa-clock" title="Edit History"></i></a> </h4>
+                                        {{-- <a href="{{route('edit_history')}}"><i class="fa fa-clock" title="Edit History"></i></a> --}} </h4>
                                     <ul
                                         class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                         {{--  <li class="list-inline-item fw-semibold">
@@ -74,8 +74,9 @@
                                                 id="duty-status-text"><b>{{ $driver->dutystatus ? 'on' : 'off' }}</b></span>
                                             duty
                                             <label class="switch switch-lg switch-success">
-                                                <input type="checkbox" class="switch-input" @checked($driver->dutystatus)
-                                                    onchange="changeDutyStatus()" />
+                                                <input type="checkbox" class="switch-input change-duty-status-input" @checked($driver->dutystatus)
+                                                    onclick="changeDutyStatus()" 
+                                                     />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on">
                                                         <i class="bx bx-check"></i>
@@ -735,6 +736,87 @@
 
             //license-edit-form
 
+            $('body').on('click','.off-duty-close-btn',function(e){
+                $.ajax({
+                    url:'{{route('duty.get_driver_duty_status')}}',
+                    method:'GET',
+                    dataType: 'json'
+                }).done(function(response){
+                    if(response.dutystatus==1){
+                        $('.change-duty-status-input').prop('checked',true);
+                        $('#duty-status-text').text('on');
+                    }
+                    else if(response.dutystatus==0){
+                        Swal.fire({
+                            html:"You are not marked as On Duty because you haven't updated Off Hours ",
+                            icon: 'error',
+                            confirmButtonText: 'Close',
+                        }).then((result) => {
+                          
+                          if (result.isConfirmed) {
+                            //Swal.fire('Saved!', '', 'success')
+                            //$(".closeModal").trigger('click');
+                          } else if (result.isDenied) {
+                            //$(".closeModal").trigger('click');
+                          }
+                        })
+                        $('.change-duty-status-input').prop('checked',false);
+                        $('#duty-status-text').text('off');
+                    }
+                });
+                
+            });
+
+            
+            $('body').on('submit', '#off-duty-form', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+
+                $.ajax({
+                    url: $this.prop('action'),
+                    method: $this.prop('method'),
+                    dataType: 'json',
+                    data: new FormData(this), //4
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                }).done(function(response) {
+                    console.log(response);
+                    $(".invalid-feedback").html('');
+                    $(".invalid-feedback").css('display', 'none');
+                    if (response.status == 1) {
+                        //$(".closeModal").trigger('click');
+                        Swal.fire({
+                            html:response.alert_message,
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                        }).then((result) => {
+                          
+                          if (result.isConfirmed) {
+                            //Swal.fire('Saved!', '', 'success')
+                            $(".closeModal").trigger('click');
+                          } else if (result.isDenied) {
+                            $(".closeModal").trigger('click');
+                          }
+                        })
+                    }
+                    /*if (response.alert_class && response.alert_message) {
+                        var alertdata = '<div class="alert ' + response.alert_class + '">' +
+                            response.alert_message + '</div>';
+                        $('.license-flash').html(alertdata);
+                    }*/
+                    if (response.status == 2) {
+
+                        $.each(response.errors, function(key, error) {
+                            $("#off-duty-form #" + key + "").css('display',
+                                'inline-block');
+                            $("#off-duty-form #" + key + "").html('<strong>' + error[
+                                0] + '</strong>');
+                        });
+                    }
+                });
+            });
+
         }); //ready
         function toggleUnreadMessages() {
             $('.driver-messages-tbody .seen-message').toggle()
@@ -743,12 +825,42 @@
 
         function changeDutyStatus() {
             let dutyStatus = event.target.checked ? "on" : "off";
-            $('#duty-status-text').text(dutyStatus);
+            if(dutyStatus=='on')
+            {
+                openHoursModal();
+                //alert('test');
+                $('#duty-status-text').text(dutyStatus);
+            }
+            else{
+                changeDutyStatusAjax(dutyStatus);
+                $('#duty-status-text').text(dutyStatus);
+            }            
+        }
 
+        function openHoursModal(){
+            var url = '{{ route('duty.hours') }}';
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    datatype: 'html',
+                    data: {},
+                    success: function(response) {
+                        console.log(response);
+                        $('#commonModal .modal-content').html(response);
+                        $('#commonModal').modal('show');
+                    },
+
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+        }
+
+        function changeDutyStatusAjax(dutyStatus){
             $.ajax({
-                url: "{{ route('change-duty-status') }}",
+                url: "{{ route('duty.changeStatus') }}",
            /*     url: "/change-duty-status",*/
-                type: "get",
+                type: "POST",
                 data: {
                     action: dutyStatus,
                 },

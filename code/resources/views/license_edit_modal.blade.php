@@ -21,9 +21,9 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label">License Expiry</label>
-                    @isset($license_query->licenseexpiry)
+                    
                   <input type="date" class="form-control"  name="licenseexpiry" value="{{$license_query->licenseexpiry}}"/>
-                  @endisset
+                 
                   <span class="invalid-feedback" id="licenseexpiry"></span>
                 </div>
                 <div class="form-group">

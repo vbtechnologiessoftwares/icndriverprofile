@@ -1,0 +1,3 @@
+<ul class="navbar-nav flex-row align-items-center ms-auto"><li class="nav-item"><a href="#" class="nav-link">Change Application</a></li></ul>
+
+inside id="navbar-collapse"

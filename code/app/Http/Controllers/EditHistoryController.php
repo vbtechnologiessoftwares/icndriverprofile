@@ -96,7 +96,7 @@ class EditHistoryController extends Controller
                 $approved_by_admin='<span style="color:red">Pending</span>';
             }
             $license_photo=''; 
-            $license_photo='<img src="data:image/png;base64,'.$value->licensephoto.'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />';  
+            $license_photo='<img src="data:image/png;base64,'.chunk_split(base64_encode($value->licensephoto)).'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />';  
             $revoke_btn='<button class="btn btn-primary change-status-btn" data-licenseeditid="'.$value->licenseeditid.'" data-status="3">Revoke</button>';
             
 
@@ -192,7 +192,7 @@ class EditHistoryController extends Controller
                 $approved_by_admin='<span style="color:red">Pending</span>';
             }
             $license_photo=''; 
-            $license_photo='<img src="data:image/png;base64,'.$value->licensephoto.'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />';  
+            $license_photo='<img src="data:image/png;base64,'.chunk_split(base64_encode($value->licensephoto)).'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />';  
             
 
             $result["data"][$key] = array(

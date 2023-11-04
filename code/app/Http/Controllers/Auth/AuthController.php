@@ -188,9 +188,11 @@ class AuthController extends Controller
         $exception="";
         try{
             $rules = array(
-                'username' => 'required',
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'username' => 'required|unique:driver_details,username',
                 'phone_number' => 'required',
-                'email' => 'required',
+                'email' => 'required|unique:driver_details,email',
                 'business_url'=>'required',
                 'password'=>'required',
 
@@ -203,12 +205,12 @@ class AuthController extends Controller
 
                 'driver_photo'=>'required',
                 'driver_licence_photo'=>'required',
-
-                //'locations'=>'required',
-
-
+                'licensenumber'=>'required',
+                'licenseexpiry'=>'required',
             );
             $rulesMessages=array(
+                'firstname.required' => 'This field is required',
+                'lastname.required' => 'This field is required',
                 'username.required' => 'This field is required',
                 'phone_number.required' => 'This field is required',
                 'email.required' => 'This field is required',
@@ -225,6 +227,9 @@ class AuthController extends Controller
                 'driver_photo.required'=>'This field is required',
                 'driver_licence_photo.required'=>'This field is required',
 
+                'licensenumber.required'=>'This field is required',
+                'licenseexpiry.required'=>'This field is required',
+
                 //'locations.required'=>'This field is required',
             );
             $validator = Validator::make($request->all(),$rules,$rulesMessages);
@@ -240,6 +245,8 @@ class AuthController extends Controller
             $create_data=array(
 
                 'username' => $request->input('username'),
+                'firstname' => $request->input('firstname'),
+                'lastname' => $request->input('lastname'),
                 'phone' => $request->input('phone_number'),
                 'email' => $request->input('email'),
                 'businessurl'=>$request->input('business_url'),
@@ -283,7 +290,9 @@ class AuthController extends Controller
             //);
             $create_license_data=array(
                 'driverid'=>$driverid,
-                'licensephoto'=>$driver_licence_photo
+                'licensephoto'=>$driver_licence_photo,
+                'licensenumber'=>$request->input('licensenumber'),
+                'licenseexpiry'=>$request->input('licenseexpiry'),
             );
             License::create($create_license_data);
 
@@ -332,7 +341,25 @@ class AuthController extends Controller
         if ( $request->filled('search') ){
             $locations->where('town','like', "%{$request->search}%");
         }
-
         return response()->json($locations->paginate(20));
+    }
+
+    public function checkIfEmailExists(Request $request){
+        $check_count=Driver::where('email',$request->email)->count();
+        if($check_count>0)
+        {            
+            return 'false';
+        }else{
+            return 'true';
+        }
+    }
+    public function checkIfUsernameExists(Request $request){
+        $check_count=Driver::where('username',$request->username)->count();
+        if($check_count>0)
+        {            
+            return 'false';
+        }else{
+            return 'true';
+        }
     }
 }

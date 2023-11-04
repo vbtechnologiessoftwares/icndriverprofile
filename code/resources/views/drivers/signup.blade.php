@@ -290,6 +290,40 @@
               </div>
 
               <div class="col-md-12 px-3">
+                <!--first name last name starts-->
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label
+                      for="firstname"
+                      class="col-lg-12 control-label"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstname"
+                      name="firstname"
+                      required
+                      placeholder="First Name"
+                    />
+
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastname" class="col-lg-12 control-label"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastname"
+                      name="lastname"
+                      required
+                      placeholder="Last Name"
+                    />
+                  
+                  </div>
+                </div>
+                <!--first name last name ends-->
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label
@@ -563,6 +597,42 @@
               <div class="col-md-12 px-3">
                 <div id="field">
                   <div id="field0">
+                    <!--license number and expiry starts-->
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="licensenumber"
+                          class="col-lg-12 control-label"
+                          >License Number</label
+                        >
+                        
+                      <input
+                      type="text"
+                      class="form-control"
+                      id="licensenumber"
+                      name="licensenumber"
+                      required
+                      placeholder="License Number"
+                    />
+                      </div>
+                      <div class="col-md-6">
+                        <label
+                          for="licenseexpiry"
+                          class="col-lg-12 control-label"
+                          >Licence Expiry</label
+                        >
+                        
+                      <input
+                      type="date"
+                      class="form-control"
+                      id="licenseexpiry"
+                      name="licenseexpiry"
+                      required
+                      placeholder="Licence Expiry"
+                    />
+                      </div>
+                    </div>
+                    <!--license number and expiry ends-->
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label
@@ -739,6 +809,11 @@
               username: {
                 required: true,
                 usernameRegex: true,
+                remote: {
+                    url: "{{route('driver_signup.check_if_username_exists')}}",
+                    type: "get"
+                 }
+                
                
               },
               password: {
@@ -761,11 +836,16 @@
               email: {
                 required: true,
                 minlength: 3,
+                remote: {
+                    url: "{{route('driver_signup.check_if_email_exists')}}",
+                    type: "get"
+                 }
               },
             },
             messages: {
               username: {
                 required: "Username required",
+                remote: "Username Already in use"
               },
               /* password: {
                            required: "Password required"
@@ -779,6 +859,7 @@
               },
               email: {
                 required: "Email required",
+                remote: "Email Already in use"
               },
             },
           });
@@ -920,7 +1001,7 @@
                     if (response.status == 2) {
                         //$(".closeModal").trigger('click');
                         Swal.fire({
-                            title: response.alert_message,
+                            title: 'Unsuccessful operation! Something went wrong',
                             //html: "You want to revoke!",
                             icon: 'warning',
                             showCancelButton: true,
