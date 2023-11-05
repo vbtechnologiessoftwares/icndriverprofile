@@ -885,6 +885,7 @@
                     let messageDiv = $(buttonElem).closest('.unseen-message');
                     messageDiv.removeClass('table-danger unseen-message');
                     messageDiv.addClass('seen-message');
+                    messageDiv.css('display','none');
                     buttonElem.remove();
                 },
                 error: (err) => console.log(err),
