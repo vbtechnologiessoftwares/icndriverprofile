@@ -28,7 +28,7 @@
              <div class="col-12">
                 <div class="form-group">
                   @isset($driver_query->photo->driversphoto)
-                    <img id="profileimage_show" src="data:image/png;base64,{{ chunk_split(base64_encode($driver_query->photo->driversphoto)) }}" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />
+                    <img id="profileimage_show" src="data:image/png;base64,{{ htmlspecialchars($driver_query->photo->driversphoto) }}" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />
                     @else
                     <img id="profileimage_show" alt="" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />
                   @endisset

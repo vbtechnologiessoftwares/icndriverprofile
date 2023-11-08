@@ -89,11 +89,11 @@ class DashboardController extends Controller
             $driverid=$driver->driverid;
 
             $profilephoto = 
-            //base64_encode(
+            base64_encode(
                 file_get_contents(
                     $request->file('profilephoto')->path()
-                );
-            //);
+                )
+            );
 
             $check_if_already_exists=DriverPhoto::where('driverid',$driverid)->first();
             if($check_if_already_exists)
@@ -139,6 +139,18 @@ class DashboardController extends Controller
 
         
     
+    }
+    public function getOffTime(){
+        $driver = auth()->guard('driveruser')->user();
+        $driverid=$driver->driverid;
+        
+        $driver_query=Driver::where('driverid',$driverid)->first();
+        if($driver_query->dutystatus==1)
+        {
+            return 'Auto off duty at '.date('d,M h:i A',strtotime($driver_query->offtime_timestamp));
+        }else{
+            return '';
+        }
     }
 
     public function getListing(Request $request)

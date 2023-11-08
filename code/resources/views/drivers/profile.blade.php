@@ -47,7 +47,7 @@
                     <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                         <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
                             @isset($driver->photo->driversphoto)
-                                <img src="data:image/png;base64,{{ chunk_split(base64_encode($driver->photo->driversphoto)) }}"
+                                <img src="data:image/png;base64,{{ htmlspecialchars($driver->photo->driversphoto) }}"
                                     alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded-3 user-profile-img" />
                             @endisset
                         </div>
@@ -89,6 +89,11 @@
                                             </label>
 
 
+                                        </li>
+                                        <li class="list-inline-item fw-semibold w-100 off-duty-time-div">
+                                        @if($driver->offtime_timestamp!=null)
+                                            Auto off duty at {{date('d M h:i A',strtotime($driver->offtime_timestamp))}}
+                                        @endif
                                         </li>
                                     </ul>
                                 </div>
@@ -401,7 +406,7 @@
                                             <li class="d-flex align-items-center mb-3">
 
                                                 <img style="width: 100%; height: auto"
-                                                    src="data:image/png;base64,{{ chunk_split(base64_encode($driver->license->licensephoto)) }}"
+                                                    src="data:image/png;base64,{{ htmlspecialchars($driver->license->licensephoto) }}"
                                                     alt="">
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
@@ -655,9 +660,11 @@
                           if (result.isConfirmed) {
                             //Swal.fire('Saved!', '', 'success')
                             $(".closeModal").trigger('click');
+                            location.reload();
                           } else if (result.isDenied) {
                             $(".closeModal").trigger('click');
                           }
+
                         })
                     }
                     if (response.alert_class && response.alert_message) {
@@ -752,7 +759,7 @@
                             icon: 'error',
                             confirmButtonText: 'Close',
                         }).then((result) => {
-                          
+                          showHideOffTimeInDiv();
                           if (result.isConfirmed) {
                             //Swal.fire('Saved!', '', 'success')
                             //$(".closeModal").trigger('click');
@@ -761,7 +768,7 @@
                           }
                         })
                         $('.change-duty-status-input').prop('checked',false);
-                        $('#duty-status-text').text('off');
+                        $('#duty-status-text').text('off');                        
                     }
                 });
                 
@@ -795,8 +802,11 @@
                           if (result.isConfirmed) {
                             //Swal.fire('Saved!', '', 'success')
                             $(".closeModal").trigger('click');
+                            showHideOffTimeInDiv();
+
                           } else if (result.isDenied) {
                             $(".closeModal").trigger('click');
+                            showHideOffTimeInDiv();
                           }
                         })
                     }
@@ -865,9 +875,28 @@
                     action: dutyStatus,
                 },
                 success: function(response) {
+                    showHideOffTimeInDiv();
                     console.log(response);
                 },
 
+                error: function(err) {
+                    console.log(err);
+                }
+            })
+        }
+
+        function showHideOffTimeInDiv()
+        {
+            $.ajax({
+                url:'{{route('dashboard.get_off_time')}}',
+                type:'GET',
+                data:{},
+                success:function(response){
+                    $('.off-duty-time-div').empty();
+                    if(response!=''){
+                        $('.off-duty-time-div').html(response);
+                    }
+                },
                 error: function(err) {
                     console.log(err);
                 }

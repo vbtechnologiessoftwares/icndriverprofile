@@ -111,6 +111,8 @@ Route::middleware('auth:driveruser')->group( function(){
 	    ->name('dashboard.editprofile');
 	    Route::post('/update-profile', [ DashboardController::class, 'updateProfile'])
 	    ->name('dashboard.updateprofile');
+	    Route::get('/get-offtime', [ DashboardController::class, 'getOffTime'])
+	    ->name('dashboard.get_off_time');
 	});
 	//dashboard route group ends
 
