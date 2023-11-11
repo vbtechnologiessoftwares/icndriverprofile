@@ -107,12 +107,17 @@ Route::middleware('auth:driveruser')->group( function(){
     Route::prefix('dashboard')->group( function(){    
 	    Route::get('/', [ DashboardController::class, 'index'])
 	    ->name('dashboard');	    
-	    Route::get('/edit-profile', [ DashboardController::class, 'editProfile'])
-	    ->name('dashboard.editprofile');
-	    Route::post('/update-profile', [ DashboardController::class, 'updateProfile'])
-	    ->name('dashboard.updateprofile');
+	    Route::get('/edit-profile-image', [ DashboardController::class, 'editProfileImage'])
+	    ->name('dashboard.editprofileimage');
+	    Route::post('/update-profile-image', [ DashboardController::class, 'updateProfileImage'])
+	    ->name('dashboard.updateprofileimage');
 	    Route::get('/get-offtime', [ DashboardController::class, 'getOffTime'])
 	    ->name('dashboard.get_off_time');
+
+	    Route::get('/edit-driver', [ DashboardController::class, 'editDriver'])
+	    ->name('dashboard.editdriver');
+	    Route::post('/update-driver', [ DashboardController::class, 'updateDriver'])
+	    ->name('dashboard.updatedriver');
 	});
 	//dashboard route group ends
 

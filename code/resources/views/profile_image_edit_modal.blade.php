@@ -4,7 +4,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           
-          <form id="profile-edit-form" action="{{route('dashboard.updateprofile')}}" method="POST" enctype="multipart/form-data">
+          <form id="profile-edit-form" action="{{route('dashboard.updateprofileimage')}}" method="POST" enctype="multipart/form-data">
               @csrf
           <div class="modal-body">
             <div class="row">

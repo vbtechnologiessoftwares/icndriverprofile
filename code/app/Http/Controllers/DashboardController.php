@@ -51,7 +51,7 @@ class DashboardController extends Controller
         return redirect("login")->withSuccess('Opps! You do not have access');
     }
 
-    public function editProfile()
+    public function editProfileImage()
     {
         $data=array();
         $driver = auth()->guard('driveruser')->user();
@@ -62,10 +62,10 @@ class DashboardController extends Controller
         //dd($driver->photo->driversphoto);
         $data['driver_query']=$driver_query; 
         
-        return view('profile_edit_modal')->with($data);        
+        return view('profile_image_edit_modal')->with($data);        
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfileImage(Request $request)
     {
 
         DB::beginTransaction();
@@ -151,6 +151,146 @@ class DashboardController extends Controller
         }else{
             return '';
         }
+    }
+
+    public function editDriver()
+    {
+        $data=array();
+        $driver = auth()->guard('driveruser')->user();
+        $driverid=$driver->driverid;
+        
+        $driver_query=Driver::where('driverid',$driverid)->with(['photo'])->first();
+
+        //dd($driver->photo->driversphoto);
+        $data['driver_query']=$driver_query; 
+        
+        return view('driver_edit_modal')->with($data);        
+    }
+
+    public function updateDriver(Request $request)
+    {
+
+        DB::beginTransaction();
+        $exception="";
+        try{
+            $rules = array(
+                'phone' => 'required|max:11',
+                'email' => 'required',
+                'businessurl' => 'required',
+                'description' => 'required',
+
+            );
+            $rulesMessages=array(
+                'phone.required' => 'This field is required',
+                'phone.max' => 'This field must not be greater than 11 characters.',
+                'email.required' => 'This field is required',
+                'businessurl.required' => 'This field is required',
+                'description.required' => 'This field is required',
+            );
+            $validator = Validator::make($request->all(),$rules,$rulesMessages);
+            if($validator->fails()){                
+                $res = array(
+                    'status' => 2,
+                    'message' => 'Validator Failed',
+                    'errors' => $validator->errors()
+                );                
+                return response()->json($res);
+            }//validator fails
+
+            $driver = auth()->guard('driveruser')->user();
+            $driverid=$driver->driverid;
+
+            //form field starts
+            $phone=$request->input('phone');
+            $email=$request->input('email');
+            $businessurl=$request->input('businessurl');
+            $description=$request->input('description');
+
+            $four_seatervehicle=0;
+            $eight_seatervehicle=0;
+            $estatevehicle=0;
+            $courier=0;
+            $easyaccessvehicle=0;
+            $airportruns=0;
+            $wheelchairfriendly=0;
+
+            if($request->has('4seatervehicle'))
+            {
+                $four_seatervehicle=1;
+            }
+            if($request->has('8seatervehicle'))
+            {
+                $eight_seatervehicle=1;
+            }
+            if($request->has('estatevehicle'))
+            {
+                $estatevehicle=1;
+            }
+            if($request->has('courier'))
+            {
+                $courier=1;
+            }
+            if($request->has('easyaccessvehicle'))
+            {
+                $easyaccessvehicle=1;
+            }
+            if($request->has('airportruns'))
+            {
+                $airportruns=1;
+            }
+            if($request->has('wheelchairfriendly'))
+            {
+                $wheelchairfriendly=1;
+            }
+            //form field ends
+
+            $update_data=array(
+                'phone'=>$phone,
+                'email'=>$email,
+                'businessurl'=>$businessurl,
+                'description'=>$description,
+
+                '4seatervehicle'=>$four_seatervehicle,
+                '8seatervehicle'=>$eight_seatervehicle,
+                'estatevehicle'=>$estatevehicle,
+                'courier'=>$courier,
+                'easyaccessvehicle'=>$easyaccessvehicle,
+                'airportruns'=>$airportruns,
+                'wheelchairfriendly'=>$wheelchairfriendly,
+
+            );
+
+
+            Driver::where('driverid',$driverid)->update($update_data);
+            
+            $endStatus=1;
+            DB::commit();
+        }catch(\Exception $e){
+            $exception=$e->getMessage();
+            DB::rollback();
+            $endStatus=0;
+        }
+        if($endStatus==1){
+            $res = array(
+                'status' => 1,
+                'message' => 'Updated Successfully',
+                'alert_class' => 'alert-success',
+                'alert_message' => 'Updated Successfully',
+                'exception'=>$exception
+            );
+        }else{
+            $res = array(
+                'status' =>  2,
+                'message' => 'Un-Successful Operation',
+                'alert_class' => 'alert-danger',
+                'alert_message' => 'Un-Successful Operation',
+                'exception'=>$exception
+            );
+        }
+        return response()->json($res);
+
+        
+    
     }
 
     public function getListing(Request $request)

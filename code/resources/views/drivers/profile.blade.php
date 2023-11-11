@@ -56,7 +56,7 @@
                                 class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                                 <div class="user-profile-info">
                                     <h4>{{ $driver->full_name }} 
-                                        <a href="javascript:void(0)" class="edit-profile-btn"><i class="fa fa-pencil" title="Edit profile picture"></i></a> 
+                                        <a href="javascript:void(0)" class="edit-profile-image-btn"><i class="fa fa-pencil" title="Edit profile picture"></i></a> 
                                         {{-- <a href="{{route('edit_history')}}"><i class="fa fa-clock" title="Edit History"></i></a> --}} </h4>
                                     <ul
                                         class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
@@ -323,7 +323,7 @@
                     </div> --}}
                       <!-- Accordion -->
                 <div class="accordion accordion-header-primary" id="user-details-parent">
-                    <div class="accordion-item card">
+                    <div class="accordion-item card active">
                         <h2 class="accordion-header">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#personal-info" aria-expanded="false">
@@ -331,7 +331,7 @@
                             </button>
                         </h2>
 
-                        <div id="personal-info" class="accordion-collapse collapse"
+                        <div id="personal-info" class="accordion-collapse collapse show"
                             data-bs-parent="#user-details-parent">
                             <div class="accordion-body">
                                 <!-- About User -->
@@ -342,6 +342,7 @@
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span
                                                     class="fw-semibold mx-2">Username:</span>
                                                 <span>{{ $driver->username }}</span>
+                                                <a href="javascript:void(0)" class="edit-driver-btn" style="padding-left:5px"><i class="fa fa-pencil" title="Edit driver"></i></a>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span
                                                     class="fw-semibold mx-2">Contact:</span>
@@ -611,9 +612,9 @@
             });
 
             //open popup on profile button click STARTS here
-            $('.edit-profile-btn').on('click', function(e) {
+            $('.edit-profile-image-btn').on('click', function(e) {
                 e.preventDefault();
-                var url = '{{ route('dashboard.editprofile') }}';
+                var url = '{{ route('dashboard.editprofileimage') }}';
                 $.ajax({
                     url: url,
                     type: "GET",
@@ -821,6 +822,79 @@
                             $("#off-duty-form #" + key + "").css('display',
                                 'inline-block');
                             $("#off-duty-form #" + key + "").html('<strong>' + error[
+                                0] + '</strong>');
+                        });
+                    }
+                });
+            });
+
+            //open popup on driver edit button click STARTS here
+            $('.edit-driver-btn').on('click', function(e) {
+                e.preventDefault();
+                var url = '{{ route('dashboard.editdriver') }}';
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    datatype: 'html',
+                    data: {},
+                    success: function(response) {
+                        console.log(response);
+                        $('#commonModal .modal-content').html(response);
+                        $('#commonModal').modal('show');
+                    },
+
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+            //open popup on driver edit button click ENDS here
+
+            $('body').on('submit', '#driver-edit-form', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+
+                $.ajax({
+                    url: $this.prop('action'),
+                    method: $this.prop('method'),
+                    dataType: 'json',
+                    data: new FormData(this), //4
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                }).done(function(response) {
+                    console.log(response);
+                    $(".invalid-feedback").html('');
+                    $(".invalid-feedback").css('display', 'none');
+                    if (response.status == 1) {
+                        //$(".closeModal").trigger('click');
+                        Swal.fire({
+                            html:response.alert_message,
+                            icon: 'success',
+                            confirmButtonText: 'Close',
+                        }).then((result) => {
+                          
+                          if (result.isConfirmed) {
+                            //Swal.fire('Saved!', '', 'success')
+                            $(".closeModal").trigger('click');
+                            location.reload();
+                          } else if (result.isDenied) {
+                            $(".closeModal").trigger('click');
+                          }
+
+                        })
+                    }
+                    if (response.alert_class && response.alert_message) {
+                        var alertdata = '<div class="alert ' + response.alert_class + '">' +
+                            response.alert_message + '</div>';
+                        //$('.license-flash').html(alertdata);
+                    }
+                    if (response.status == 2) {
+
+                        $.each(response.errors, function(key, error) {
+                            $("#driver-edit-form #" + key + "").css('display',
+                                'inline-block');
+                            $("#driver-edit-form #" + key + "").html('<strong>' + error[
                                 0] + '</strong>');
                         });
                     }
