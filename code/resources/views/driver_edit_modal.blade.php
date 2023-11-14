@@ -14,6 +14,20 @@
             <div class="row" style="margin-bottom: 10px">
               <div class="col-6">
                 <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input  class="form-control" type="text" name="firstname" value="{{$driver_query->firstname}}"/>
+                  <span class="invalid-feedback" id="firstname"></span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input  class="form-control" type="text" name="lastname" value="{{$driver_query->lastname}}"/>
+                  <span class="invalid-feedback" id="lastname"></span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
                   <label class="form-label">Contact</label>
                   <input  class="form-control" type="text" name="phone" value="{{$driver_query->phone}}"/>
                   <span class="invalid-feedback" id="phone"></span>

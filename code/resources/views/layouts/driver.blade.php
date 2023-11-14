@@ -80,7 +80,11 @@
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
 
-    
+    <style type="text/css">
+        .content-wrapper{
+            margin-top:10px;
+        }
+    </style>
     @stack('head_tags')
 
 

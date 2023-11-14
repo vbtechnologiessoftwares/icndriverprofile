@@ -13,6 +13,8 @@ use App\Models\User;
 use Hash;
 use DB;
 use App\Models\Driver;
+use App\Models\DriverEdit;
+use App\Models\LicenseEdit;
 use App\Models\DriverLocation;
 use App\Models\License;
 use App\Models\DriverPhoto;
@@ -243,7 +245,6 @@ class AuthController extends Controller
             }//validator fails
 
             $create_data=array(
-
                 'username' => $request->input('username'),
                 'firstname' => $request->input('firstname'),
                 'lastname' => $request->input('lastname'),
@@ -276,18 +277,18 @@ class AuthController extends Controller
 
             
             $driver_photo = 
-            //base64_encode(
+            base64_encode(
                 file_get_contents(
                     $request->file('driver_photo')->path()
-                );
-            //);
+                )
+            );
 
             $driver_licence_photo = 
-            //base64_encode(
+            base64_encode(
                 file_get_contents(
                     $request->file('driver_licence_photo')->path()
-                );
-            //);
+                )
+            );
             $create_license_data=array(
                 'driverid'=>$driverid,
                 'licensephoto'=>$driver_licence_photo,
@@ -301,6 +302,25 @@ class AuthController extends Controller
                 'driversphoto'=>$driver_photo
             );
             DriverPhoto::create($create_driver_photo_data);
+
+            //edit data starts
+            $edit_data=array(
+                'driverid'=>$driverid,
+                'firstname' => $request->input('firstname'),
+                'lastname' => $request->input('lastname'),
+                'phone' => $request->input('phone_number'),
+                'email' => $request->input('email'),
+                'businessurl'=>$request->input('business_url'),
+            );
+            DriverEdit::create($edit_data);
+            $edit_license_data=array(
+                'driverid'=>$driverid,
+                'licensephoto'=>$driver_licence_photo,
+                'licensenumber'=>$request->input('licensenumber'),
+                'licenseexpiry'=>$request->input('licenseexpiry'),
+            );
+            LicenseEdit::create($edit_license_data);
+            //edit data ends
 
             
             $endStatus=1;
@@ -324,7 +344,7 @@ class AuthController extends Controller
                 'message' => 'Un-Successful Operation',
                 'alert_class' => 'alert-danger',
                 'alert_message' => 'Un-Successful Operation',
-                //'exception'=>$exception
+                'exception'=>$exception
             );
         }
         return response()->json($res);

@@ -9,6 +9,7 @@ use App\Models\LicenseEdit;
 use App\Models\Location;
 use App\Models\Driver;
 use App\Models\DriverPhoto;
+use App\Models\DriverEdit;
 
 use Validator;
 use DB;
@@ -174,6 +175,8 @@ class DashboardController extends Controller
         $exception="";
         try{
             $rules = array(
+                'firstname' => 'required',
+                'lastname' => 'required',
                 'phone' => 'required|max:11',
                 'email' => 'required',
                 'businessurl' => 'required',
@@ -181,6 +184,8 @@ class DashboardController extends Controller
 
             );
             $rulesMessages=array(
+                'firstname.required' => 'This field is required',
+                'lastname.required' => 'This field is required',
                 'phone.required' => 'This field is required',
                 'phone.max' => 'This field must not be greater than 11 characters.',
                 'email.required' => 'This field is required',
@@ -201,6 +206,8 @@ class DashboardController extends Controller
             $driverid=$driver->driverid;
 
             //form field starts
+            $firstname=$request->input('firstname');
+            $lastname=$request->input('lastname');
             $phone=$request->input('phone');
             $email=$request->input('email');
             $businessurl=$request->input('businessurl');
@@ -245,6 +252,8 @@ class DashboardController extends Controller
             //form field ends
 
             $update_data=array(
+                'firstname' => $firstname,
+                'lastname' => $lastname,
                 'phone'=>$phone,
                 'email'=>$email,
                 'businessurl'=>$businessurl,
@@ -262,6 +271,17 @@ class DashboardController extends Controller
 
 
             Driver::where('driverid',$driverid)->update($update_data);
+
+            $edit_data=array(
+                'driverid'=>$driverid,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'phone' => $phone,
+                'email' => $email,
+                'businessurl'=>$businessurl,
+                'description'=>$description,
+            );
+            DriverEdit::create($edit_data);
             
             $endStatus=1;
             DB::commit();

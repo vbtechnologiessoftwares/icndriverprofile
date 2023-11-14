@@ -35,7 +35,13 @@
         <h4 class="py-3 breadcrumb-wrapper mb-4">
         </h4>
 
-
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning">
+                Your account is being reviewed by our admins. Until the account is approved, some operations on the driver dashboard will be restricted
+                </div>
+            </div>
+        </div>
         <!-- Header -->
         <div class="row">
             <div class="col-12">
@@ -73,6 +79,7 @@
                                             You are <span
                                                 id="duty-status-text"><b>{{ $driver->dutystatus ? 'on' : 'off' }}</b></span>
                                             duty
+                                            @if($driver->approved==1)
                                             <label class="switch switch-lg switch-success">
                                                 <input type="checkbox" class="switch-input change-duty-status-input" @checked($driver->dutystatus)
                                                     onclick="changeDutyStatus()" 
@@ -87,6 +94,20 @@
                                                     </span>
                                                 </span>
                                             </label>
+                                            @else
+                                            <label class="switch switch-lg switch-success">
+                                                <input type="checkbox" class="switch-input change-duty-disabled-input"/>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on">
+                                                        <i class="bx bx-check"></i>
+                                                        On Duty
+                                                    </span>
+                                                    <span class="switch-off">
+                                                        <i class="bx bx-x"></i> Off duty
+                                                    </span>
+                                                </span>
+                                            </label>
+                                            @endif
 
 
                                         </li>
@@ -862,6 +883,15 @@
                     }
                 });
             });
+
+            $('.change-duty-disabled-input').change(function(e){
+                Swal.fire({
+                            html:'Sorry, you cannot change duty status until your account is approved by admin',
+                            icon: 'warning',
+                            confirmButtonText: 'OK',
+                        })
+                $(this).prop('checked',false);
+            })
 
         }); //ready
         function toggleUnreadMessages() {
