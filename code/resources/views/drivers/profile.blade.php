@@ -34,7 +34,7 @@
 
         <h4 class="py-3 breadcrumb-wrapper mb-4">
         </h4>
-
+        @if($driver->adminapproved==0)
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert-warning">
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- Header -->
         <div class="row">
             <div class="col-12">
@@ -79,7 +80,7 @@
                                             You are <span
                                                 id="duty-status-text"><b>{{ $driver->dutystatus ? 'on' : 'off' }}</b></span>
                                             duty
-                                            @if($driver->approved==1)
+                                            @if($driver->adminapproved==1)
                                             <label class="switch switch-lg switch-success">
                                                 <input type="checkbox" class="switch-input change-duty-status-input" @checked($driver->dutystatus)
                                                     onclick="changeDutyStatus()" 

@@ -95,7 +95,7 @@
                <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="easyaccessvehicle" value="1" id="check_easy_access_vehicle" {{($driver_query->{"easyaccessvehicle"}==1)?'checked':''}}>
                   <label class="form-check-label" for="check_easy_access_vehicle">
-                    East Access vehicle
+                    Easy Access vehicle
                   </label>
                 </div>
              </div>
