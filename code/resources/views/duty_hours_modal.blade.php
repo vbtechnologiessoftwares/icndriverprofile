@@ -18,7 +18,7 @@ We will automatically mark you off duty after that.</p>
               <div class="col-6">
                 <div class="form-group">
                   <label class="form-label">Hours</label>
-                  <select class="form-control" name="hours">
+                  <select class="form-control"  id="hoursDropdown" onchange="validateDropdown()" name="hours">
                    <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -35,7 +35,7 @@ We will automatically mark you off duty after that.</p>
               <div class="col-6">
                 <div class="form-group">
                   <label class="form-label">Minutes</label>
-                  <select class="form-control" name="minutes">
+                  <select class="form-control" id="minutesDropdown" name="minutes">
                     <option value="0">00</option>
                     <option value="15">15</option>
                     <option value="30">30</option>
@@ -58,3 +58,15 @@ We will automatically mark you off duty after that.</p>
           </div>
           </form>
         
+<script>
+    function validateDropdown() {
+        var hoursDropdown = document.getElementById("hoursDropdown");
+        var minutesDropdown = document.getElementById("minutesDropdown");
+
+        // Get the selected value from the "hours" dropdown
+        var selectedHours = hoursDropdown.value;
+
+        // Disable the "minutes" dropdown if the selected value is 8, otherwise enable it
+        minutesDropdown.disabled = (selectedHours === "8");
+    }
+</script>
