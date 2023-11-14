@@ -30,7 +30,10 @@
                           <i class='bx bx-user font-medium-3'></i><span
                             class="pl-50 d-block text-center">Signup</span></a>
                         </div> --}}
+                        <div class="text-center"><small class="mr-25"> <a href="/"><img src="https://cabdriversdirect.com/images/logo.png" alt="Logo"></a></small></div>
+
                         <div class="divider">
+                          
                           <div class="divider-text text-uppercase text-muted"><small>Login with
                             username</small>
                           </div>

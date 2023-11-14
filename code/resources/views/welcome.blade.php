@@ -62,6 +62,7 @@
                         @endif
                       
                         <div class="divider">
+                          <a href="/"><img src="images/logo.png" alt="Logo"></a>
                           <div class="divider-text text-uppercase text-muted"><small>or login with
                             username</small>
                           </div>

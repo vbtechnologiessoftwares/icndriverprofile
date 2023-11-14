@@ -1,6 +1,6 @@
 
           <div class="modal-header">
-            <h5 class="modal-title" id="commonModalLabel">Off Duty Hours</h5>
+            <h5 class="modal-title" id="commonModalLabel">On Duty Hours</h5>
             <button type="button" class="btn-close off-duty-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           
@@ -13,12 +13,13 @@
             
             
             <div class="row" style="margin-bottom: 10px">
+              <p>How Long would you like to be On duty?
+We will automatically mark you off duty after that.</p>
               <div class="col-6">
                 <div class="form-group">
                   <label class="form-label">Hours</label>
                   <select class="form-control" name="hours">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
+                   <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -28,6 +29,7 @@
                     <option value="8">8</option>
                   </select>
                   <span class="invalid-feedback" id="hours"></span>
+                  
                 </div>
               </div><!--col-6-->
               <div class="col-6">
@@ -40,12 +42,14 @@
                     <option value="45">45</option>
                   </select>
                   <span class="invalid-feedback" id="minutes"></span>
+                  
                 </div>
+
               </div><!--col-6-->
-              
+             
                    				
-			     </div>
-           
+			     </div><br>
+            <p style="text-align: center;">Min: 1 hour / Max: 8 hours</p>
            
           </div>
           <div class="modal-footer">

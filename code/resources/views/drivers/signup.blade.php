@@ -260,7 +260,7 @@
     <div class="container-fluid" id="auto_coverage_background">
       <div class="row justify-content-center pt-3">
         <div class="col-md-12">
-          <h1 class="cc">Driver Details</h1>
+          <h1 class="cc">Sign Up </h1>
 
         </div>
         
@@ -343,15 +343,18 @@
                   </div>
                   <div class="col-md-6">
                     <label for="password" class="col-lg-12 control-label"
-                      >Contact</label
+                      >Contact Number</label
                     >
                     <input
-                      type="number"
+                      type="tel"
                       class="form-control"
                       id="number"
                       name="phone_number"
                       required
                       placeholder="Contact number"
+                      minlength="11"
+                        maxlength="11"
+                        pattern="[0-9]{11}"
                     />
                   
                   </div>
@@ -527,7 +530,7 @@
                           <option disabled selected value>
                             -- Easy Access Vehicle --
                           </option>
-                         <option value="1">yes</option>
+                         <option value="1">Yes</option>
                           <option value="0">No</option>
                         </select>
                       </div>
@@ -545,7 +548,7 @@
                           <option disabled selected value>
                             -- AirPort Runs --
                           </option>
-                         <option value="1">yes</option>
+                         <option value="1">Yes</option>
                           <option value="0">No</option>
                         </select>
                       </div>
@@ -587,7 +590,7 @@
             <fieldset id="coverage_information" class="">
               <div class="d-flex justify-content-evenly py-4 px-3">
                 <div class="col-md-8">
-                  <h2 class="fs-title">Driver Photo / Driver Licence:</h2>
+                  <h2 class="fs-title">Driver Profile Photo / Driver Profile Licence:</h2>
                 </div>
                 <div class="col-md-4">
                   <h2 class="steps">Step 3 - 4</h2>
@@ -638,7 +641,7 @@
                         <label
                           for="relationship_to_applicant"
                           class="col-lg-12 control-label"
-                          >Driver Photo</label
+                          >Driver Profile Photo</label
                         >
                         
                       <input
@@ -654,7 +657,7 @@
                         <label
                           for="relationship_to_applicant"
                           class="col-lg-12 control-label"
-                          >Driver Licence</label
+                          >Driver Licence Photo</label
                         >
                         
                       <input
@@ -697,7 +700,7 @@
               <div class="d-flex justify-content-evenly py-4 px-3">
                 <div class="col-md-8">
                   <h2 class="fs-title">
-                    Location.
+                   Driver Location.
                   </h2>
                 </div>
                 <div class="col-md-4">
@@ -712,13 +715,15 @@
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label for="first_name" class="col-lg-12 control-label"
-                          >Locations</label
+                          >You can select multiple locations as a starting point. Locations can be added/removed later from the driver dashboard.
+To select location, start typing in the search box below</label
                         >
                         <select id="selectNewLocation" class="select2 form-select form-select-lg" data-allow-clear="true" name="locations[]" multiple>
                           {{-- @foreach($locations as $key =>$value)
                           <option value="{{$value->locationid}}">{{$value->town}},{{$value->country}}</option>
                           @endforeach --}}
                         </select>
+                    
                       </div>
                      {{--  <div class="col-md-6">
                         <label for="last_name" class="col-lg-12 control-label"
@@ -758,7 +763,7 @@
                     <input
                       class="btn btn-success"
                       type="submit"
-                      value="Submit"
+                      value="Finish"
                     />
                   </p>
                 </div>

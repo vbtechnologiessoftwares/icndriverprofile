@@ -220,13 +220,13 @@
                     <div class="card card-action mb-4">
   <h2 class="accordion-header">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#driver-info" aria-expanded="true">
-                                Driver Location
+                                data-bs-target="#driver-info" aria-expanded="flase">
+                                Driver Locations
                             </button>
                         </h2>
 
 
- <div id="driver-info" class="accordion-collapse show"
+ <div id="driver-info" class="accordion-collapse collapse"
                             data-bs-parent="#user-details-parent">
 
                         <div class="card-header align-items-center">
@@ -322,16 +322,18 @@
                         
                     </div> --}}
                       <!-- Accordion -->
+
                 <div class="accordion accordion-header-primary" id="user-details-parent">
                     <div class="accordion-item card active">
                         <h2 class="accordion-header">
+
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#personal-info" aria-expanded="false">
                                 Driver Info
                             </button>
                         </h2>
 
-                        <div id="personal-info" class="accordion-collapse collapse show"
+                        <div id="personal-info" class="accordion-collapse collapse collapse"
                             data-bs-parent="#user-details-parent">
                             <div class="accordion-body">
                                 <!-- About User -->
@@ -406,7 +408,7 @@
                                         <ul class="list-unstyled mb-4 mt-3">
                                             <li class="d-flex align-items-center mb-3">
 
-                                                <img style="width: 100%; height: auto"
+                                                <img style="width: 40%; height: auto"
                                                     src="data:image/png;base64,{{ htmlspecialchars($driver->license->licensephoto) }}"
                                                     alt="">
                                             </li>
@@ -439,7 +441,11 @@
 
                    
                 </div>
-               <div class="abc" style="margin-bottom: 15px;"></div>                <!-- Accordion end -->
+                           <!-- Accordion end -->
+            
+              
+                </div>
+                <div class="card card-action mb-4">
                      <div class="accordion-item card">
                         <h2 class="accordion-header">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
@@ -455,21 +461,7 @@
                                 <div class="card card-action mb-4 payment-history-mobile d-block  shadow-none">
                                     <div class="card-header align-items-center">
 
-                                        {{--  <div class="card-action-element btn-pinned">
-                            <div class="dropdown">
-                                <button type="button" class="btn dropdown-toggle hide-arrow p-0"
-                                    data-bs-toggle="dropdown" aria-expanded="false"><i
-                                        class="bx bx-dots-vertical-rounded"></i></button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Share teams</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                                </ul>
-                            </div>
-                        </div> --}}
+                                 
                                     </div>
                                     <div class="card-body payment-history p-0">
                                         <ul class="list-unstyled mb-0">
@@ -493,12 +485,6 @@
                                             @endforeach
 
 
-
-
-
-                                            {{--  <li class="text-center">
-                                <a href="javascript:;">View all teams</a>
-                            </li> --}}
                                         </ul>
                                     </div>
                                 </div>
@@ -506,31 +492,7 @@
                             </div>
                         </div>
                     </div>
-                   {{--  <div class="card-body call-history">
-                        <ul class="timeline ms-2">
-                            @foreach ($driver->calls as $call)
-                                <li class="timeline-item timeline-item-transparent">
-                                    <span class="timeline-point timeline-point-warning"></span>
-                                    <div class="timeline-event">
-                                        <div class="timeline-header mb-1">
-                                            <h6 class="mb-0">
-                                                {{ isset($call->location->town) ? $call->location->town : '' }},
-                                                {{ isset($call->location->county) ? $call->location->county : '' }}
-                                            </h6>
-                                            <small
-                                                class="text-muted">{{ isset($call->datetime) ? $call->datetime->diffForHumans() : '' }}</small>
-                                        </div>
-                                        <p class="mb-2">
-                                            {{ isset($call->datetime) ? $call->datetime->toDayDateTimeString() : '' }}</p>
-
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div> --}}
-                </div>
-            
-
+</div>
 
             </div>
         </div>
