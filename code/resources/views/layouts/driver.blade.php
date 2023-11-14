@@ -542,7 +542,8 @@
                                         
                                         <div class="avatar ">
                                           @if ( auth()->guard('driveruser')->user()?->photo )
-                                            <img src="data:image/png;base64,{{ chunk_split(base64_encode(auth()->guard('driveruser')->user()?->photo?->driversphoto) ) }}" alt class="rounded-circle"/>
+                                            {{-- <img src="data:image/png;base64,{{ chunk_split(base64_encode(auth()->guard('driveruser')->user()?->photo?->driversphoto) ) }}" alt class="rounded-circle"/> --}}
+                                            <img src="data:image/png;base64,{{ htmlspecialchars(auth()->guard('driveruser')->user()?->photo?->driversphoto)  }}" alt class="rounded-circle"/>
                                           @endif 
 
                                           
