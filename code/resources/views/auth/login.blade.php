@@ -48,10 +48,10 @@
                         <form method="POST" action="{{ route('login.post') }}">
                           @csrf
                           <div class="form-group mb-50">
-                            <label class="text-bold-600" for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" placeholder="User Name" value="{{ old('username') }}" autocomplete="username" autofocus>
-                           @if ($errors->has('username'))
-                                      <span class="text-danger">{{ $errors->first('username') }}</span>
+                            <label class="text-bold-600" for="email">email</label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                           @if ($errors->has('email'))
+                                      <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
 						  
 						  </div>

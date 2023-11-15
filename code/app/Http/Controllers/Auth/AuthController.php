@@ -50,14 +50,15 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
+        /*dd($request);*/
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
         $credentials = $request->only('email', 'password');
         $user = \App\Models\Driver::where([
-            'username' => $request->username,
+            'email' => $request->email,
             'password' => md5($request->password)
         ])->first();
 
@@ -184,7 +185,7 @@ class AuthController extends Controller
     }
     public function driverRegistrationFormStore(Request $request)
     {
-        //dd($request->all());
+        
 
         DB::beginTransaction();
         $exception="";
@@ -259,6 +260,15 @@ class AuthController extends Controller
                 'courier'=>$request->input('courier_vehicle'),
                 'easyaccessvehicle'=>$request->input('easy_access_vehicle'),
                 'airportruns'=>$request->input('airport_runs'),
+
+                '6seatervehicle'=>$request->input('6seatervehicle'),
+                'addressline1'=>$request->input('addressline1'),
+                'addressline2'=>$request->input('addressline2'),
+                'town'=>$request->input('town'),
+                'county'=>$request->input('county'),
+                'postcode'=>$request->input('postcode'),
+
+
 
                 'signupdate'=>date('Y-m-d')
             );
