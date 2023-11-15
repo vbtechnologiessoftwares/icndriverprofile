@@ -456,7 +456,8 @@
                       placeholder="County"
                     />
                       </div>
-                    </div><div class="row g-3">
+                    </div>
+                    <div class="row g-3">
                       <div class="col-md-6">
                         <label
                           for="marital_status"
@@ -472,21 +473,7 @@
                       placeholder="Post Code"
                     />
                       </div>
-                      <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Long Distance</label
-                        >
-                       <input
-                      type="number"
-                      class="form-control"
-                      id="longdistance"
-                      name="longdistance"
-                      required
-                      placeholder="Long Distance"
-                    />
-                      </div>
+                     
                     </div>
                 <br />
 
@@ -605,7 +592,7 @@
                         >
                         <select
                           class="form-control"
-                          name="easy_access_vehicle"
+                          name="executivevehicle"
                           required
                         >
                           <option disabled selected value>
@@ -639,7 +626,7 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >6 Seater Vehicle </label
+                          >up 6 Seater Vehicle </label
                         >
                         <select
                           class="form-control"
@@ -653,14 +640,30 @@
                           <option value="0">No</option>
                         </select>
                       </div>
-                      
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Long Distance </label
+                        >
+                        <select
+                          class="form-control"
+                          name="longdistance"
+                          required
+                        >
+                          <option disabled selected value>
+                            -- Long Distance --
+                          </option>
+                         <option value="1">Yes</option>
+                          <option value="0">No</option>
+                        </select>
+                      </div>
                     </div>
              
                  
 
                     <div class="row g-3">
-                      
-                      
+                        
                     </div>
                   </div>
                 </div>

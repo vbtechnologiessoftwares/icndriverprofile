@@ -193,7 +193,7 @@ class AuthController extends Controller
             $rules = array(
                 'firstname' => 'required',
                 'lastname' => 'required',
-                'username' => 'required|unique:driver_details,username',
+              /*  'username' => 'required|unique:driver_details,username',*/
                 'phone_number' => 'required',
                 'email' => 'required|unique:driver_details,email',
                 'business_url'=>'required',
@@ -214,7 +214,7 @@ class AuthController extends Controller
             $rulesMessages=array(
                 'firstname.required' => 'This field is required',
                 'lastname.required' => 'This field is required',
-                'username.required' => 'This field is required',
+                /*'username.required' => 'This field is required',*/
                 'phone_number.required' => 'This field is required',
                 'email.required' => 'This field is required',
                 'business_url.required'=>'This field is required',
@@ -246,7 +246,7 @@ class AuthController extends Controller
             }//validator fails
 
             $create_data=array(
-                'username' => $request->input('username'),
+               /* 'username' => $request->input('username'),*/
                 'firstname' => $request->input('firstname'),
                 'lastname' => $request->input('lastname'),
                 'phone' => $request->input('phone_number'),
@@ -258,7 +258,7 @@ class AuthController extends Controller
                 '8seatervehicle' => $request->input('8_seater_vehicle'),
                 'estatevehicle' => $request->input('estate_vehicle'),
                 'courier'=>$request->input('courier_vehicle'),
-                'easyaccessvehicle'=>$request->input('easy_access_vehicle'),
+                'executivevehicle'=>$request->input('executivevehicle'),
                 'airportruns'=>$request->input('airport_runs'),
 
                 '6seatervehicle'=>$request->input('6seatervehicle'),

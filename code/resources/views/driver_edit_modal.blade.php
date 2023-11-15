@@ -47,6 +47,44 @@
                   <span class="invalid-feedback" id="businessurl"></span>
                 </div>
               </div>	
+               <h4 style="margin-top:10px">Address</h4>
+               <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">Address Line 1</label>
+                  <input  class="form-control" type="text" name="addressline1" value="{{$driver_query->addressline1}}"/>
+                  <span class="invalid-feedback" id="addressline1"></span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">Address Line 2</label>
+                  <input  class="form-control" type="text" name="addressline2" value="{{$driver_query->addressline2}}"/>
+                  <span class="invalid-feedback" id="addressline2"></span>
+                </div>
+              </div>
+               <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">Town</label>
+                  <input  class="form-control" type="text" name="town" value="{{$driver_query->town}}"/>
+                  <span class="invalid-feedback" id="town"></span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">County</label>
+                  <input  class="form-control" type="text" name="county" value="{{$driver_query->county}}"/>
+                  <span class="invalid-feedback" id="county"></span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="form-label">Post Code</label>
+                  <input  class="form-control" type="text" name="postcode" value="{{$driver_query->postcode}}"/>
+                  <span class="invalid-feedback" id="postcode"></span>
+                </div>
+              </div>
+            </div>
 			     </div>
            <div class="row">
              <div class="col-12">
@@ -63,15 +101,33 @@
                <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="4seatervehicle" value="1" id="check_four_seater_vehicle" {{($driver_query->{"4seatervehicle"}==1)?'checked':''}}>
                   <label class="form-check-label" for="check_four_seater_vehicle">
-                    4 Seater vehicle
+                    Up to 4 passengers
                   </label>
                 </div>
              </div>
              <div class="col-6">
                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="6seatervehicle" value="1" id="6seatervehicle" {{($driver_query->{"6seatervehicle"}==1)?'checked':''}}>
+                  <label class="form-check-label" for="6seatervehicle">
+                    Up 6 Seater Vehicle
+                  </label>
+                </div>
+             </div>
+
+
+             <div class="col-6">
+               <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="8seatervehicle" value="1" id="check_eight_seater_vehicle" {{($driver_query->{"8seatervehicle"}==1)?'checked':''}}>
                   <label class="form-check-label" for="check_eight_seater_vehicle">
-                    8 Seater vehicle
+                    Up to 8 passengers
+                  </label>
+                </div>
+             </div>
+             <div class="col-6">
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="longdistance" value="1" id="longdistance" {{($driver_query->{"longdistance"}==1)?'checked':''}}>
+                  <label class="form-check-label" for="longdistance">
+                    Long Distance
                   </label>
                 </div>
              </div>
