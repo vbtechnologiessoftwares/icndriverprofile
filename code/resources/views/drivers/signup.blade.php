@@ -26,23 +26,7 @@
     <title>cdsintdev</title>
 
     <!-- Favicon -->
-  <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="{{ asset('images/apple-touch-icon.png')}}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{{ asset('images/favicon-32x32.png')}}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{{ asset('images/favicon-16x16.png')}}"
-    />
+ 
     <link rel="manifest" href="images/site.webmanifest" />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
@@ -325,21 +309,18 @@
                 </div>
                 <!--first name last name ends-->
                 <div class="row g-3">
-                  <div class="col-md-6">
-                    <label
-                      for="relationship_to_applicant"
-                      class="col-lg-12 control-label"
-                      >User Name</label
+                   <div class="col-md-6">
+                    <label for="conf_password" class="col-lg-12 control-label"
+                      >Password</label
                     >
                     <input
-                      type="text"
+                      type="password"
                       class="form-control"
-                      id="username"
-                      name="username"
+                      id="password"
+                      name="password"
                       required
-                      placeholder="username"
+                      placeholder="Password"
                     />
-
                   </div>
                   <div class="col-md-6">
                     <label for="password" class="col-lg-12 control-label"
@@ -392,21 +373,92 @@
                   </div>
                 </div>
 
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="conf_password" class="col-lg-12 control-label"
-                      >Password</label
-                    >
-                    <input
-                      type="password"
+                {{-- <div class="row g-3">
+                 
+                </div> --}}
+
+             <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Address Line 1</label
+                        >
+                        <input
+                      type="text"
                       class="form-control"
-                      id="password"
-                      name="password"
+                      id="addressline1"
+                      name="addressline1"
                       required
-                      placeholder="Password"
+                      placeholder="Address Line 1"
                     />
-                  </div>
-                </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Address Line 2</label
+                        >
+                       <input
+                      type="text"
+                      class="form-control"
+                      id="addressline2"
+                      name="addressline2"
+                      required
+                      placeholder="Address Line 2"
+                    />
+                      </div>
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Town</label
+                        >
+                         <input
+                      type="text"
+                      class="form-control"
+                      id="town"
+                      name="town"
+                      required
+                      placeholder="Town"
+                    />
+                      </div>
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >County</label
+                        >
+                       <input
+                      type="text"
+                      class="form-control"
+                      id="county"
+                      name="county"
+                      required
+                      placeholder="County"
+                    />
+                      </div>
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Post Code</label
+                        >
+                       <input
+                      type="number"
+                      class="form-control"
+                      id="postcode"
+                      name="postcode"
+                      required
+                      placeholder="Post Code"
+                    />
+                      </div>
+                     
+                    </div>
                 <br />
 
                 <div class="row g-3" style="margin-top: 30px">
@@ -439,7 +491,7 @@
                         <label
                           for="relationship_to_applicant"
                           class="col-lg-12 control-label"
-                          >4 Seater Vehicle</label
+                          >Up to 4 passengers</label
                         >
 
                         <select
@@ -448,7 +500,7 @@
                           required
                         >
                           <option disabled selected value>
-                            -- 4 Seater Vehicle --
+                            -- Up to 4 passengers --
                           </option>
                           <option value="1">Yes</option>
                           <option value="0">No</option>
@@ -458,7 +510,7 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >8 Seater Vehicle</label
+                          >Up to 8 passengers</label
                         >
                         <select
                           class="form-control"
@@ -466,7 +518,7 @@
                           required
                         >
                           <option disabled selected value>
-                            -- 8 Seater Vehicle --
+                            -- Up to 8 passengers --
                           </option>
                           <option value="1">Yes</option>
                           <option value="0">No</option>
@@ -520,15 +572,15 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >Easy Access Vehicle</label
+                          >Executive Vehicle </label
                         >
                         <select
                           class="form-control"
-                          name="easy_access_vehicle"
+                          name="executivevehicle"
                           required
                         >
                           <option disabled selected value>
-                            -- Easy Access Vehicle --
+                            -- Executive Vehicle --
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
@@ -538,7 +590,7 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >AirPort Runs</label
+                          >Airport/Seaport</label
                         >
                         <select
                           class="form-control"
@@ -546,7 +598,45 @@
                           required
                         >
                           <option disabled selected value>
-                            -- AirPort Runs --
+                            -- Airport/Seaport --
+                          </option>
+                         <option value="1">Yes</option>
+                          <option value="0">No</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >up 6 Seater Vehicle </label
+                        >
+                        <select
+                          class="form-control"
+                          name="6seatervehicle"
+                          required
+                        >
+                          <option disabled selected value>
+                            -- 6 Seater Vehicle --
+                          </option>
+                         <option value="1">Yes</option>
+                          <option value="0">No</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label
+                          for="marital_status"
+                          class="col-lg-12 control-label"
+                          >Long Distance </label
+                        >
+                        <select
+                          class="form-control"
+                          name="longdistance"
+                          required
+                        >
+                          <option disabled selected value>
+                            -- Long Distance --
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
@@ -557,8 +647,7 @@
                  
 
                     <div class="row g-3">
-                      
-                      
+                        
                     </div>
                   </div>
                 </div>
@@ -566,6 +655,14 @@
                 <br /><br />
               </div>
               <div class="row g-3" style="margin-top: 30px">
+                 <div class="col-md-12 text-center">
+                  <p>
+                    <a class="btn btn-primary next">
+                      Continue
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i
+                    ></a>
+                  </p>
+                </div>
                 <div class="col-md-12 text-center">
                   <p>
                     <a class="btn btn-primary previous">
@@ -574,14 +671,7 @@
                     >
                   </p>
                 </div>
-                <div class="col-md-12 text-center">
-                  <p>
-                    <a class="btn btn-primary next">
-                      Continue
-                      <i class="fa fa-arrow-right" aria-hidden="true"></i
-                    ></a>
-                  </p>
-                </div>
+               
               </div>
             </fieldset>
 
@@ -677,6 +767,14 @@
                 <br /><br />
               </div>
               <div class="row g-3" style="margin-top: 30px">
+                  <div class="col-md-12 text-center">
+                  <p>
+                    <a class="btn btn-primary next">
+                      Continue <i class="fa fa-arrow-right"></i
+                    ></a>
+                  </p>
+                </div>
+
                 <div class="col-md-12 text-center">
                   <p>
                     <a class="btn btn-primary previous">
@@ -684,13 +782,7 @@
                     >
                   </p>
                 </div>
-                <div class="col-md-12 text-center">
-                  <p>
-                    <a class="btn btn-primary next">
-                      Continue <i class="fa fa-arrow-right"></i
-                    ></a>
-                  </p>
-                </div>
+              
               </div>
             </fieldset>
 
@@ -750,15 +842,7 @@ To select location, start typing in the search box below</label
                 <br /><br />
               </div>
               <div class="row g-3" style="margin-top: 30px">
-                <div class="col-md-12 text-center">
-                  <p>
-                    <a class="btn btn-primary previous">
-                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                      Previous</a
-                    >
-                  </p>
-                </div>
-                <div class="col-md-12 text-center">
+                 <div class="col-md-12 text-center">
                   <p>
                     <input
                       class="btn btn-success"
@@ -767,6 +851,16 @@ To select location, start typing in the search box below</label
                     />
                   </p>
                 </div>
+                
+                <div class="col-md-12 text-center">
+                  <p>
+                    <a class="btn btn-primary previous">
+                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                      Previous</a
+                    >
+                  </p>
+                </div>
+               
               </div>
             </fieldset>
             <!-- <div class="col-lg-8"> -->

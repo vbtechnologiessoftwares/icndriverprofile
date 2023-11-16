@@ -119,7 +119,7 @@
 
                                         </li>
                                         <li class="list-inline-item fw-semibold w-100 off-duty-time-div">
-                                        @if($driver->offtime_timestamp!=null)
+                                        @if($driver->offtime_timestamp!=null && $driver->dutystatus==1)
                                             Auto off duty at {{date('d M h:i A',strtotime($driver->offtime_timestamp))}}
                                         @endif
                                         </li>
@@ -369,10 +369,24 @@
                                     <div class="card-body p-0">
                                         <ul class="list-unstyled mb-4 mt-3">
 
-                                            <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span
-                                                    class="fw-semibold mx-2">Username:</span>
-                                                <span>{{ $driver->username }}</span>
-                                                <a href="javascript:void(0)" class="edit-driver-btn" style="padding-left:5px"><i class="fa fa-pencil" title="Edit driver"></i></a>
+                                            <li class="d-flex align-items-center ">
+                                               {{--  <span>{{ $driver->username }}</span> --}}
+                                                <a style="color: #fff;
+    background-color: #5a8dee;
+    border-color: #5a8dee;
+    box-shadow: 0 0.125rem 0.25rem rgba(147,158,170,.4);
+    border-radius: 50rem !important;
+    font-size: 16px;
+    margin-left: 14px;
+    padding: 7px;
+" href="javascript:void(0)"
+                                                class="edit-driver-btn"
+                                                
+                                                   >Edit Driver
+ <i
+                                                        class="bx bx-pen"></i></a>
+
+                                               {{--  <a href="javascript:void(0)"  style="padding-left:5px"><i class="fa fa-pencil" title="Edit driver"></i></a> --}}
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-phone"></i><span
                                                     class="fw-semibold mx-2">Contact:</span>
@@ -407,6 +421,14 @@
                                                 <span>{{ $driver->{"8seatervehicle"} ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
+                                                    class="fw-semibold mx-2">Long Distance:</span>
+                                                <span>{{ $driver->{"longdistance"} ? 'Yes' : 'No' }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
+                                                    class="fw-semibold mx-2">6 Seater Vehicle:</span>
+                                                <span>{{ $driver->{"6seatervehicle"} ? 'Yes' : 'No' }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
                                                     class="fw-semibold mx-2">Estate Vehicle:</span>
                                                 <span>{{ $driver->estatevehicle ? 'Yes' : 'No' }}</span>
                                             </li>
@@ -415,17 +437,38 @@
                                                 <span>{{ $driver->courier ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
-                                                    class="fw-semibold mx-2">Easy Access Vehicle:</span>
-                                                <span>{{ $driver->easyaccessvehicle ? 'Yes' : 'No' }}</span>
+                                                    class="fw-semibold mx-2">Executive Vehicle:</span>
+                                                <span>{{ $driver->executivevehicle ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
-                                                    class="fw-semibold mx-2">AirPort Runs:</span>
+                                                    class="fw-semibold mx-2">Airport/Seaport:</span>
                                                 <span>{{ $driver->airportruns ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
                                                     class="fw-semibold mx-2">Wheel Chair Friendly:</span>
                                                 <span>{{ $driver->wheelchairfriendly ? 'Yes' : 'No' }}</span>
                                             </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-home'></i></i><span
+                                                    class="fw-semibold mx-2">Address Line 1:</span>
+                                                <span>{{ $driver->addressline1}}</span>
+                                            </li>
+                                              <li class="d-flex align-items-center mb-3"><i class='bx bx-home'></i></i><span
+                                                    class="fw-semibold mx-2">Address Line 2:</span>
+                                                <span>{{ $driver->addressline2}}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-home'></i></i><span
+                                                    class="fw-semibold mx-2">Town:</span>
+                                                <span>{{ $driver->town}}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-home'></i></i><span
+                                                    class="fw-semibold mx-2">County:</span>
+                                                <span>{{ $driver->county}}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center mb-3"><i class='bx bx-home'></i></i><span
+                                                    class="fw-semibold mx-2">Post Code:</span>
+                                                <span>{{ $driver->postcode}}</span>
+                                            </li>
+                                            
 
                                         </ul>
 

@@ -212,6 +212,12 @@ class DashboardController extends Controller
             $email=$request->input('email');
             $businessurl=$request->input('businessurl');
             $description=$request->input('description');
+            $addressline1=$request->input('addressline1');
+            $addressline2=$request->input('addressline2');
+            $town=$request->input('town');
+            $county=$request->input('county');
+            $postcode=$request->input('postcode');
+            
 
             $four_seatervehicle=0;
             $eight_seatervehicle=0;
@@ -220,6 +226,16 @@ class DashboardController extends Controller
             $easyaccessvehicle=0;
             $airportruns=0;
             $wheelchairfriendly=0;
+            $six_seatervehicle=0;
+            $longdistance=0;
+
+            if($request->has('6seatervehicle'))
+            {
+                $six_seatervehicle=1;
+            }if($request->has('longdistance'))
+            {
+                $longdistance=1;
+            }
 
             if($request->has('4seatervehicle'))
             {
@@ -266,6 +282,16 @@ class DashboardController extends Controller
                 'easyaccessvehicle'=>$easyaccessvehicle,
                 'airportruns'=>$airportruns,
                 'wheelchairfriendly'=>$wheelchairfriendly,
+                '6seatervehicle'=>$six_seatervehicle,
+                'longdistance'=>$longdistance,
+                'postcode'=>$postcode,
+                'county'=>$county,
+                'town'=>$town,
+                'businessurl'=>$businessurl,
+                'addressline2'=>$addressline2,
+                'addressline1'=>$addressline1,
+
+
 
             );
 
@@ -280,6 +306,12 @@ class DashboardController extends Controller
                 'email' => $email,
                 'businessurl'=>$businessurl,
                 'description'=>$description,
+                'addressline1'=>$addressline1,
+                'addressline2'=>$addressline2,
+                'town'=>$town,
+                'county'=>$county,
+                'postcode'=>$postcode,
+                
             );
             DriverEdit::create($edit_data);
             

@@ -11,7 +11,7 @@
                     <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center">
                       <div class="card-header pb-1 justify-content-around">
                         <div class="card-title">
-                          <!--<h4 class="text-center mb-2"><img src="{{ asset('public/assets/images/aycom_logo.png') }}" height="40" width="auto"/></h4>-->
+                          <!--<h4 class="text-center mb-2"><img src="{{-- {{ asset('public/assets/images/aycom_logo.png') }} --}}" height="40" width="auto"/></h4>-->
                         </div>
                       </div>
                       <div class="card-body">
@@ -48,10 +48,10 @@
                         <form method="POST" action="{{ route('login.post') }}">
                           @csrf
                           <div class="form-group mb-50">
-                            <label class="text-bold-600" for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username" placeholder="User Name" value="{{ old('username') }}" autocomplete="username" autofocus>
-                           @if ($errors->has('username'))
-                                      <span class="text-danger">{{ $errors->first('username') }}</span>
+                            <label class="text-bold-600" for="email">email</label>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                           @if ($errors->has('email'))
+                                      <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
 						  
 						  </div>

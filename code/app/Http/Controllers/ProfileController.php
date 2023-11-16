@@ -9,7 +9,6 @@ class ProfileController extends Controller
 {
     public function listLocations(Request $request)
     {
-        //dd($request->all());
         info("Request data: ". json_encode($request->all()));
         $locations = Location::query();
         if ( $request->filled('search') ){
@@ -77,6 +76,7 @@ class ProfileController extends Controller
 
     public function storeLocations(Request $request)
     {
+
         $data = $request->validate([
             'locations' => 'array|min:1',
             'locations.*' => 'exists:locations_master,locationid',

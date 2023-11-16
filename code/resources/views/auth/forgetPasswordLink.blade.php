@@ -11,7 +11,7 @@
                     <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center">
                       <div class="card-header pb-1 justify-content-around">
                         <div class="card-title">
-                          <!--<h4 class="text-center mb-2"><img src="{{ asset('public/assets/images/aycom_logo.png') }}" height="40" width="auto"/></h4>-->
+                          <!--<h4 class="text-center mb-2"><img src="{{-- {{ asset('public/assets/images/aycom_logo.png') }} --}}" height="40" width="auto"/></h4>-->
                         </div>
                       </div>
                       <div class="card-body">
