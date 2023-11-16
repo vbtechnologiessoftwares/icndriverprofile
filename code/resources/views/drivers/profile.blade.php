@@ -19,6 +19,12 @@
             overflow-x: hidden !important;
             max-height: 408px;
         }
+        .tabb.show {
+            display: block;
+        }
+        .tabb {
+            display: none;
+        }
     </style>
     <link rel="stylesheet" href="{{ asset('/assetss/vendor/libs/select2/select2.css') }} " />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -535,27 +541,79 @@
                     <h5 class="modal-title" id="exampleModalLabel1">Add Locations</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('locations.store') }}" onsubmit="saveLocations()" method="POST">
-                    @csrf
+                
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col mb-3">
-                                <div class="mb-3">
-                                    <label for="select2Basic" class="form-label">Locations</label>
-                                    <select id="selectNewLocation" class="select2 form-select form-select-lg"
-                                        data-allow-clear="true" multiple>
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link location-nav-link active" data-section="tab1" href="javascript:void(0)">Location</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link location-nav-link" data-section="tab2" href="javascript:void(0)">By Radius</a>
+                          </li>
+                         
+                        </ul>
+                        <form action="{{ route('locations.store') }}" onsubmit="saveLocations()" method="POST">
+                        @csrf
+                        <section id="tab1" class="tabb show">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <div class="mb-3">
+                                        <label for="select2Basic" class="form-label">Locations</label>
+                                        <select id="selectNewLocation" class="select2 form-select form-select-lg"
+                                            data-allow-clear="true" multiple>
 
-                                    </select>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <button type="submit" class="btn btn-primary" disabled id="saveLocationsButton" style="float: right;">Save
+                            Locations</button>
+                        </section>
+                        
+                        </form>
+                        <form action="{{ route('locations.store') }}" onsubmit="saveLocationsNear()" method="POST">
+                        @csrf
+                        <section id="tab2" class="tabb">
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <div class="mb-3">
+                                        <label for="select2Basic" class="form-label">select Location nearby</label>
+                                        <select id="selectNewLocationNear" class="select2 form-select form-select-lg"
+                                            data-allow-clear="true" >
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Distance</label>
+                                        <input type="range" name="distance" class=" location-distance-input" min="0" max="25" value="0" />
+                                        <p id="show-range-text">0</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="mb-3">
+                                        <label for="select2Basic" class="form-label">select Location</label>
+                                        <select id="selectNewLocationWithinDistance" class="select2 form-select form-select-lg"
+                                            data-allow-clear="true" multiple>
+
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary" disabled id="saveLocationsWithinDistanceButton" style="float: right;">Save
+                            Locations</button>
+                        </section>
+                        
+                    </form>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" disabled id="saveLocationsButton">Save
-                            Locations</button>
+                        
                     </div>
-                </form>
+              
             </div>
         </div>
     </div>
@@ -1045,6 +1103,32 @@
             })
             // console.log('this is event: ', event);
         }
+        function saveLocationsNear() {
+            event.preventDefault();
+
+            let locationIds = $("#selectNewLocationWithinDistance").select2('data').map((option) => {
+                return option.id;
+            });
+
+            let data = {
+                locations: locationIds,
+            };
+
+            $.ajax({
+                url: "{{ route('locations.store') }}",
+                type: 'post',
+                data,
+                success: (response) => {
+                    $("#addLocationModal").modal('hide')
+                    window.location.reload();
+                },
+                error: (err) => console.log(err),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            // console.log('this is event: ', event);
+        }
 
 
         function onLocationCheckboxChange() {
@@ -1124,6 +1208,57 @@
                     },
                 }
             });
+            $("#selectNewLocationNear").select2({
+                dropdownParent: $('#addLocationModal'),
+                ajax: {
+                    url: "{{ route('locations.list') }}",
+                    data: function(params) {
+                        var query = {
+                            search: params.term,
+                            page: params.page || 1
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: (data) => {
+                        data = parseLocationsForSelect2(data);
+                        return data;
+
+                    },
+                }
+            });
+
+
+
+            
+            triggerNewLocationWithinDistance();
+
+            $('.location-distance-input').change(function(e){
+                console.log('t');
+                var location_near_id=$('#selectNewLocationNear').find('option:selected').val();
+                var distance =$('.location-distance-input').val();
+                //alert(distance);
+                $('#show-range-text').html(distance);
+                var url='{{ route('locations.listnear') }}?';
+                url=url+'distance='+distance;
+                url=url+'&';                
+                url=url+'location_near_id='+location_near_id;
+                triggerNewLocationWithinDistance(url);
+            });
+            $("#selectNewLocationNear").change(function(e){
+                console.log('t1');
+                var location_near_id=$('#selectNewLocationNear').find('option:selected').val();
+                var distance =$('.location-distance-input').val();
+                //alert(distance);
+                $('#show-range-text').html(distance);
+                var url='{{ route('locations.listnear') }}?';
+                url=url+'distance='+distance;
+                url=url+'&';                
+                url=url+'location_near_id='+location_near_id;
+                triggerNewLocationWithinDistance(url);
+            })
+           // sell.ajax
 
             $('#selectNewLocation').on('change', function() {
                 if ($(this).select2('data').length > 0) {
@@ -1131,6 +1266,15 @@
                     return;
                 }
                 $('#saveLocationsButton').attr('disabled', true);
+
+            });
+
+            $('#selectNewLocationWithinDistance').on('change', function() {
+                if ($(this).select2('data').length > 0) {
+                    $('#saveLocationsWithinDistanceButton').attr('disabled', false);
+                    return;
+                }
+                $('#saveLocationsWithinDistanceButton').attr('disabled', true);
 
             });
 
@@ -1142,9 +1286,42 @@
 
             });
 
+            $('.location-nav-link').click(function(e){
+                var section=$(this).data('section');
+
+                $('.location-nav-link').removeClass('active');
+                $(this).addClass('active');
+
+                $('.tabb').removeClass('show');
+                $('#'+section).addClass('show');
+            });
+
 
 
         });
+
+        function triggerNewLocationWithinDistance(url="{{ route('locations.list') }}"){
+            $("#selectNewLocationWithinDistance").select2({
+                dropdownParent: $('#addLocationModal'),
+                ajax: {
+                    url: url,
+                    data: function(params) {
+                        var query = {
+                            search: params.term,
+                            page: params.page || 1
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: (data) => {
+                        data = parseLocationsForSelect2(data);
+                        return data;
+
+                    },
+                }
+            });
+        }
 
     
 

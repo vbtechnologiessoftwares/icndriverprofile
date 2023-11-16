@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     public function listLocations(Request $request)
     {
+        //dd($request->all());
         info("Request data: ". json_encode($request->all()));
         $locations = Location::query();
         if ( $request->filled('search') ){
@@ -16,6 +17,62 @@ class ProfileController extends Controller
         }
 
         return response()->json($locations->paginate(20));
+
+        /*$latitude='52.1900';
+        $longitude='1.0000';
+        $a=Location::selectRaw(
+            "*,
+            ( 6371 * 
+                ACOS( 
+                    COS( RADIANS( latitude ) ) * 
+                    COS( RADIANS( $latitude ) ) * 
+                    COS( RADIANS( $longitude ) - 
+                    RADIANS( longitude ) ) + 
+                    SIN( RADIANS( latitude ) ) * 
+                    SIN( RADIANS( $latitude ) ) 
+                ) 
+            ) AS distance
+        ")
+        ->having('distance','<=',30)
+        ->orderBy('distance','asc');
+        return response()->json($a->paginate(20));*/
+    }
+    public function listLocationsNear(Request $request)
+    {
+        if($request->has('location_near_id') && $request->location_near_id !="")
+        {
+            $q=Location::where('locationid',$request->location_near_id)->first();
+            if($q){
+                $latitude=$q->latitude;
+                $longitude=$q->longitude;
+                $distance=$request->distance;
+                $a=Location::selectRaw(
+                    "*,
+                    ( 6371 * 
+                        ACOS( 
+                            COS( RADIANS( latitude ) ) * 
+                            COS( RADIANS( $latitude ) ) * 
+                            COS( RADIANS( $longitude ) - 
+                            RADIANS( longitude ) ) + 
+                            SIN( RADIANS( latitude ) ) * 
+                            SIN( RADIANS( $latitude ) ) 
+                        ) 
+                    ) AS distance
+                ")
+                ->having('distance','<=',$distance)
+                ->orderBy('distance','asc');
+                return response()->json($a->paginate(20));
+            }else{
+                return $this->listLocations($request);
+            }  
+        }
+        else{
+            return $this->listLocations($request);
+        }
+        
+        
+        
+        
     }
 
     public function storeLocations(Request $request)
