@@ -588,16 +588,16 @@
                     <div class="modal-body">
                         <ul class="nav nav-tabs">
                           <li class="nav-item">
-                            <a class="nav-link location-nav-link active" data-section="tab1" href="javascript:void(0)">Location</a>
+                            <a class="nav-link location-nav-link" data-section="tab1" href="javascript:void(0)">Location</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link location-nav-link" data-section="tab2" href="javascript:void(0)">By Radius</a>
+                            <a class="nav-link location-nav-link active" data-section="tab2" href="javascript:void(0)">By Radius</a>
                           </li>
                          
                         </ul>
                         <form action="{{ route('locations.store') }}" onsubmit="saveLocations()" method="POST">
                         @csrf
-                        <section id="tab1" class="tabb show">
+                        <section id="tab1" class="tabb">
                             <div class="row">
                                 <div class="col mb-3">
                                     <div class="mb-3">
@@ -617,7 +617,7 @@
                         </form>
                         <form action="{{ route('locations.store') }}" onsubmit="saveLocationsNear()" method="POST">
                         @csrf
-                        <section id="tab2" class="tabb">
+                        <section id="tab2" class="tabb show">
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <div class="mb-3">
@@ -635,7 +635,13 @@
                                         <p id="show-range-text">0</p>
                                     </div>
                                 </div>
-                                <div class="col-12 mb-3">
+                                <div class="col-12 mb-3 within-distance-location-div">
+                                    
+                                        
+                                   
+                                </div>
+                               
+                                {{-- <div class="col-12 mb-3">
                                     <div class="mb-3">
                                         <label for="select2Basic" class="form-label">select Location</label>
                                         <select id="selectNewLocationWithinDistance" class="select2 form-select form-select-lg"
@@ -643,13 +649,13 @@
 
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <button type="submit" class="btn btn-primary" disabled id="saveLocationsWithinDistanceButton" style="float: right;">Save
                             Locations</button>
                         </section>
                         
-                    </form>
+                        </form>
                         
                     </div>
                     <div class="modal-footer">
@@ -1149,9 +1155,23 @@
         function saveLocationsNear() {
             event.preventDefault();
 
-            let locationIds = $("#selectNewLocationWithinDistance").select2('data').map((option) => {
+            /*let locationIds = $("#selectNewLocationWithinDistance").select2('data').map((option) => {
                 return option.id;
+            });*/
+
+            /*let locationIds =$('input[name=location_checkbox]:checked').map(function(option){
+                return option.value;
+            });*/
+            /*let locationIds =$('input[name=location_checkbox]:checked').map((index,value)=>{
+                return value.value;
+            });*/
+            var locationIds=[];
+            $('input[name=location_checkbox]:checked').each((index,value)=>{
+                console.log(value.value);
+                locationIds.push(value.value);
             });
+
+            //console.log($('input[name=location_checkbox]:checked'));
 
             let data = {
                 locations: locationIds,
@@ -1275,7 +1295,7 @@
 
 
             
-            triggerNewLocationWithinDistance();
+            //triggerNewLocationWithinDistance();
 
             $('.location-distance-input').change(function(e){
                 console.log('t');
@@ -1312,14 +1332,14 @@
 
             });
 
-            $('#selectNewLocationWithinDistance').on('change', function() {
+            /*$('#selectNewLocationWithinDistance').on('change', function() {
                 if ($(this).select2('data').length > 0) {
                     $('#saveLocationsWithinDistanceButton').attr('disabled', false);
                     return;
                 }
                 $('#saveLocationsWithinDistanceButton').attr('disabled', true);
 
-            });
+            });*/
 
             $("#toggle-all-driver-locations").on('change', function(){
 
@@ -1339,12 +1359,21 @@
                 $('#'+section).addClass('show');
             });
 
+            
+            $('body').on('change','.location-checkbox',function(){
+                if($('.location-checkbox:checked').length>0){
+                   $('#saveLocationsWithinDistanceButton').attr('disabled', false);
+                    return; 
+                }
+                $('#saveLocationsWithinDistanceButton').attr('disabled', true);
+            })
+
 
 
         });
 
         function triggerNewLocationWithinDistance(url="{{ route('locations.list') }}"){
-            $("#selectNewLocationWithinDistance").select2({
+            /*$("#selectNewLocationWithinDistance").select2({
                 dropdownParent: $('#addLocationModal'),
                 ajax: {
                     url: url,
@@ -1363,6 +1392,36 @@
 
                     },
                 }
+            });*/
+            $('.within-distance-location-div').empty().html('loading locations...');
+            $.ajax({
+                url:url,
+                method:'GET',
+                data:{},
+                dataType:'json',                
+            }).done(function(response){
+                let results = response.data.map((location) => {
+                    return {
+                        id: location.locationid,
+                        text: location.town
+                    };
+                });
+                var checkboxes_html='';
+                $( response.data ).each(function( index,value ) {
+
+                  checkboxes_html+='<div class="form-check form-check-inline">';
+                  checkboxes_html+='<input class="form-check-input location-checkbox" type="checkbox" name="location_checkbox"  id="inlineCheckbox'+value.locationid+'" value="'+value.locationid+'" >';
+                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+'</label>';
+                  checkboxes_html+='</div>';
+
+                    
+                });
+
+                //$('#saveLocationsWithinDistanceButton').attr('disabled', false);
+
+                $('.within-distance-location-div').empty().html(checkboxes_html);
+
+                //console.log(results);
             });
         }
 

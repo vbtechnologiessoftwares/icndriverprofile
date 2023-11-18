@@ -60,7 +60,7 @@ class ProfileController extends Controller
                 ")
                 ->having('distance','<=',$distance)
                 ->orderBy('distance','asc');
-                return response()->json($a->paginate(20));
+                return response()->json($a->paginate(40));
             }else{
                 return $this->listLocations($request);
             }  
@@ -68,15 +68,13 @@ class ProfileController extends Controller
         else{
             return $this->listLocations($request);
         }
-        
-        
-        
-        
     }
+
+
 
     public function storeLocations(Request $request)
     {
-
+        //dd($request->all());
         $data = $request->validate([
             'locations' => 'array|min:1',
             'locations.*' => 'exists:locations_master,locationid',
