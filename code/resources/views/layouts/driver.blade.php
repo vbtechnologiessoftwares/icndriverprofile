@@ -552,7 +552,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
-                                            <a class="dropdown-item" href="pages-account-settings-account.html">
+                                            <a class="dropdown-item" href="#">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1">
                                                         <span class="fw-semibold d-block lh-1">{{ $driver->full_name }}</span>
