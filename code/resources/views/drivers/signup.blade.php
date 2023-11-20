@@ -21,8 +21,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="{{ asset('/assetss/vendor/libs/select2/select2.css') }} " />
-    <link rel="stylesheet" href="{{ asset('/assetss/vendor/libs/sweetalert2/sweetalert2.css') }}">
+    
     <title>cdsintdev</title>
 
     <!-- Favicon -->
@@ -50,6 +49,8 @@
     rel="stylesheet">
 
     <!-- External Css file -->
+    <link rel="stylesheet" href="{{ asset('/assetss/vendor/libs/select2/select2.css') }} " />
+    <link rel="stylesheet" href="{{ asset('/assetss/vendor/libs/sweetalert2/sweetalert2.css') }}">
        <link rel="stylesheet" href="{{ asset('style.css')}}" />
 
     <style>
@@ -810,12 +811,23 @@
                           >You can select multiple locations as a starting point. Locations can be added/removed later from the driver dashboard.
 To select location, start typing in the search box below</label
                         >
-                        <select id="selectNewLocation" class="select2 form-select form-select-lg" data-allow-clear="true" name="locations[]" multiple>
-                          {{-- @foreach($locations as $key =>$value)
-                          <option value="{{$value->locationid}}">{{$value->town}},{{$value->country}}</option>
-                          @endforeach --}}
+                        {{-- <select id="selectNewLocation" class="select2 form-select form-select-lg" data-allow-clear="true" name="locations[]" multiple>
+                          
+                        </select> --}}
+                        <select id="selectNewLocationNear" class="select2 form-select form-select-lg" data-allow-clear="true" >
+
                         </select>
                     
+                      </div>
+                      <div class="col-12 mb-3">
+                          <div class="mb-3">
+                              <label class="form-label">Distance</label>
+                              <input type="range" name="distance" class=" location-distance-input" min="0" max="25" value="0" />
+                              <p id="show-range-text">0</p>
+                          </div>
+                      </div>
+                      <div class="col-12 mb-3 within-distance-location-div">
+
                       </div>
                      {{--  <div class="col-md-6">
                         <label for="last_name" class="col-lg-12 control-label"
@@ -1154,7 +1166,100 @@ To select location, start typing in the search box below</label
                 }
             });
 
+        $("#selectNewLocationNear").select2({
+                //dropdownParent: $('#addLocationModal'),
+                placeholder:'Select Location nearby',
+                ajax: {
+                    url: "{{ route('guest_locations.list') }}",
+                    data: function(params) {
+                        var query = {
+                            search: params.term,
+                            page: params.page || 1
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: (data) => {
+                        data = parseLocationsForSelect2(data);
+                        return data;
+
+                    },
+                }
+            });
+        $('.location-distance-input').change(function(e){
+                console.log('t');
+                var location_near_id=$('#selectNewLocationNear').find('option:selected').val();
+                var distance =$('.location-distance-input').val();
+                //alert(distance);
+                $('#show-range-text').html(distance);
+                var url='{{ route('guest_locations.listnear') }}?';
+                url=url+'distance='+distance;
+                url=url+'&';                
+                url=url+'location_near_id='+location_near_id;
+                triggerNewLocationWithinDistance(url);
+            });
+            $("#selectNewLocationNear").change(function(e){
+                console.log('t1');
+                var location_near_id=$('#selectNewLocationNear').find('option:selected').val();
+                var distance =$('.location-distance-input').val();
+                //alert(distance);
+                $('#show-range-text').html(distance);
+                var url='{{ route('guest_locations.listnear') }}?';
+                url=url+'distance='+distance;
+                url=url+'&';                
+                url=url+'location_near_id='+location_near_id;
+                triggerNewLocationWithinDistance(url);
+            });
+
       });//ready
+
+function triggerNewLocationWithinDistance(url="{{ route('guest_locations.list') }}"){
+            $('.within-distance-location-div').empty().html('loading locations...');
+            $.ajax({
+                url:url,
+                method:'GET',
+                data:{},
+                dataType:'json',                
+            }).done(function(response){
+                if(typeof response.data !== 'undefined'){
+                    console.log('yes');
+                    var results = response.data.map((location) => {
+                        return {
+                            id: location.locationid,
+                            text: location.town
+                        };
+                    });  
+                }else{
+                    console.log('no');
+                    var results=[];
+                }
+                var checkboxes_html='';
+                $( response.data ).each(function( index,value ) {
+
+                  checkboxes_html+='<div class="form-check form-check-inline">';
+                  checkboxes_html+='<input class="form-check-input location-checkbox" type="checkbox" name="locations[]"  id="inlineCheckbox'+value.locationid+'" value="'+value.locationid+'" >';
+                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+'</label>';
+                  checkboxes_html+='</div>';
+
+                    
+                });
+                //$('.location-checkbox').find('.location-checkbox').prop('checked',true);
+                
+                //$('#saveLocationsWithinDistanceButton').attr('disabled', false);
+
+                $('.within-distance-location-div').empty().html(checkboxes_html);
+                $('.location-checkbox').prop('checked',true);
+                
+                if($('.location-checkbox:checked').length>0){
+                   $('#saveLocationsWithinDistanceButton').attr('disabled', false);
+                    return; 
+                }
+                $('#saveLocationsWithinDistanceButton').attr('disabled', true);
+
+                //console.log(results);
+            });
+        }
 
 function parseLocationsForSelect2(locations) {
             let results = locations.data.map((location) => {

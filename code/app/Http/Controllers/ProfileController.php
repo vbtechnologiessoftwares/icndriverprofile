@@ -64,11 +64,13 @@ class ProfileController extends Controller
                
                 return response()->json($a->paginate(40));
             }else{
-                return $this->listLocations($request);
+                //return $this->listLocations($request);
+                return response()->json(array());
             }  
         }
         else{
-            return $this->listLocations($request);
+            //return $this->listLocations($request);
+            return response()->json(array());
         }
     }
 
