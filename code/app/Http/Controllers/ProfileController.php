@@ -38,6 +38,7 @@ class ProfileController extends Controller
     }
     public function listLocationsNear(Request $request)
     {
+
         if($request->has('location_near_id') && $request->location_near_id !="")
         {
             $q=Location::where('locationid',$request->location_near_id)->first();
@@ -60,6 +61,7 @@ class ProfileController extends Controller
                 ")
                 ->having('distance','<=',$distance)
                 ->orderBy('distance','asc');
+               
                 return response()->json($a->paginate(40));
             }else{
                 //return $this->listLocations($request);

@@ -1344,6 +1344,7 @@
             $("#toggle-all-driver-locations").on('change', function(){
 
                 let isChecked = $(this).is(":checked");
+                console.log(isChecked);
                 $("input[name='selectedLocations[]']").prop('checked', isChecked);
                 onLocationCheckboxChange();
 
@@ -1400,6 +1401,7 @@
                 data:{},
                 dataType:'json',                
             }).done(function(response){
+
                 if(typeof response.data !== 'undefined'){
                     var results = response.data.map((location) => {
                         return {
@@ -1413,6 +1415,7 @@
                 
                 
                 console.log(results);
+
                 var checkboxes_html='';
                 $( response.data ).each(function( index,value ) {
 
