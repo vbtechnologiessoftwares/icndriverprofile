@@ -817,7 +817,6 @@ To select location, start typing in the search box below</label
                         <select id="selectNewLocationNear" class="select2 form-select form-select-lg" data-allow-clear="true" >
 
                         </select>
-                        <small style="color: red">Ple</small>
                     
                       </div>
                       <div class="col-12 mb-3">
