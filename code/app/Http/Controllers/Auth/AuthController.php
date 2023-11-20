@@ -198,13 +198,21 @@ class AuthController extends Controller
                 'email' => 'required|unique:driver_details,email',
                 'business_url'=>'required',
                 'password'=>'required',
+                'addressline1'=>'required',
+                'addressline2'=>'required',
+                'town'=>'required',
+                'county'=>'required',
+                'postcode'=>'required',
 
                 '4_seater_vehicle' => 'required',
                 '8_seater_vehicle' => 'required',
                 'estate_vehicle' => 'required',
                 'courier_vehicle'=>'required',
-                'easy_access_vehicle'=>'required',
+                'executivevehicle'=>'required',
+                //'easy_access_vehicle'=>'required',
                 'airport_runs'=>'required',
+                '6seatervehicle'=>'required',
+                'longdistance'=>'required',
 
                 'driver_photo'=>'required',
                 'driver_licence_photo'=>'required',
@@ -219,13 +227,21 @@ class AuthController extends Controller
                 'email.required' => 'This field is required',
                 'business_url.required'=>'This field is required',
                 'password.required'=>'This field is required',
+                'addressline1.required'=>'This field is required',
+                'addressline2.required'=>'This field is required',
+                'town.required'=>'This field is required',
+                'county.required'=>'This field is required',
+                'postcode.required'=>'This field is required',
 
                 '4_seater_vehicle.required' => 'This field is required',
                 '8_seater_vehicle.required' => 'This field is required',
                 'estate_vehicle.required' => 'This field is required',
                 'courier_vehicle.required'=>'This field is required',
-                'easy_access_vehicle.required'=>'This field is required',
+                'executivevehicle.required'=>'This field is required',
+                //'easy_access_vehicle.required'=>'This field is required',
                 'airport_runs.required'=>'This field is required',
+                '6seatervehicle.required'=>'This field is required',
+                'longdistance.required'=>'This field is required',
 
                 'driver_photo.required'=>'This field is required',
                 'driver_licence_photo.required'=>'This field is required',
@@ -253,6 +269,11 @@ class AuthController extends Controller
                 'email' => $request->input('email'),
                 'businessurl'=>$request->input('business_url'),
                 'password'=>md5($request->input('password')),
+                'addressline1'=>$request->input('addressline1'),
+                'addressline2'=>$request->input('addressline2'),
+                'town'=>$request->input('town'),
+                'county'=>$request->input('county'),
+                'postcode'=>$request->input('postcode'),
 
                 '4seatervehicle' => $request->input('4_seater_vehicle'),
                 '8seatervehicle' => $request->input('8_seater_vehicle'),
@@ -260,15 +281,8 @@ class AuthController extends Controller
                 'courier'=>$request->input('courier_vehicle'),
                 'executivevehicle'=>$request->input('executivevehicle'),
                 'airportruns'=>$request->input('airport_runs'),
-
                 '6seatervehicle'=>$request->input('6seatervehicle'),
-                'addressline1'=>$request->input('addressline1'),
-                'addressline2'=>$request->input('addressline2'),
-                'town'=>$request->input('town'),
-                'county'=>$request->input('county'),
-                'postcode'=>$request->input('postcode'),
-
-
+                'longdistance'=>$request->input('longdistance'),
 
                 'signupdate'=>date('Y-m-d')
             );
@@ -372,6 +386,39 @@ class AuthController extends Controller
             $locations->where('town','like', "%{$request->search}%");
         }
         return response()->json($locations->paginate(20));
+    }
+    public function listLocationsNear(Request $request)
+    {
+        if($request->has('location_near_id') && $request->location_near_id !="")
+        {
+            $q=Location::where('locationid',$request->location_near_id)->first();
+            if($q){
+                $latitude=$q->latitude;
+                $longitude=$q->longitude;
+                $distance=$request->distance;
+                $a=Location::selectRaw(
+                    "*,
+                    ( 6371 * 
+                        ACOS( 
+                            COS( RADIANS( latitude ) ) * 
+                            COS( RADIANS( $latitude ) ) * 
+                            COS( RADIANS( $longitude ) - 
+                            RADIANS( longitude ) ) + 
+                            SIN( RADIANS( latitude ) ) * 
+                            SIN( RADIANS( $latitude ) ) 
+                        ) 
+                    ) AS distance
+                ")
+                ->having('distance','<=',$distance)
+                ->orderBy('distance','asc');
+                return response()->json($a->paginate(40));
+            }else{
+                return response()->json(array());
+            }  
+        }
+        else{
+            return response()->json(array());
+        }
     }
 
     public function checkIfEmailExists(Request $request){

@@ -55,6 +55,7 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('/list-locations', [ AuthController::class, 'listLocations'])->name('guest_locations.list');
+Route::get('/list-locations-near', [ AuthController::class, 'listLocationsNear'])->name('guest_locations.listnear');
 Route::get('/check-if-email-exists', [ AuthController::class, 'checkIfEmailExists'])->name('driver_signup.check_if_email_exists');
 Route::get('/check-if-username-exists', [ AuthController::class, 'checkIfUsernameExists'])->name('driver_signup.check_if_username_exists');
 

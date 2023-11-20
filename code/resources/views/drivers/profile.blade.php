@@ -1400,12 +1400,19 @@
                 data:{},
                 dataType:'json',                
             }).done(function(response){
-                let results = response.data.map((location) => {
-                    return {
-                        id: location.locationid,
-                        text: location.town
-                    };
-                });
+                if(typeof response.data !== 'undefined'){
+                    var results = response.data.map((location) => {
+                        return {
+                            id: location.locationid,
+                            text: location.town
+                        };
+                    });  
+                }else{
+                    var results=[];
+                }
+                
+                
+                console.log(results);
                 var checkboxes_html='';
                 $( response.data ).each(function( index,value ) {
 
@@ -1416,10 +1423,18 @@
 
                     
                 });
-
+                //$('.location-checkbox').find('.location-checkbox').prop('checked',true);
+                
                 //$('#saveLocationsWithinDistanceButton').attr('disabled', false);
 
                 $('.within-distance-location-div').empty().html(checkboxes_html);
+                $('.location-checkbox').prop('checked',true);
+
+                if($('.location-checkbox:checked').length>0){
+                   $('#saveLocationsWithinDistanceButton').attr('disabled', false);
+                    return; 
+                }
+                $('#saveLocationsWithinDistanceButton').attr('disabled', true);
 
                 //console.log(results);
             });
