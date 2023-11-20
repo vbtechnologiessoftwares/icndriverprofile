@@ -1344,6 +1344,7 @@
             $("#toggle-all-driver-locations").on('change', function(){
 
                 let isChecked = $(this).is(":checked");
+                console.log(isChecked);
                 $("input[name='selectedLocations[]']").prop('checked', isChecked);
                 onLocationCheckboxChange();
 
@@ -1406,6 +1407,7 @@
                         text: location.town
                     };
                 });
+            
                 var checkboxes_html='';
                 $( response.data ).each(function( index,value ) {
 
