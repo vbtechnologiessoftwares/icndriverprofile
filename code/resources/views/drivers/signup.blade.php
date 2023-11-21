@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-style">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -1227,7 +1227,7 @@ function triggerNewLocationWithinDistance(url="{{ route('guest_locations.list') 
                     var results = response.data.map((location) => {
                         return {
                             id: location.locationid,
-                            text: location.town
+                               text: location.town+','+location.county
                         };
                     });  
                 }else{
@@ -1239,7 +1239,7 @@ function triggerNewLocationWithinDistance(url="{{ route('guest_locations.list') 
 
                   checkboxes_html+='<div class="form-check form-check-inline">';
                   checkboxes_html+='<input class="form-check-input location-checkbox" type="checkbox" name="locations[]"  id="inlineCheckbox'+value.locationid+'" value="'+value.locationid+'" >';
-                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+'</label>';
+                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+','+value.county+'</label>';
                   checkboxes_html+='</div>';
 
                     
@@ -1265,7 +1265,7 @@ function parseLocationsForSelect2(locations) {
             let results = locations.data.map((location) => {
                 return {
                     id: location.locationid,
-                    text: location.town
+                        text: location.town+','+location.county
                 };
             });
             console.log('results', results);
