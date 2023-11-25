@@ -450,12 +450,14 @@
                           >Post Code</label
                         >
                        <input
-                      type="number"
+                      type="text"
                       class="form-control"
                       id="postcode"
                       name="postcode"
                       required
                       placeholder="Post Code"
+                       minlength="11"
+                        maxlength="11"
                     />
                       </div>
                      

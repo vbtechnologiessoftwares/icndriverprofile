@@ -25,7 +25,7 @@
     </style>
 @endpush
 
-@section('title', 'Change Applications')
+@section('title', 'View Edit History')
 @section('content')
     <!-- Content -->
 
@@ -50,7 +50,7 @@
                     <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
-                                Change Applications
+                                View Edit History
 
                                 <a href="{{route('dashboard')}}" class="btn btn-primary" style="float: right;">Back to Dashboard</a>
                         </h5>

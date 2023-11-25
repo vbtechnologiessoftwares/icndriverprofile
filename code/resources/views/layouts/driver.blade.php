@@ -139,7 +139,7 @@
                                   <li>
                                     <a class="dropdown-item" href="{{route('edit_history')}}" >
                                       <i class="fa fa-clock"></i>
-                                      <span class="align-middle">Change Applications</span>
+                                      <span class="align-middle">View Edit History</span>
                                     </a>
                                   </li>
                                   

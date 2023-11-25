@@ -25,7 +25,7 @@
     </style>
 @endpush
 
-@section('title', 'Change Applications')
+@section('title', 'View Edit History')
 @section('content')
     <!-- Content -->
 
