@@ -456,8 +456,8 @@
                       name="postcode"
                       required
                       placeholder="Post Code"
-                       minlength="11"
-                        maxlength="11"
+                       minlength="8"
+                        maxlength="8"
                     />
                       </div>
                      
