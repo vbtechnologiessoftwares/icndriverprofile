@@ -160,7 +160,7 @@
                 <!-- Driver Messages -->
                 <div class="card card-action mb-4">
                     <div class="card-header align-items-center">
-                        <h5 class="card-action-title mb-0">{{ $driver->messages->count() ? 'Driver Messages' : 'No Messages Yet' }}
+                        <h5 class="card-action-title mb-0">Driver Messages
                         </h5>
                         {{-- Card Actions --}}
                         {{-- <div class="card-action-element btn-pinned">
@@ -179,6 +179,7 @@
                             </div>
                         </div> --}}
                     </div>
+
                     <div class="card-body driver-messages">
 
                         <div class="table-actions-jsn mb-2" style="text-align:right">
