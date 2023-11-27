@@ -589,7 +589,7 @@ if($licenseeditvalues->approved!=0){
                 $approved_by_admin='<span style="color:red">Pending</span>';
             }
 
-            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Revoke</button>';
+            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Cancel Request</button>';
             
 
             $result["data"][$key] = array(
@@ -799,9 +799,9 @@ if($licenseeditvalues->approved!=0){
         if($endStatus==1){
             $res = array(
                 'status' => 1,
-                'message' => 'Revoked Successfully',
+                'message' => 'Cancelled Successfully',
                 'alert_class' => 'alert-success',
-                'alert_message' => 'Revoked Successfully',
+                'alert_message' => 'Cancelled Successfully',
                 'exception'=>$exception
             );
         }else{
