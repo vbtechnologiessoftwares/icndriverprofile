@@ -4,7 +4,7 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase /driver/
+    RewriteBase /vedant/icn_live/
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

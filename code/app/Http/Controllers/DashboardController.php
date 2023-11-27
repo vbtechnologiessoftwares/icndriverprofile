@@ -164,6 +164,16 @@ class DashboardController extends Controller
 
         //dd($driver->photo->driversphoto);
         $data['driver_query']=$driver_query; 
+
+        $already_in_queue_to_approve=0;
+        $driver_edit_count=DriverEdit::where('driverid',$driverid)
+        ->where('approved','0')
+        ->count();
+        if($driver_edit_count>0)
+        {
+            $already_in_queue_to_approve=1;
+        }
+        $data['already_in_queue_to_approve']=$already_in_queue_to_approve;
         
         return view('driver_edit_modal')->with($data);        
     }
@@ -268,12 +278,12 @@ class DashboardController extends Controller
             //form field ends
 
             $update_data=array(
-                'firstname' => $firstname,
-                'lastname' => $lastname,
-                'phone'=>$phone,
-                'email'=>$email,
-                'businessurl'=>$businessurl,
-                'description'=>$description,
+                //'firstname' => $firstname, //have to approve
+                //'lastname' => $lastname, //have to approve
+                //'phone'=>$phone, //have to approve
+                //'email'=>$email, //have to approve
+                //'businessurl'=>$businessurl, //have to approve
+                //'description'=>$description, //have to approve
 
                 '4seatervehicle'=>$four_seatervehicle,
                 '8seatervehicle'=>$eight_seatervehicle,
@@ -284,12 +294,12 @@ class DashboardController extends Controller
                 'wheelchairfriendly'=>$wheelchairfriendly,
                 '6seatervehicle'=>$six_seatervehicle,
                 'longdistance'=>$longdistance,
-                'postcode'=>$postcode,
-                'county'=>$county,
-                'town'=>$town,
-                'businessurl'=>$businessurl,
-                'addressline2'=>$addressline2,
-                'addressline1'=>$addressline1,
+
+                //'postcode'=>$postcode, //have to approve
+                //'county'=>$county, //have to approve
+                //'town'=>$town, //have to approve
+                //'addressline2'=>$addressline2, //have to approve
+                //'addressline1'=>$addressline1, //have to approve
 
 
 

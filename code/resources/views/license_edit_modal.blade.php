@@ -47,7 +47,7 @@
            </div>
            @else
            <div class="alert alert-warning">
-             <p>To ensure data correctness and improve user experience, our internal team will be reviewing your change application. Once change is approved, your profile will be automatically updated. You can track the <a href="{{route('edit_history')}}">pending application</a> to get current status</p>
+             <p>To ensure data correctness and improve user experience, our internal team will be reviewing your change application. Once change is approved, your profile will be automatically updated. You can track the <a href="{{route('edit_history',array('tab'=>'license'))}}">pending application</a> to get current status</p>
            </div>
            @endif
            
