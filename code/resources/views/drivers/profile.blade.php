@@ -160,8 +160,7 @@
                 <!-- Driver Messages -->
                 <div class="card card-action mb-4">
                     <div class="card-header align-items-center">
-                        <h5 class="card-action-title mb-0"><i
-                                class='bx bx-list-ul bx-sm me-2'></i>{{ $driver->calls->count() ? 'Driver Messages' : 'No Messages Yet' }}
+                        <h5 class="card-action-title mb-0">{{ $driver->messages->count() ? 'Driver Messages' : 'No Messages Yet' }}
                         </h5>
                         {{-- Card Actions --}}
                         {{-- <div class="card-action-element btn-pinned">
