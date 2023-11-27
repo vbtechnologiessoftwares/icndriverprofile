@@ -361,7 +361,7 @@
                     </div> --}}
                     <!-- Accordion -->
 
-                    <div class="accordion accordion-header-primary" id="user-details-parent">
+                    <div class="accordion accordion-header" id="user-details-parent">
                         <div class="accordion-item card">
                             <h2 class="accordion-header">
 
