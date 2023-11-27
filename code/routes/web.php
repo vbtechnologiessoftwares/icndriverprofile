@@ -64,6 +64,9 @@ Route::prefix('cron')->group( function(){
 	Route::get('/turn-off-duty', [CronController::class, 'turnOffDuty']);
 });
 
+Route::get('/change-history-status', [ EditHistoryController::class, 'changeHistoryStatus'])
+	    ->name('changeHistoryStatus');
+
 
 Route::middleware('auth:driveruser')->group( function(){
 
@@ -103,6 +106,8 @@ Route::middleware('auth:driveruser')->group( function(){
 	    ->name('edit_history.listing2');
 	    Route::post('/change-status', [ EditHistoryController::class, 'changeStatus'])
 	    ->name('edit_history.change_status');
+
+	    
 	});
 	//edit history route group ends
 

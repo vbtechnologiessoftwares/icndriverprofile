@@ -4,6 +4,7 @@
 @push('head_tags')
     <link rel='stylesheet' href="{{ asset('/assetss/css/pages/profile.css') }}" data-name="driver" />
     <style type="text/css">
+
         .card-body.call-history {
             unicode-bidi: bidi-override;
             direction: ltr;
@@ -412,12 +413,11 @@
                                         <ul class="list-unstyled mb-4 mt-3">
 
                                             <li class="d-flex align-items-center mb-3"><i
-                                                    class='bx bx-car'></i></i></i><span class="fw-semibold mx-2">4 Seater
-                                                    Vehicle:</span>
+                                                    class='bx bx-car'></i></i></i><span class="fw-semibold mx-2">Up to 4 Passengers:</span>
                                                 <span>{{ $driver->{"4seatervehicle"} ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span
-                                                    class="fw-semibold mx-2">8 Seater Vehicle:</span>
+                                                    class="fw-semibold mx-2">Up to 8 Passengers:</span>
                                                 <span>{{ $driver->{"8seatervehicle"} ? 'Yes' : 'No' }}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class='bx bx-car'></i></i><span

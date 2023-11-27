@@ -9,6 +9,7 @@ class DriverMessage extends Model
 {
     protected $primaryKey = 'drivermessageid';
 
+    protected $fillable = ['drivermessageid', 'driverid', 'messagedatetime', 'messageid','messagestatus'];
     protected $casts = [
         'messagedatetime' => 'datetime',
         'messagestatus' => 'bool',

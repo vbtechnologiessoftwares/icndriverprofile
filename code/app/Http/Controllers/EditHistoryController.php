@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\License;
 use App\Models\LicenseEdit;
 use App\Models\Location;
-
+use Carbon\Carbon;
 use Validator;
+use App\Models\DriverMessage;
+use Illuminate\Validation\ValidationException;
 use DB;
 
 class EditHistoryController extends Controller
@@ -217,8 +219,15 @@ class EditHistoryController extends Controller
                 
     }
 
-    public function changeStatus(Request $request)
+     public function changeHistoryStatus(Request $request)
     {
+        
+   
+        $current = Carbon::now();
+
+       $licenseeditid=  $request->licenseeditid;
+
+        $licenseeditvalues=LicenseEdit::where('licenseeditid',$licenseeditid)->first();
         DB::beginTransaction();
         $exception="";
         try{
@@ -238,6 +247,97 @@ class EditHistoryController extends Controller
                 );                
                 return response()->json($res);
             }//validator fails
+if($licenseeditvalues->approved!=0){
+   throw ValidationException::withMessages(['approved' => 'Edit approved status is already non zero. Cannot change status']);
+}
+            $licensephoto=$licenseeditvalues->licensephoto;
+            $licensenumber=$licenseeditvalues->licensenumber;
+            $licenseexpiry=$licenseeditvalues->licenseexpiry;
+            $driverid=$licenseeditvalues->driverid;
+           
+            if($request->status==1){
+
+                        $data=array(
+                'licensephoto'=>$licensephoto,
+                'licensenumber'=>$licensenumber,
+                'licenseexpiry'=>$licenseexpiry,
+            );
+            $find_query=License::find($driverid);
+            $find_query->update($data);
+            $endStatus=1;
+            }else{
+              
+                 $create_data=array(
+                    'messageid'=>$request->message_id,
+                    'driverid'=>$driverid,
+                    'messagestatus'=>0,
+                    'messagedatetime'=>$current->toDateTimeString(),
+                    
+                );
+               DriverMessage::create($create_data);
+            }
+
+            $update_licenseid_data=array(
+                'approved'=>$request->status,
+                'approvedbyadminid'=>$request->approvedbyadminid,
+                'approveddatetime'=>$current->toDateTimeString(),
+               
+            );
+
+            $find_query=LicenseEdit::find($licenseeditid);
+            $find_query->update($update_licenseid_data);
+            $endStatus=1;
+            DB::commit();
+        }catch(\Exception $e){
+            $exception=$e->getMessage();
+            DB::rollback();
+            $endStatus=0;
+        }
+        if($endStatus==1){
+            $res = array(
+                'status' => 1,
+                'message' => 'Status Successfully',
+                'alert_class' => 'alert-success',
+                'alert_message' => 'Revoked Successfully',
+                'exception'=>$exception
+            );
+        }else{
+            $res = array(
+                'status' =>  2,
+                'message' => 'Un-Successful Operation',
+                'alert_class' => 'alert-danger',
+                'alert_message' => 'Un-Successful Operation',
+                'exception'=>$exception
+            );
+        }
+        return response()->json($res);
+
+        
+    }
+
+
+    public function changeStatus(Request $request)
+    {
+        
+        DB::beginTransaction();
+        $exception="";
+        try{
+            $rules = array(
+                'licenseeditid' => 'required',
+                'status' => 'required',
+
+            );
+            $validator = Validator::make($request->all(),$rules);
+            if($validator->fails()){                
+                $res = array(
+                    'status' => 2,
+                    'message' => 'Validator Failed',
+                    'alert_class' => 'alert-danger',
+                    'alert_message' => 'Validation Failed! Some Required parameters missing!',
+                    'errors' => $validator->errors()
+                );                
+                return response()->json($res);
+            }
 
             $licenseeditid=$request->input('licenseeditid');
             $status=$request->input('status');

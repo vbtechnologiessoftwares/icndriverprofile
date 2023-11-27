@@ -8,6 +8,10 @@
 
         width: 141px;
     }
+            nav#layout-navbar {
+    left: 0 !IMPORTANT;
+}
+
   
 </style>
 
