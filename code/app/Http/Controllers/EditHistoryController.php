@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\License;
 use App\Models\LicenseEdit;
+use App\Models\DriverEdit;
 use App\Models\Location;
 use Carbon\Carbon;
 use Validator;
@@ -20,11 +21,16 @@ class EditHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data=array();
         $driver = auth()->guard('driveruser')->user();
         $data['driver']=$driver;
+        if($request->has('tab')){
+            $data['tab']=$request->tab;
+        }else{
+            $data['tab']='';
+        }
 
         return view('drivers.edit_history')->with($data);
     }
@@ -348,6 +354,328 @@ if($licenseeditvalues->approved!=0){
                 'approved'=>$status,
             );
             $find_query=LicenseEdit::find($licenseeditid);
+            $find_query->update($data);
+            $endStatus=1;
+            DB::commit();
+        }catch(\Exception $e){
+            $exception=$e->getMessage();
+            DB::rollback();
+            $endStatus=0;
+        }
+        if($endStatus==1){
+            $res = array(
+                'status' => 1,
+                'message' => 'Revoked Successfully',
+                'alert_class' => 'alert-success',
+                'alert_message' => 'Revoked Successfully',
+                'exception'=>$exception
+            );
+        }else{
+            $res = array(
+                'status' =>  2,
+                'message' => 'Un-Successful Operation',
+                'alert_class' => 'alert-danger',
+                'alert_message' => 'Un-Successful Operation',
+                'exception'=>$exception
+            );
+        }
+        return response()->json($res);
+
+        
+    }
+
+    public function getListing3(Request $request)
+    {
+        $orderArray = array(
+            '0'=>'id',
+            '1'=>'firstname',
+            '2'=>'lastname',
+            '3'=>'phone',
+            '4'=>'email',
+            '5'=>'description',
+            '6'=>'businessurl',
+            '7'=>'addressline1',
+            '8'=>'addressline2',
+            '9'=>'town',
+            '10'=>'county',
+            '11'=>'postcode',
+            '12'=>'approveddatetime',
+            '13'=>'approved',
+            '14'=>'drivereditdatetime',
+        );
+        $where=array();
+        $datatableForm = $this->getDatatableData($request->all());
+        $driver = auth()->guard('driveruser')->user();
+        $driverid=$driver->driverid;
+
+        //$driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
+
+        $where[]=['driverid','=',$driverid];
+        $where[]=['approved','=','0'];
+        /*if($request->input('name')){
+            $where[]=['name','LIKE','%'.$request->input('name').'%'];
+        }*/
+        $query=DriverEdit::where($where);
+
+        $queryCloneObj = clone $query;
+        $totalCount = $queryCloneObj->count();
+        $query = clone $query;
+
+        $query =  $query
+        ->orderBy($orderArray[$datatableForm['orderColumn']],$datatableForm['orderMethod'])
+        ->skip($datatableForm['offset'])
+        ->take($datatableForm['length'])
+        ->get();
+        //->toarray();
+        
+        $result = array("data"=>array());
+        $i=1;
+
+        foreach ($query as $key => $value) { 
+
+            /*
+            0=pending;
+            1=approved;
+            2=rejected;
+            3=revoked
+            */  
+            $firstname=$value->firstname;
+            $lastname=$value->lastname;
+            $phone=$value->phone;
+            $email=$value->email;
+
+            $description=substr($value->description,0,10);
+            $businessurl=$value->businessurl;
+            $addressline1=$value->addressline1;
+            $addressline2=$value->addressline2;
+
+            $town=$value->town;
+            $county=$value->county;
+            $postcode=$value->postcode;
+
+            $approved_by_admin='<span style="color:red">Pending</span>';
+
+            $edit_date=$value->drivereditdatetime;
+            if(trim($value->approveddatetime)=='1000-01-01 00:00:00')
+            {
+                $approved_date='NA';
+            }else{
+                $approved_date=$value->approveddatetime;
+            }
+            if($value->approved=='0'){
+               $approved_by_admin='<span style="color:red">Pending</span>';
+            }
+            elseif($value->approved=='1'){
+               $approved_by_admin='<span style="color:green">Approved</span>';
+            }
+            elseif($value->approved=='2'){
+                $approved_by_admin='<span style="color:red">Rejected</span>';
+            }
+            elseif($value->approved=='3'){
+                $approved_by_admin='<span style="color:red">Revoked</span>';
+            }else{
+                $approved_by_admin='<span style="color:red">Pending</span>';
+            }
+
+            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Revoke</button>';
+            
+
+            $result["data"][$key] = array(
+                $i++,
+                $firstname,
+                $lastname,
+                $phone,
+                $email,
+                $description,
+                $businessurl,
+                $addressline1,
+                $addressline2,
+                $town,
+                $county,
+                $postcode,
+                $approved_date,
+                $approved_by_admin,
+                $edit_date,
+                $revoke_btn,
+            );
+            
+
+        }
+
+        $newData = array(
+          'draw'=>$datatableForm['draw'],
+          'recordsTotal'=>$totalCount,
+          'recordsFiltered'=>$totalCount,
+          'data'=>$result["data"]
+        );
+
+        return $newData;
+                
+    }
+
+    public function getListing4(Request $request)
+    {
+
+        $orderArray = array(
+            '0'=>'id',
+            '1'=>'firstname',
+            '2'=>'lastname',
+            '3'=>'phone',
+            '4'=>'email',
+            '5'=>'description',
+            '6'=>'businessurl',
+            '7'=>'addressline1',
+            '8'=>'addressline2',
+            '9'=>'town',
+            '10'=>'county',
+            '11'=>'postcode',
+            '12'=>'approveddatetime',
+            '13'=>'approved',
+            '14'=>'drivereditdatetime',
+        );
+        $where=array();
+        $datatableForm = $this->getDatatableData($request->all());
+        $driver = auth()->guard('driveruser')->user();
+        $driverid=$driver->driverid;
+
+        //$driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
+
+        $where[]=['driverid','=',$driverid];
+        $where[]=['approved','!=','0'];
+        /*if($request->input('name')){
+            $where[]=['name','LIKE','%'.$request->input('name').'%'];
+        }*/
+        $query=DriverEdit::where($where);
+
+        $queryCloneObj = clone $query;
+        $totalCount = $queryCloneObj->count();
+        $query = clone $query;
+
+        $query =  $query
+        ->orderBy($orderArray[$datatableForm['orderColumn']],$datatableForm['orderMethod'])
+        ->skip($datatableForm['offset'])
+        ->take($datatableForm['length'])
+        ->get();
+        //->toarray();
+        
+        $result = array("data"=>array());
+        $i=1;
+
+        foreach ($query as $key => $value) { 
+
+            /*
+            0=pending;
+            1=approved;
+            2=rejected;
+            3=revoked
+            */  
+            $firstname=$value->firstname;
+            $lastname=$value->lastname;
+            $phone=$value->phone;
+            $email=$value->email;
+
+            $description=substr($value->description,0,10);
+            $businessurl=$value->businessurl;
+            $addressline1=$value->addressline1;
+            $addressline2=$value->addressline2;
+
+            $town=$value->town;
+            $county=$value->county;
+            $postcode=$value->postcode;
+
+            $approved_by_admin='<span style="color:red">Pending</span>';
+
+            $edit_date=$value->drivereditdatetime;
+            if(trim($value->approveddatetime)=='1000-01-01 00:00:00')
+            {
+                $approved_date='NA';
+            }else{
+                $approved_date=$value->approveddatetime;
+            }
+            if($value->approved=='0'){
+               $approved_by_admin='<span style="color:red">Pending</span>';
+            }
+            elseif($value->approved=='1'){
+               $approved_by_admin='<span style="color:green">Approved</span>';
+            }
+            elseif($value->approved=='2'){
+                $approved_by_admin='<span style="color:red">Rejected</span>';
+            }
+            elseif($value->approved=='3'){
+                $approved_by_admin='<span style="color:red">Revoked</span>';
+            }else{
+                $approved_by_admin='<span style="color:red">Pending</span>';
+            }
+
+            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Revoke</button>';
+            
+
+            $result["data"][$key] = array(
+                $i++,
+                $firstname,
+                $lastname,
+                $phone,
+                $email,
+                $description,
+                $businessurl,
+                $addressline1,
+                $addressline2,
+                $town,
+                $county,
+                $postcode,
+                $approved_date,
+                $approved_by_admin,
+                $edit_date,
+                $revoke_btn,
+            );
+            
+
+        }
+
+        $newData = array(
+          'draw'=>$datatableForm['draw'],
+          'recordsTotal'=>$totalCount,
+          'recordsFiltered'=>$totalCount,
+          'data'=>$result["data"]
+        );
+
+        return $newData;
+                
+    
+    }
+    //this function is changing status of driver details edit
+    public function changeStatusDriver(Request $request)
+    {
+        
+        DB::beginTransaction();
+        $exception="";
+        try{
+            $rules = array(
+                'drivereditid' => 'required',
+                'status' => 'required',
+
+            );
+            $validator = Validator::make($request->all(),$rules);
+            if($validator->fails()){                
+                $res = array(
+                    'status' => 2,
+                    'message' => 'Validator Failed',
+                    'alert_class' => 'alert-danger',
+                    'alert_message' => 'Validation Failed! Some Required parameters missing!',
+                    'errors' => $validator->errors()
+                );                
+                return response()->json($res);
+            }
+
+            $drivereditid=$request->input('drivereditid');
+            $status=$request->input('status');
+            //$driver = auth()->guard('driveruser')->user();
+            //$driverid=$driver->driverid;
+            
+            $data=array(
+                'approved'=>$status,
+            );
+            $find_query=DriverEdit::find($drivereditid);
             $find_query->update($data);
             $endStatus=1;
             DB::commit();

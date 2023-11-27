@@ -12,7 +12,7 @@ class DriverEdit extends Model
     protected $table = 'driver_details_edits';
 
     protected $primaryKey = 'drivereditid';
-    protected $fillable =['drivereditdatetime','driverid','firstname','lastname','phone','email','description','businessurl','approved'];
+    protected $fillable =['drivereditdatetime','driverid','firstname','lastname','phone','email','description','businessurl','addressline1','addressline2','town','county','postcode','approved'];
     public $timestamps = false;
 
     /**
