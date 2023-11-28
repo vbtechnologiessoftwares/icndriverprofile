@@ -613,7 +613,7 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >up 6 Seater Vehicle </label
+                          >Up to 6 Passengers </label
                         >
                         <select
                           class="form-control"
@@ -621,7 +621,7 @@
                           required
                         >
                           <option disabled selected value>
-                            -- 6 Seater Vehicle --
+                            -- Up to 6 Passengers --
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>

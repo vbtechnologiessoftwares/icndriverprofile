@@ -307,7 +307,9 @@
                 var $this = $(this);
                 Swal.fire({
                     title: 'Are you sure?',
-                    html: "You want to Cancel Request!",
+
+                    html: "You want to cancel this change request!",
+
                     icon: 'warning',
                     showCancelButton: true,
                     //confirmButtonColor: '#3085d6',
@@ -328,7 +330,9 @@
                 var $this = $(this);
                 Swal.fire({
                     title: 'Are you sure?',
-                    html: "You want to Cancel Request!",
+
+                    html: "You want to cancel this change request!",
+
                     icon: 'warning',
                     showCancelButton: true,
                     //confirmButtonColor: '#3085d6',

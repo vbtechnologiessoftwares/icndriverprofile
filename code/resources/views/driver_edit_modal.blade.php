@@ -109,7 +109,7 @@
                <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="6seatervehicle" value="1" id="6seatervehicle" {{($driver_query->{"6seatervehicle"}==1)?'checked':''}}>
                   <label class="form-check-label" for="6seatervehicle">
-                    Up 6 Seater Vehicle
+                    Up to 6 Passengers
                   </label>
                 </div>
              </div>
