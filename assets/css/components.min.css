@@ -171,11 +171,6 @@ html p {
     line-height: 1.5rem
 }
 
-html .bg-full-screen-image {
-    background: -webkit-linear-gradient(bottom, #0250c5, #d43f8d);
-    background-size: cover
-}
-
 html .blank-page .content {
     margin-left: 0
 }

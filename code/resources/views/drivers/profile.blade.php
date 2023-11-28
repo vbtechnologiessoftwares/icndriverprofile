@@ -159,9 +159,16 @@
             <div class="col-xl-4 col-lg-5 col-md-5 mb-3">
                 <!-- Driver Messages -->
                 <div class="card card-action mb-4">
-                    <div class="card-header align-items-center">
-                        <h5 class="card-action-title mb-0">Driver Messages
-                        </h5>
+                    
+
+                            <h2 class="accordion-header">
+                                <button type="button" class="accordion-button {{$driver->messages->count() == 0 ? 'collapsed' : '' }}" data-bs-toggle="collapse"
+                                    data-bs-target="#driver-messages" aria-expanded="false">
+                                    Driver Messages
+                                </button>
+                            </h2>
+                            
+                       
                         {{-- Card Actions --}}
                         {{-- <div class="card-action-element btn-pinned">
                             <div class="dropdown">
@@ -178,7 +185,8 @@
                                 </ul>
                             </div>
                         </div> --}}
-                    </div>
+
+                        <div id="driver-messages" class="accordion-collapse collapse {{$driver->messages->count() == 0 ? '' : 'show' }}" data-bs-parent="#driver-messages-parent">
 
                     <div class="card-body driver-messages">
 
@@ -224,12 +232,13 @@
                                                 @endif
                                             </td>
 
-
-
                                         </tr>
                                     @endforeach
+                                    @if ($driver->messages->count() == 0) <tr><td colspan="2" style="text-align: center"> No unread messages ! </td></tr> @endif
+                                    
                                 </tbody>
                             </table>
+                            
                         </div>
                         {{-- <ul class=" ms-2">
                             @foreach ($driver->messages as $message)
@@ -247,6 +256,8 @@
                             @endforeach
                         </ul> --}}
                     </div>
+                        </div>
+
                 </div>
                 <!--/ Driver Message End -->
                 <!-- Driver Locations -->
@@ -543,13 +554,20 @@
                                                     @else
                                                     @endif
                                                 </li>
-                                                <a href="javascript:void(0)"
-                                                    class="btn rounded-pill btn-primary license-edit-btn"
-                                                    data-driverid="{{ $driver->driverid }}">
-                                                    <small class="list-inline-item fw-semibold">Edit Licence <i
-                                                            class="bx bx-pen"></i>
-                                                    </small>
-                                                </a>
+                                                <li class="d-flex align-items-center mb-3"><i
+                                                    class="bx bx-detail"></i><span
+                                                    class="fw-semibold mx-2">Assigning Authority:</span>
+                                                <span>{{ $driver->license->licenseauthority }}</span>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"
+                                                        class="btn rounded-pill btn-primary license-edit-btn"
+                                                        data-driverid="{{ $driver->driverid }}">
+                                                        <small class="list-inline-item fw-semibold">Edit Licence <i
+                                                                class="bx bx-pen"></i>
+                                                        </small>
+                                                    </a>
+                                                </li>
                                             </ul>
 
 
@@ -581,16 +599,13 @@
 
                                 <!-- Payment History -->
                                 <div class="card card-action mb-4 payment-history-mobile d-block  shadow-none">
-                                    <div class="card-header align-items-center">
-
-
-                                    </div>
+                
                                     <div class="card-body payment-history p-0">
                                         <ul class="list-unstyled mb-0">
 
                                             @foreach ($driver->payments as $payment)
                                                 <li class="mb-3">
-                                                    <div class="d-flex align-items-center">
+                                                    <div class="d-flex align-items-center" style="padding: 10px">
                                                         <div class="d-flex align-items-start">
                                                             <div class="me-2">
                                                                 <h6 class="mb-0">

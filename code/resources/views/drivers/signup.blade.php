@@ -244,8 +244,9 @@
     <!-- Section three -->
     <div class="container-fluid" id="auto_coverage_background">
       <div class="row justify-content-center pt-3">
-        <div class="col-md-12">
-          <h1 class="cc">Sign Up </h1>
+        <div class="col-md-12" style="text-align: center">
+          <small class="mr-25"> <a href="/"><img src="https://cabdriversdirect.com/images/logo.png" alt="Logo"></a></small>
+          <h1 class="cc">  New Driver Signup </h1>
 
         </div>
         
@@ -368,7 +369,7 @@
                       class="form-control"
                       id="business_url"
                       name="business_url"
-                      required
+                      
                       placeholder="Business URL"
                     />
                   </div>
@@ -405,7 +406,7 @@
                       class="form-control"
                       id="addressline2"
                       name="addressline2"
-                      required
+                      
                       placeholder="Address Line 2"
                     />
                       </div>
