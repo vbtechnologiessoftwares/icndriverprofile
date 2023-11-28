@@ -1109,7 +1109,7 @@
             let results = locations.data.map((location) => {
                 return {
                     id: location.locationid,
-                    text: location.town+','+location.county
+                    text: location.town+' , '+location.county
                 };
             });
             console.log('results', results);
@@ -1421,7 +1421,7 @@
 
                   checkboxes_html+='<div class="form-check form-check-inline">';
                   checkboxes_html+='<input class="form-check-input location-checkbox" type="checkbox" name="location_checkbox"  id="inlineCheckbox'+value.locationid+'" value="'+value.locationid+'" >';
-                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+','+value.county+'</label>';
+                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+' , '+value.county+'</label>';
                   checkboxes_html+='</div>';
 
                     
