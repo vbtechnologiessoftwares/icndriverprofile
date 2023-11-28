@@ -215,18 +215,20 @@ class DashboardController extends Controller
             $driver = auth()->guard('driveruser')->user();
             $driverid=$driver->driverid;
 
+
+
             //form field starts
-            $firstname=$request->input('firstname');
-            $lastname=$request->input('lastname');
-            $phone=$request->input('phone');
-            $email=$request->input('email');
-            $businessurl=$request->input('businessurl');
-            $description=$request->input('description');
-            $addressline1=$request->input('addressline1');
-            $addressline2=$request->input('addressline2');
-            $town=$request->input('town');
-            $county=$request->input('county');
-            $postcode=$request->input('postcode');
+            $firstname=trim($request->input('firstname'));
+            $lastname=trim($request->input('lastname'));
+            $phone=trim($request->input('phone'));
+            $email=trim($request->input('email'));
+            $businessurl=trim($request->input('businessurl'));
+            $description=trim($request->input('description'));
+            $addressline1=trim($request->input('addressline1'));
+            $addressline2=trim($request->input('addressline2'));
+            $town=trim($request->input('town'));
+            $county=trim($request->input('county'));
+            $postcode=trim($request->input('postcode'));
             
 
             $four_seatervehicle=0;
@@ -277,6 +279,29 @@ class DashboardController extends Controller
             }
             //form field ends
 
+            //get driver query starts
+            $get_query=Driver::where('driverid',$driverid)->first();
+            //by default we are sending entries to edit table
+            $send_entries_to_edit_table=1;
+            if(
+                isset($get_query) &&
+                $firstname==trim($get_query->firstname) &&
+                $lastname==trim($get_query->lastname) &&
+                $phone==trim($get_query->phone) &&
+                $email==trim($get_query->email) &&
+                $businessurl==trim($get_query->businessurl) &&
+                $description==trim($get_query->description) &&
+                $addressline1==trim($get_query->addressline1) &&
+                $addressline2==trim($get_query->addressline2) &&
+                $town==trim($get_query->town) &&
+                $county==trim($get_query->county) &&
+                $postcode==trim($get_query->postcode)
+            ){
+                //donot send entries to edit table
+                $send_entries_to_edit_table=0;
+            }
+            //get driver query ends
+
             $update_data=array(
                 //'firstname' => $firstname, //have to approve
                 //'lastname' => $lastname, //have to approve
@@ -323,7 +348,10 @@ class DashboardController extends Controller
                 'postcode'=>$postcode,
                 
             );
-            DriverEdit::create($edit_data);
+
+            if($send_entries_to_edit_table==1){                
+                DriverEdit::create($edit_data);
+            }
             
             $endStatus=1;
             DB::commit();
