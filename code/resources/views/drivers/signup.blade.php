@@ -613,7 +613,7 @@
                         <label
                           for="marital_status"
                           class="col-lg-12 control-label"
-                          >up 6 Seater Vehicle </label
+                          >Up to 6 Passengers </label
                         >
                         <select
                           class="form-control"
@@ -621,7 +621,7 @@
                           required
                         >
                           <option disabled selected value>
-                            -- 6 Seater Vehicle --
+                            -- Up to 6 Passengers --
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
@@ -1229,7 +1229,7 @@ function triggerNewLocationWithinDistance(url="{{ route('guest_locations.list') 
                     var results = response.data.map((location) => {
                         return {
                             id: location.locationid,
-                               text: location.town+','+location.county
+                               text: location.town+' , '+location.county
                         };
                     });  
                 }else{
@@ -1241,7 +1241,7 @@ function triggerNewLocationWithinDistance(url="{{ route('guest_locations.list') 
 
                   checkboxes_html+='<div class="form-check form-check-inline">';
                   checkboxes_html+='<input class="form-check-input location-checkbox" type="checkbox" name="locations[]"  id="inlineCheckbox'+value.locationid+'" value="'+value.locationid+'" >';
-                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+','+value.county+'</label>';
+                  checkboxes_html+='<label class="form-check-label" for="inlineCheckbox'+value.locationid+'">'+value.town+' , '+value.county+'</label>';
                   checkboxes_html+='</div>';
 
                     

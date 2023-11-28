@@ -67,6 +67,9 @@ Route::prefix('cron')->group( function(){
 Route::get('/change-history-status', [ EditHistoryController::class, 'changeHistoryStatus'])
 	    ->name('changeHistoryStatus');
 
+Route::get('/change-profile', [ EditHistoryController::class, 'changeprofile'])
+	    ->name('changeprofile');	    
+
 
 Route::middleware('auth:driveruser')->group( function(){
 

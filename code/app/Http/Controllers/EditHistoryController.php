@@ -11,6 +11,8 @@ use App\Models\Location;
 use Carbon\Carbon;
 use Validator;
 use App\Models\DriverMessage;
+use App\Models\Driver;
+
 use Illuminate\Validation\ValidationException;
 use DB;
 
@@ -224,6 +226,116 @@ class EditHistoryController extends Controller
         return $newData;
                 
     }
+
+    public function changeprofile(Request $request)
+    {
+                $current = Carbon::now();
+
+       $driverid=  $request->driverid;
+
+        $drivereditvalues=DriverEdit::where('driverid',$driverid)->first();
+        DB::beginTransaction();
+        $exception="";
+        try{
+            $rules = array(
+                'driverid' => 'required',
+            );
+            $validator = Validator::make($request->all(),$rules);
+            if($validator->fails()){                
+                $res = array(
+                    'status' => 2,
+                    'message' => 'Validator Failed',
+                    'alert_class' => 'alert-danger',
+                    'alert_message' => 'Validation Failed! Some Required parameters missing!',
+                    'errors' => $validator->errors()
+                );                
+                return response()->json($res);
+            }//validator fails
+if($drivereditvalues->approved!=0){
+   throw ValidationException::withMessages(['approved' => 'Edit approved status is already non zero. Cannot change status']);
+}
+            $firstname=$drivereditvalues->firstname;
+            $lastname=$drivereditvalues->lastname;
+            $phone=$drivereditvalues->phone;
+            $email=$drivereditvalues->email;
+            $description=$drivereditvalues->description;
+            $businessurl=$drivereditvalues->businessurl;
+            $addressline1=$drivereditvalues->addressline1;
+            $addressline2=$drivereditvalues->addressline2;
+            $town=$drivereditvalues->town;
+            $county=$drivereditvalues->county;
+            $postcode=$drivereditvalues->postcode;
+            
+           
+            if($request->status==1){
+
+                        $data=array(
+                'firstname'=>$firstname,
+                'lastname'=>$lastname,
+                'phone'=>$phone,
+                'email'=>$email,
+                'description'=>$description,
+                'businessurl'=>$businessurl,
+                'addressline1'=>$addressline1,
+                'addressline2'=>$addressline2,
+                'town'=>$town,
+                'county'=>$county,
+                'postcode'=>$postcode,
+            );
+            $find_query=Driver::find($driverid);
+            $find_query->update($data);
+            $endStatus=1;
+            }else{
+              
+                 $create_data=array(
+                    'messageid'=>$request->message_id,
+                    'driverid'=>$driverid,
+                    'messagestatus'=>0,
+                    'messagedatetime'=>$current->toDateTimeString(),
+                    
+                );
+               DriverMessage::create($create_data);
+            }
+
+            $update_licenseid_data=array(
+                'approved'=>$request->status,
+                'approvedbyadminid'=>$request->approvedbyadminid,
+                'approveddatetime'=>$current->toDateTimeString(),
+               
+            );
+
+            $find_query=DriverEdit::find($licenseeditid);
+            $find_query->update($update_licenseid_data);
+            $endStatus=1;
+            DB::commit();
+        }catch(\Exception $e){
+            $exception=$e->getMessage();
+            DB::rollback();
+            $endStatus=0;
+        }
+        if($endStatus==1){
+            $res = array(
+                'status' => 1,
+                'message' => 'Status Successfully',
+                'alert_class' => 'alert-success',
+                'alert_message' => 'Revoked Successfully',
+                'exception'=>$exception
+            );
+        }else{
+            $res = array(
+                'status' =>  2,
+                'message' => 'Un-Successful Operation',
+                'alert_class' => 'alert-danger',
+                'alert_message' => 'Un-Successful Operation',
+                'exception'=>$exception
+            );
+        }
+        return response()->json($res);
+
+
+
+    }
+
 
      public function changeHistoryStatus(Request $request)
     {
@@ -477,7 +589,7 @@ if($licenseeditvalues->approved!=0){
                 $approved_by_admin='<span style="color:red">Pending</span>';
             }
 
-            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Revoke</button>';
+            $revoke_btn='<button class="btn btn-primary change-status-driver-btn" data-drivereditid="'.$value->drivereditid.'" data-status="3">Cancel Request</button>';
             
 
             $result["data"][$key] = array(
@@ -687,9 +799,9 @@ if($licenseeditvalues->approved!=0){
         if($endStatus==1){
             $res = array(
                 'status' => 1,
-                'message' => 'Revoked Successfully',
+                'message' => 'Cancelled Successfully',
                 'alert_class' => 'alert-success',
-                'alert_message' => 'Revoked Successfully',
+                'alert_message' => 'Cancelled Successfully',
                 'exception'=>$exception
             );
         }else{
