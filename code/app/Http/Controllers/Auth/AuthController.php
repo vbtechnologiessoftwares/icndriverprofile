@@ -203,10 +203,8 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
               /*  'username' => 'required|unique:driver_details,username',*/
                 'phone_number' => 'required',
                 'email' => 'required|unique:driver_details,email',
-                'business_url'=>'required',
                 
                 'addressline1'=>'required',
-                'addressline2'=>'required',
                 'town'=>'required',
                 'county'=>'required',
                 'postcode'=>'required',
@@ -323,6 +321,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'email' => $request->input('email'),
                 'businessurl'=>$request->input('business_url'),
                 'password'=>md5($randomValue),
+                'password_reset_required'=>true,
                 'addressline1'=>$request->input('addressline1'),
                 'addressline2'=>$request->input('addressline2'),
                 'town'=>$request->input('town'),
@@ -405,7 +404,6 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             LicenseEdit::create($edit_license_data);
             //edit data ends
  $mailTo=$request->input('email');
-        $responder="vbtechnologiessoftwares@gmail.com";
          $subject = 'Welcome CabDriversDirect';
          Mail::send('email.signup',
                 [
@@ -413,10 +411,9 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                     'password'         => $randomValue,
                     'name'         => $request->input('firstname'),
                     'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $responder, $subject) {
+                ], function ($message) use ($mailTo, $subject) {
                 $message->to($mailTo)
-                        ->subject($subject)
-                        ->from($responder);
+                        ->subject($subject);
              });
 
             
