@@ -33,18 +33,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Cab Drivers Direct !</h1>
         <p>Hello {{$name}},</p>
-        <p>Congratulations on signing up for Your Company! Here are your account details:</p>
+        <p>Congratulations on signing up as driver on our platform ! Here are your account details:</p>
         <ul>
-            <li><strong>Name:</strong> {{$name}}</li>
             <li><strong>Password:</strong> {{$password}}</li>
             <li><strong>Email:</strong> {{$mailTo}}</li>
-            <li><strong>Company URL:</strong> <a href="https://cabdriversdirect.com/driver/">CabDriversDirect.com</a></li>
+            
         </ul>
+
+        <p> You can now login on driver portal <a href="https://cabdriversdirect.com/driver/login">here</a>
+
+        <p><b> Please Note: Your account will be reviewed by our admin team before you can mark yourself on duty </b></p>
         <p>Feel free to explore our platform and let us know if you have any questions or need assistance.</p>
         <p>Thank you for choosing Your Company!</p>
-        <p>Best regards,<br>Your Company Team</p>
+        <p>Best regards,<br>Cab Drivers Direct</p>
+        <small class="mr-25"> <a href="/"><img src="https://cabdriversdirect.com/images/logo.png"
+            alt="Logo"></a></small>
     </div>
 </body>
 </html>
