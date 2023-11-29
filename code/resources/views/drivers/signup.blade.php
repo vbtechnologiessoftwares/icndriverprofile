@@ -779,6 +779,23 @@
                     />
                       </div>
                     </div>
+                     <div class="row g-3">
+                      <div class="col-md-6">
+                        <label
+                          for="relationship_to_applicant"
+                          class="col-lg-12 control-label"
+                          >License Authority Master</label
+                        >
+                        
+                      <select class='form-control form-select' name='licenseauthority_master' id='licenseauthority_master' autocomplete="off" required>
+                        <option value=''>License Authority Master</option>
+                        @foreach($licenseauthoritymaster as $license)
+                        <option value="{{$license->rowid}}">{{$license->licenseauthority}}</option>
+                        @endforeach
+                      </select>
+                      </div>
+                      
+                    </div>
 
                    </div>
                 </div>

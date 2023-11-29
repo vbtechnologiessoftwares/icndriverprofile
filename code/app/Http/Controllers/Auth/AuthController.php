@@ -13,6 +13,7 @@ use App\Models\User;
 use Hash;
 use DB;
 use App\Models\Driver;
+use App\Models\Licenseauthoritymaster;
 use App\Models\DriverEdit;
 use App\Models\LicenseEdit;
 use App\Models\DriverLocation;
@@ -182,11 +183,11 @@ class AuthController extends Controller
         
 
 
-
+$licenseauthoritymaster = Licenseauthoritymaster::get();
 
 
         //$data['locations']=array();
-        return view('drivers.signup');
+        return view('drivers.signup', compact('licenseauthoritymaster'));
 
     }
     public function driverRegistrationFormStore(Request $request)
