@@ -313,15 +313,17 @@
                 <div class="row g-3">
                    <div class="col-md-6">
                     <label for="conf_password" class="col-lg-12 control-label"
-                      >Password</label
+                      >post Code</label
                     >
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
-                      id="password"
-                      name="password"
+                      id="postcode"
+                      name="postcode"
                       required
-                      placeholder="Password"
+                      placeholder="Post Code"
+                       minlength="8"
+                        maxlength="8"
                     />
                   </div>
                   <div class="col-md-6">
@@ -443,7 +445,7 @@
                     />
                       </div>
                     </div>
-                    <div class="row g-3">
+                   {{--  <div class="row g-3">
                       <div class="col-md-6">
                         <label
                           for="marital_status"
@@ -462,7 +464,7 @@
                     />
                       </div>
                      
-                    </div>
+                    </div> --}}
                 <br />
 
                 <div class="row g-3" style="margin-top: 30px">
@@ -492,13 +494,17 @@
                   <div id="field0">
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <label
-                          for="relationship_to_applicant"
-                          class="col-lg-12 control-label"
-                          >Up to 4 passengers</label
-                        >
+                        
+                         <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="4_seater_vehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Long Distance
+                  </label>
+                </div>
 
-                        <select
+                        
+
+                       {{--  <select
                           class="form-control"
                           name="4_seater_vehicle"
                           required
@@ -508,55 +514,46 @@
                           </option>
                           <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Up to 8 passengers</label
-                        >
-                        <select
-                          class="form-control"
-                          name="8_seater_vehicle"
-                          required
-                        >
-                          <option disabled selected value>
-                            -- Up to 8 passengers --
-                          </option>
-                          <option value="1">Yes</option>
-                          <option value="0">No</option>
-                          
-                        </select>
+                         <div class="form-check">
+                 <input class="form-check-input" type="checkbox" name="8_seater_vehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Up to 8 passengers
+                  </label>
+                </div>
+
+                       
+                        
                       </div>
                     </div>
 
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Estate Vehicle</label
-                        >
-                        <select
-                          class="form-control"
-                          name="estate_vehicle"
-                          required
-                        >
-                          <option disabled selected value>
-                            -- Select Estate Vehicle --
-                          </option>
-                         <option value="1">Yes</option>
-                          <option value="0">No</option>
-                        </select>
+                          <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="estate_vehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Estate Vehicle
+                  </label>
+                </div>
+
+                       
+                       
+
+                      
                       </div>
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Courier Vehicle</label
-                        >
-                        <select
+                        <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="courier_vehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Courier Vehicle
+                  </label>
+                </div>
+
+                        
+
+                        {{-- <select
                           class="form-control"
                           name="courier_vehicle"
                           required
@@ -566,19 +563,24 @@
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                     </div>
                  
 
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Executive Vehicle </label
-                        >
-                        <select
+                         <div class="form-check">
+           <input class="form-check-input" type="checkbox" name="executivevehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Executive Vehicle
+                  </label>
+                </div>
+
+                        
+                       
+
+                       {{--  <select
                           class="form-control"
                           name="executivevehicle"
                           required
@@ -588,15 +590,19 @@
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Airport/Seaport</label
-                        >
-                        <select
+                         <div class="form-check">
+         <input class="form-check-input" type="checkbox" name="airport_runs" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Airport/Seaport
+                  </label>
+                </div>
+
+                        
+
+                        {{-- <select
                           class="form-control"
                           name="airport_runs"
                           required
@@ -606,17 +612,21 @@
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                     </div>
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Up to 6 Passengers </label
-                        >
-                        <select
+                         <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="6seatervehicle" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Up to 6 Passengers
+                  </label>
+                </div>
+
+                        
+
+                        {{-- <select
                           class="form-control"
                           name="6seatervehicle"
                           required
@@ -626,15 +636,20 @@
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                       <div class="col-md-6">
-                        <label
-                          for="marital_status"
-                          class="col-lg-12 control-label"
-                          >Long Distance </label
-                        >
-                        <select
+ <div class="form-check">
+     <input class="form-check-input" type="checkbox" name="longdistance" value="1" id="check_four_seater_vehicle">
+                  <label class="form-check-label" for="longdistance">
+                    Long Distance
+                  </label>
+                </div>
+
+                       
+                        
+
+                        {{-- <select
                           class="form-control"
                           name="longdistance"
                           required
@@ -644,7 +659,7 @@
                           </option>
                          <option value="1">Yes</option>
                           <option value="0">No</option>
-                        </select>
+                        </select> --}}
                       </div>
                     </div>
              

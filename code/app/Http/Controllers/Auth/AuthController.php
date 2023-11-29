@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DriverMessage;
 use App\Models\Location;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
@@ -19,7 +19,7 @@ use App\Models\DriverLocation;
 use App\Models\License;
 use App\Models\DriverPhoto;
 use Validator;
-
+use Mail;
 
 class AuthController extends Controller
 {
@@ -179,6 +179,12 @@ class AuthController extends Controller
 
     public function driverRegistrationForm()
     {
+        
+
+
+
+
+
         //$data['locations']=array();
         return view('drivers.signup');
 
@@ -197,22 +203,22 @@ class AuthController extends Controller
                 'phone_number' => 'required',
                 'email' => 'required|unique:driver_details,email',
                 'business_url'=>'required',
-                'password'=>'required',
+                
                 'addressline1'=>'required',
                 'addressline2'=>'required',
                 'town'=>'required',
                 'county'=>'required',
                 'postcode'=>'required',
 
-                '4_seater_vehicle' => 'required',
-                '8_seater_vehicle' => 'required',
-                'estate_vehicle' => 'required',
-                'courier_vehicle'=>'required',
-                'executivevehicle'=>'required',
+            /*    '4_seater_vehicle' => 'required',
+                '8_seater_vehicle' => 'required',*/
+                //'estate_vehicle' => 'required',
+                //'courier_vehicle'=>'required',
+                //'executivevehicle'=>'required',
                 //'easy_access_vehicle'=>'required',
-                'airport_runs'=>'required',
-                '6seatervehicle'=>'required',
-                'longdistance'=>'required',
+                /*'airport_runs'=>'required',*/
+                /*'6seatervehicle'=>'required',*/
+                /*'longdistance'=>'required',*/
 
                 'driver_photo'=>'required',
                 'driver_licence_photo'=>'required',
@@ -226,22 +232,22 @@ class AuthController extends Controller
                 'phone_number.required' => 'This field is required',
                 'email.required' => 'This field is required',
                 'business_url.required'=>'This field is required',
-                'password.required'=>'This field is required',
+               
                 'addressline1.required'=>'This field is required',
                 'addressline2.required'=>'This field is required',
                 'town.required'=>'This field is required',
                 'county.required'=>'This field is required',
                 'postcode.required'=>'This field is required',
 
-                '4_seater_vehicle.required' => 'This field is required',
-                '8_seater_vehicle.required' => 'This field is required',
-                'estate_vehicle.required' => 'This field is required',
-                'courier_vehicle.required'=>'This field is required',
-                'executivevehicle.required'=>'This field is required',
+                /*'4_seater_vehicle.required' => 'This field is required',*/
+                /*'8_seater_vehicle.required' => 'This field is required',*/
+                /*'estate_vehicle.required' => 'This field is required',*/
+                /*'courier_vehicle.required'=>'This field is required',*/
+                /*'executivevehicle.required'=>'This field is required',*/
                 //'easy_access_vehicle.required'=>'This field is required',
-                'airport_runs.required'=>'This field is required',
-                '6seatervehicle.required'=>'This field is required',
-                'longdistance.required'=>'This field is required',
+                /*'airport_runs.required'=>'This field is required',*/
+                /*'6seatervehicle.required'=>'This field is required',*/
+                /*'longdistance.required'=>'This field is required',*/
 
                 'driver_photo.required'=>'This field is required',
                 'driver_licence_photo.required'=>'This field is required',
@@ -251,6 +257,50 @@ class AuthController extends Controller
 
                 //'locations.required'=>'This field is required',
             );
+
+            $four_seatervehicle=0;
+            $eight_seatervehicle=0;
+            $estate_vehicle=0;
+            $courier_vehicle=0;
+            $executivevehicle=0;
+            $airport_runs=0;
+            $six_seatervehicle=0;
+            $longdistance=0;
+
+             if($request->has('6seatervehicle'))
+            {
+                $six_seatervehicle=1;
+            }if($request->has('longdistance'))
+            {
+                $longdistance=1;
+            }
+
+            if($request->has('4_seater_vehicle'))
+            {
+                $four_seatervehicle=1;
+            }
+            if($request->has('8_seater_vehicle'))
+            {
+                $eight_seatervehicle=1;
+            }
+            if($request->has('estate_vehicle'))
+            {
+                $estate_vehicle=1;
+            }
+            if($request->has('courier_vehicle'))
+            {
+                $courier_vehicle=1;
+            }
+            if($request->has('executivevehicle'))
+            {
+                $executivevehicle=1;
+            }
+            if($request->has('airport_runs'))
+            {
+                $airport_runs=1;
+            }
+
+
             $validator = Validator::make($request->all(),$rules,$rulesMessages);
             if($validator->fails()){                
                 $res = array(
@@ -260,6 +310,9 @@ class AuthController extends Controller
                 );                
                 return response()->json($res);
             }//validator fails
+              $characters = '0123456789abcdefghijklmnopqrstuvwxyz#!&';
+            $digits = 8;
+            $randomValue = Str::random($digits, $characters);
 
             $create_data=array(
                /* 'username' => $request->input('username'),*/
@@ -268,24 +321,29 @@ class AuthController extends Controller
                 'phone' => $request->input('phone_number'),
                 'email' => $request->input('email'),
                 'businessurl'=>$request->input('business_url'),
-                'password'=>md5($request->input('password')),
+                'password'=>md5($randomValue),
                 'addressline1'=>$request->input('addressline1'),
                 'addressline2'=>$request->input('addressline2'),
                 'town'=>$request->input('town'),
                 'county'=>$request->input('county'),
                 'postcode'=>$request->input('postcode'),
 
-                '4seatervehicle' => $request->input('4_seater_vehicle'),
-                '8seatervehicle' => $request->input('8_seater_vehicle'),
-                'estatevehicle' => $request->input('estate_vehicle'),
-                'courier'=>$request->input('courier_vehicle'),
-                'executivevehicle'=>$request->input('executivevehicle'),
-                'airportruns'=>$request->input('airport_runs'),
-                '6seatervehicle'=>$request->input('6seatervehicle'),
-                'longdistance'=>$request->input('longdistance'),
+                '4seatervehicle' => $four_seatervehicle,
+                '8seatervehicle' => $eight_seatervehicle,
+                'estatevehicle' => $estate_vehicle,
+                'courier'=>$courier_vehicle,
+                'executivevehicle'=>$executivevehicle,
+                'airportruns'=>$airport_runs,
+                '6seatervehicle'=>$six_seatervehicle,
+                'longdistance'=>$longdistance,
 
                 'signupdate'=>date('Y-m-d')
             );
+
+
+            
+
+
 
             $driver_create_query=Driver::create($create_data);
             $driverid=$driver_create_query->driverid;
@@ -345,6 +403,20 @@ class AuthController extends Controller
             );
             LicenseEdit::create($edit_license_data);
             //edit data ends
+ $mailTo=$request->input('email');
+        $responder="vbtechnologiessoftwares@gmail.com";
+         $subject = 'Welcome CabDriversDirect';
+         Mail::send('email.signup',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $request->input('firstname'),
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $responder, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject)
+                        ->from($responder);
+             });
 
             
             $endStatus=1;

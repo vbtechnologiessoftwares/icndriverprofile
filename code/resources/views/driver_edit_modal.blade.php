@@ -12,35 +12,35 @@
             </div>
             @if($already_in_queue_to_approve==0)
             <div class="row" style="margin-bottom: 10px">
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">First Name</label>
                   <input  class="form-control" type="text" name="firstname" value="{{$driver_query->firstname}}"/>
                   <span class="invalid-feedback" id="firstname"></span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Last Name</label>
                   <input  class="form-control" type="text" name="lastname" value="{{$driver_query->lastname}}"/>
                   <span class="invalid-feedback" id="lastname"></span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Contact</label>
                   <input  class="form-control" type="text" name="phone" value="{{$driver_query->phone}}"/>
                   <span class="invalid-feedback" id="phone"></span>
                 </div>
               </div>	
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Email</label>
                   <input  class="form-control" type="text" name="email" value="{{$driver_query->email}}"/>
                   <span class="invalid-feedback" id="email"></span>
                 </div>
               </div>	
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Business URL</label>
                   <input  class="form-control" type="text" name="businessurl" value="{{$driver_query->businessurl}}"/>
@@ -49,35 +49,35 @@
               </div>	
                <h4 style="margin-top:10px">Address</h4>
                <div class="row">
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Address Line 1</label>
                   <input  class="form-control" type="text" name="addressline1" value="{{$driver_query->addressline1}}"/>
                   <span class="invalid-feedback" id="addressline1"></span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Address Line 2</label>
                   <input  class="form-control" type="text" name="addressline2" value="{{$driver_query->addressline2}}"/>
                   <span class="invalid-feedback" id="addressline2"></span>
                 </div>
               </div>
-               <div class="col-6">
+               <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Town</label>
                   <input  class="form-control" type="text" name="town" value="{{$driver_query->town}}"/>
                   <span class="invalid-feedback" id="town"></span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">County</label>
                   <input  class="form-control" type="text" name="county" value="{{$driver_query->county}}"/>
                   <span class="invalid-feedback" id="county"></span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Post Code</label>
                   <input  class="form-control" type="text" name="postcode" value="{{$driver_query->postcode}}"/>
