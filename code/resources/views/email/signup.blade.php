@@ -33,7 +33,6 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Cab Drivers Direct !</h1>
         <p>Hello {{$name}},</p>
         <p>Congratulations on signing up as driver on our platform ! Here are your account details:</p>
         <ul>
