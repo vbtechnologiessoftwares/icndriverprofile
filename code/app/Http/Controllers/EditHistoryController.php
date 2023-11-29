@@ -283,10 +283,48 @@ if($drivereditvalues->approved!=0){
                 'postcode'=>$postcode,
             );
             $find_query=Driver::find($driverid);
+
+             /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+        
+         $subject = 'Profile changes Approved';
+         Mail::send('email.personalinfoapproved',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                        
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
+
             $find_query->update($data);
             $endStatus=1;
             }else{
               
+               /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+      
+         $subject = 'Profile changes Approved';
+         Mail::send('email.personalinfoareject',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                        
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+        
                  $create_data=array(
                     'messageid'=>$request->message_id,
                     'driverid'=>$driverid,
@@ -381,10 +419,45 @@ if($licenseeditvalues->approved!=0){
                 'licenseexpiry'=>$licenseexpiry,
             );
             $find_query=License::find($driverid);
+        /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+        
+         $subject = 'Your request to update License Details has been approved';
+         Mail::send('email.licenseapproved',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                      
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
             $find_query->update($data);
             $endStatus=1;
             }else{
-              
+                /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+       
+         $subject = 'Your request to update License Details has been rejected';
+         Mail::send('email.licensereject',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                       
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
                  $create_data=array(
                     'messageid'=>$request->message_id,
                     'driverid'=>$driverid,

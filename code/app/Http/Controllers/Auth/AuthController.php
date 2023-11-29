@@ -200,6 +200,9 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             $rules = array(
                 'firstname' => 'required',
                 'lastname' => 'required',
+                'licenseauthority_master' => 'required',
+
+                
               /*  'username' => 'required|unique:driver_details,username',*/
                 'phone_number' => 'required',
                 'email' => 'required|unique:driver_details,email',
@@ -239,6 +242,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town.required'=>'This field is required',
                 'county.required'=>'This field is required',
                 'postcode.required'=>'This field is required',
+                'licenseauthority_master.required'=>'This field is required',
 
                 /*'4_seater_vehicle.required' => 'This field is required',*/
                 /*'8_seater_vehicle.required' => 'This field is required',*/
@@ -328,6 +332,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town'=>$request->input('town'),
                 'county'=>$request->input('county'),
                 'postcode'=>$request->input('postcode'),
+                'licenseauthority_master'=>$request->input('licenseauthority_master'),
 
                 '4seatervehicle' => $four_seatervehicle,
                 '8seatervehicle' => $eight_seatervehicle,
@@ -404,19 +409,18 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             );
             LicenseEdit::create($edit_license_data);
             //edit data ends
- $mailTo=$request->input('email');
-        $responder="vbtechnologiessoftwares@gmail.com";
+        $mailTo=$request->input('email');
+       
          $subject = 'Welcome CabDriversDirect';
          Mail::send('email.signup',
                 [
-                    
                     'password'         => $randomValue,
                     'name'         => $request->input('firstname'),
                     'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $responder, $subject) {
+                ], function ($message) use ($mailTo, $subject) {
                 $message->to($mailTo)
-                        ->subject($subject)
-                        ->from($responder);
+                        ->subject($subject);
+                      
              });
 
             
