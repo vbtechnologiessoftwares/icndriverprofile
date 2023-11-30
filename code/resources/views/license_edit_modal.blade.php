@@ -27,6 +27,18 @@
                   <span class="invalid-feedback" id="licenseexpiry"></span>
                 </div>
                 <div class="form-group">
+                  <label class="form-label">Assigning Authority</label>
+                    
+                  <select class='form-control' name='licenseauthority'  id='licenseauthority' autocomplete="off" required>
+                                                      <option value=''>Assigning Authority</option>
+                                                      @foreach($licenseauthoritymaster as $licenseaut)
+                                                      <option value="{{$licenseaut->rowid}}" {{$license_query->licenseauthority == $licenseaut ->rowid ? 'selected' : ''}}>{{$licenseaut->licenseauthority}}</option>
+                                                      @endforeach
+                                                  </select>
+                 
+                  <span class="invalid-feedback" id="licenseexpiry"></span>
+                </div>
+                <div class="form-group">
                   <label class="form-label">License Image</label>
                   <input id="licenseimage" class="form-control" type="file" name="licensephoto"/>
                   <span class="invalid-feedback" id="licensephoto"></span>

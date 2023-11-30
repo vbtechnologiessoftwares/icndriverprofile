@@ -557,7 +557,9 @@
                                                 <li class="d-flex align-items-center mb-3"><i
                                                     class="bx bx-detail"></i><span
                                                     class="fw-semibold mx-2">Assigning Authority:</span>
-                                                <span>{{ $driver->license->licenseauthority }}</span>
+                                                 @if (isset($driver->license->licenseauthoritymaster->licenseauthority) && $driver->license->licenseauthoritymaster->licenseauthority != '')
+                                                <span>{{ $driver->license->licenseauthoritymaster->licenseauthority }}</span>
+                                                @endif
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)"

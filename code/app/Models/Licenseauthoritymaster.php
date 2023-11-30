@@ -12,4 +12,6 @@ class Licenseauthoritymaster extends Model
     
     
        protected $fillable = ['rowid ','licenseauthority'];
+
+       
 }

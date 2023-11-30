@@ -45,6 +45,7 @@ class EditHistoryController extends Controller
           '2'=>'approveddatetime',
           '3'=>'approved',
           '4'=>'licenseeditdatetime',
+          '5'=>'licenseauthority',
         );
         $where=array();
         $datatableForm = $this->getDatatableData($request->all());
@@ -116,6 +117,7 @@ class EditHistoryController extends Controller
                 $approved_date,
                 $approved_by_admin,
                 $edit_date,
+                $value->licenseauthority,
                 $revoke_btn,
             );
             
@@ -210,6 +212,7 @@ class EditHistoryController extends Controller
                 $license_photo,
                 $approved_date,
                 $approved_by_admin,
+                $value->licenseauthority,
                 $edit_date,
             );
             
@@ -225,6 +228,133 @@ class EditHistoryController extends Controller
 
         return $newData;
                 
+    }
+     public function driversinupinfo(Request $request)
+    {
+                $current = Carbon::now();
+
+       $driverid=  $request->driverid;
+
+        $drivereditvalues=DriverEdit::where('driverid',$driverid)->first();
+        DB::beginTransaction();
+        $exception="";
+        try{
+            $rules = array(
+                'driverid' => 'required',
+            );
+            $validator = Validator::make($request->all(),$rules);
+            if($validator->fails()){                
+                $res = array(
+                    'status' => 2,
+                    'message' => 'Validator Failed',
+                    'alert_class' => 'alert-danger',
+                    'alert_message' => 'Validation Failed! Some Required parameters missing!',
+                    'errors' => $validator->errors()
+                );                
+                return response()->json($res);
+            }//validator fails
+if($drivereditvalues->approved!=0){
+   throw ValidationException::withMessages(['approved' => 'Edit approved status is already non zero. Cannot change status']);
+}
+            $adminapproved =$drivereditvalues->approved;
+          
+            
+           
+            if($request->status==1){
+
+                        $data=array(
+                'approved'=>1,
+                
+            );
+            $find_query=Driver::find($driverid);
+
+             /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+        
+         $subject = 'Profile changes Approved';
+         Mail::send('email.driversinupapproved',
+                [
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                        
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
+
+            $find_query->update($data);
+            $endStatus=1;
+            }else{
+              
+               /*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+      
+         $subject = 'Profile changes Approved';
+         Mail::send('email.driversinupreject',
+                [
+                    
+                    'password'         => $randomValue,
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                        
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+        
+                 $create_data=array(
+                    'messageid'=>$request->message_id,
+                    'driverid'=>$driverid,
+                    'messagestatus'=>0,
+                    'messagedatetime'=>$current->toDateTimeString(),
+                    
+                );
+               DriverMessage::create($create_data);
+            }
+
+            $update_licenseid_data=array(
+                'approved'=>$request->status,
+                'approvedbyadminid'=>$request->approvedbyadminid,
+                'approveddatetime'=>$current->toDateTimeString(),
+               
+            );
+
+            $find_query=DriverEdit::find($licenseeditid);
+            $find_query->update($update_licenseid_data);
+            $endStatus=1;
+            DB::commit();
+        }catch(\Exception $e){
+            $exception=$e->getMessage();
+            DB::rollback();
+            $endStatus=0;
+        }
+        if($endStatus==1){
+            $res = array(
+                'status' => 1,
+                'message' => 'Status Successfully',
+                'alert_class' => 'alert-success',
+                'alert_message' => 'Revoked Successfully',
+                'exception'=>$exception
+            );
+        }else{
+            $res = array(
+                'status' =>  2,
+                'message' => 'Un-Successful Operation',
+                'alert_class' => 'alert-danger',
+                'alert_message' => 'Un-Successful Operation',
+                'exception'=>$exception
+            );
+        }
+        return response()->json($res);
+
+
+
     }
 
     public function changeprofile(Request $request)

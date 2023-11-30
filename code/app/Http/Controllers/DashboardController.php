@@ -38,13 +38,15 @@ class DashboardController extends Controller
             'calls.location',
             'payments',
             'license',
+            'license.licenseauthoritymaster',
             'messages'=>function($q){
                 $q->where('messagestatus','0');
                 $q->orderBy('messagedatetime','desc');
             }
         ])
         ->first();
-        
+      /*  dd($data['driver']);*/
+
         //return view('drivers.profile', compact('driver', 'locations'));
         return view('drivers.profile')->with($data);
 

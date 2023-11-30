@@ -192,7 +192,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
     }
     public function driverRegistrationFormStore(Request $request)
     {
-        
+        /*dd($request);*/
 
         DB::beginTransaction();
         $exception="";
@@ -200,7 +200,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             $rules = array(
                 'firstname' => 'required',
                 'lastname' => 'required',
-                'licenseauthority_master' => 'required',
+                /*'licenseauthority_master' => 'required',*/
 
                 
               /*  'username' => 'required|unique:driver_details,username',*/
@@ -240,7 +240,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town.required'=>'This field is required',
                 'county.required'=>'This field is required',
                 'postcode.required'=>'This field is required',
-                'licenseauthority_master.required'=>'This field is required',
+               /* 'licenseauthority_master.required'=>'This field is required',*/
 
                 /*'4_seater_vehicle.required' => 'This field is required',*/
                 /*'8_seater_vehicle.required' => 'This field is required',*/
@@ -331,7 +331,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town'=>$request->input('town'),
                 'county'=>$request->input('county'),
                 'postcode'=>$request->input('postcode'),
-                'licenseauthority_master'=>$request->input('licenseauthority_master'),
+                
 
                 '4seatervehicle' => $four_seatervehicle,
                 '8seatervehicle' => $eight_seatervehicle,
@@ -381,6 +381,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'licensephoto'=>$driver_licence_photo,
                 'licensenumber'=>$request->input('licensenumber'),
                 'licenseexpiry'=>$request->input('licenseexpiry'),
+                'licenseauthority'=>$request->input('licenseauthority_master'),
             );
             License::create($create_license_data);
 
@@ -405,6 +406,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'licensephoto'=>$driver_licence_photo,
                 'licensenumber'=>$request->input('licensenumber'),
                 'licenseexpiry'=>$request->input('licenseexpiry'),
+                'licenseauthority'=>$request->input('licenseauthority_master'),
             );
             LicenseEdit::create($edit_license_data);
             //edit data ends

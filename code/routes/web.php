@@ -68,7 +68,11 @@ Route::get('/change-history-status', [ EditHistoryController::class, 'changeHist
 	    ->name('changeHistoryStatus');
 
 Route::get('/change-profile', [ EditHistoryController::class, 'changeprofile'])
-	    ->name('changeprofile');	    
+	    ->name('changeprofile');
+
+Route::get('/driver-sinup-info', [ EditHistoryController::class, 'driversinupinfo'])
+	    ->name('driversinupinfo');
+
 
 
 Route::middleware('auth:driveruser')->group( function(){

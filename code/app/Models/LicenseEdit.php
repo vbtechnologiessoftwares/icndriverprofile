@@ -12,7 +12,7 @@ class LicenseEdit extends Model
     protected $table = 'driver_licences_edits';
 
     protected $primaryKey = 'licenseeditid';
-    protected $fillable =['driverid','licensephoto','approved','approvedbyadminid','approveddatetime','licensenumber','licenseexpiry'];
+    protected $fillable =['driverid','licensephoto','approved','approvedbyadminid','approveddatetime','licensenumber','licenseauthority','licenseexpiry'];
     public $timestamps = false;
 
     /**
@@ -23,5 +23,9 @@ class LicenseEdit extends Model
     public function driver(): BelongsTo
     {
         return $this->belongsTo(Driver::class, 'driverid', 'driverid');
+    }
+    public function licenseauthoritymaster(): BelongsTo
+    {
+        return $this->belongsTo(Licenseauthoritymaster::class, 'licenseauthority', 'licenseauthority');
     }
 }

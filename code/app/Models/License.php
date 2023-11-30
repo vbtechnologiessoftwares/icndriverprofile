@@ -12,7 +12,7 @@ class License extends Model
     protected $table = 'driver_licences';
 
     protected $primaryKey = 'licenseid';
-    protected $fillable = ['driverid', 'licensephoto','licensenumber','licenseexpiry'];
+    protected $fillable = ['driverid', 'licensephoto','licensenumber','licenseexpiry','licenseauthority'];
     public $timestamps = false;
 
     /**
@@ -23,5 +23,9 @@ class License extends Model
     public function driver(): BelongsTo
     {
         return $this->belongsTo(Driver::class, 'driverid', 'driverid');
+    }
+    public function licenseauthoritymaster(): BelongsTo
+    {
+        return $this->belongsTo(Licenseauthoritymaster::class, 'licenseauthority', 'rowid');
     }
 }

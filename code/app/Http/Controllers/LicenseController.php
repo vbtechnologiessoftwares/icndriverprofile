@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\License;
 use App\Models\Driver;
 use App\Models\LicenseEdit;
-
+use App\Models\Licenseauthoritymaster;
 use Validator;
 use DB;
 
@@ -78,11 +78,12 @@ class LicenseController extends Controller
         $license_query=License::where('driverid',$driverid)->first();
 
         $driver_query=Driver::where('driverid',$driverid)->first();
-
+        $licenseauthoritymaster = Licenseauthoritymaster::all();
         
         $data['license_query']=$license_query; 
         $data['driver_query']=$driver_query; 
         $data['already_in_queue_to_approve']=$already_in_queue_to_approve; 
+        $data['licenseauthoritymaster']=$licenseauthoritymaster; 
         
         return view('license_edit_modal')->with($data);
     }
@@ -128,6 +129,7 @@ class LicenseController extends Controller
                 'driverid'=>$driverid,
                 'licensenumber'=>$request->input('licensenumber'),
                 'licenseexpiry'=>$request->input('licenseexpiry'),
+                'licenseauthority'=>$request->input('licenseauthority'),
                 'licensephoto'=>$licensephoto
             );
             LicenseEdit::create($create_data);
