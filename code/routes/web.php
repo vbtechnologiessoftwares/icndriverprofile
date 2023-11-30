@@ -70,7 +70,7 @@ Route::get('/change-history-status', [ EditHistoryController::class, 'changeHist
 Route::get('/change-profile', [ EditHistoryController::class, 'changeprofile'])
 	    ->name('changeprofile');
 
-Route::get('/driver-sinup-info', [ EditHistoryController::class, 'driversinupinfo'])
+Route::get('/signup/review', [ EditHistoryController::class, 'driversinupinfo'])
 	    ->name('driversinupinfo');
 
 

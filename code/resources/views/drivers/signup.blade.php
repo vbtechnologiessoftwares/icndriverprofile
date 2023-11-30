@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style">
-
+<style type="text/css">
+    .row g-3 {
+    margin-bottom: 1rem;
+}
+</style>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -377,7 +381,7 @@
                         <div class="col-md-12 px-3">
                             <div id="field">
                                 <div id="field0">
-                                    <div class="row g-3">
+                                    <div class="row g-3" style="margin-bottom: 1rem !important;">
                                         <div class="col-md-6">
 
                                             <div class="form-check">
@@ -403,7 +407,7 @@
 
                                     </div>
 
-                                    <div class="row g-3">
+                                    <div class="row g-3" style="margin-bottom: 1rem !important;">
                                         <div class="col-md-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
@@ -428,7 +432,7 @@
                                     </div>
 
 
-                                    <div class="row g-3">
+                                    <div class="row g-3" style="margin-bottom: 1rem !important;">
                                         <div class="col-md-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
@@ -450,7 +454,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row g-3">
+                                    <div class="row g-3" style="margin-bottom: 1rem !important;">
 
                                         <div class="col-md-6">
                                             <div class="form-check">

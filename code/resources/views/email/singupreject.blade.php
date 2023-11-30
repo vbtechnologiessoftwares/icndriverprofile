@@ -35,7 +35,7 @@
     <div class="container">
         <h1>Welcome Cab Drivers Direct !</h1>
         <p>Hello {{$name}},</p>
-    <p>{{$subject}}:</p>
+        <p>Your Driver Details has been rejected:</p>
         <ul>
             <li><strong>Name:</strong> {{$name}}</li>
             <li><strong>Email:</strong> {{$mailTo}}</li>

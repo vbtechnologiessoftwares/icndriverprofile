@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Validator;
 use App\Models\DriverMessage;
 use App\Models\Driver;
+use Mail;
 
 use Illuminate\Validation\ValidationException;
 use DB;
@@ -235,12 +236,15 @@ class EditHistoryController extends Controller
 
        $driverid=  $request->driverid;
 
-        $drivereditvalues=DriverEdit::where('driverid',$driverid)->first();
+        /*$drivereditvalues=DriverEdit::where('drivereditid',$driverid)->first();*/
+        $drivervalues=Driver::where('driverid',$driverid)->first();
         DB::beginTransaction();
         $exception="";
         try{
             $rules = array(
                 'driverid' => 'required',
+                'status' => 'required',
+
             );
             $validator = Validator::make($request->all(),$rules);
             if($validator->fails()){                
@@ -253,62 +257,20 @@ class EditHistoryController extends Controller
                 );                
                 return response()->json($res);
             }//validator fails
-if($drivereditvalues->approved!=0){
-   throw ValidationException::withMessages(['approved' => 'Edit approved status is already non zero. Cannot change status']);
+if($drivervalues->adminapproved==1){
+   throw ValidationException::withMessages(['approved' => 'Account is already Approved Cannot Change Status']);
 }
-            $adminapproved =$drivereditvalues->approved;
-          
-            
-           
-            if($request->status==1){
+             if($request->status==1){
 
                         $data=array(
-                'approved'=>1,
+                        'adminapproved'=>$request->status,
                 
             );
             $find_query=Driver::find($driverid);
-
-             /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-        
-         $subject = 'Profile changes Approved';
-         Mail::send('email.driversinupapproved',
-                [
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                        
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
-
-
             $find_query->update($data);
             $endStatus=1;
             }else{
-              
-               /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-      
-         $subject = 'Profile changes Approved';
-         Mail::send('email.driversinupreject',
-                [
-                    
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                        
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
-        
-                 $create_data=array(
+               $create_data=array(
                     'messageid'=>$request->message_id,
                     'driverid'=>$driverid,
                     'messagestatus'=>0,
@@ -325,10 +287,32 @@ if($drivereditvalues->approved!=0){
                
             );
 
-            $find_query=DriverEdit::find($licenseeditid);
+            $find_query=DriverEdit::where('driverid',$driverid)->first();
+            $find_query->update($update_licenseid_data);
+
+                $find_query=LicenseEdit::where('driverid',$driverid)->first();
             $find_query->update($update_licenseid_data);
             $endStatus=1;
             DB::commit();
+                      $mailstatus=$request->status==1?'approved':'rejected';
+
+/*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+       
+         $subject = 'Your Account has been: ' . $mailstatus . '.';
+         Mail::send('email.singupapproved',
+                [
+                    'name'         => $driver_info->firstname,
+                    'mailTo'         => $mailTo,
+                    'subject'=>$subject,
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                       
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
         }catch(\Exception $e){
             $exception=$e->getMessage();
             DB::rollback();
@@ -361,14 +345,15 @@ if($drivereditvalues->approved!=0){
     {
                 $current = Carbon::now();
 
-       $driverid=  $request->driverid;
+       $driverid=  $request->profileedit_id;
 
-        $drivereditvalues=DriverEdit::where('driverid',$driverid)->first();
+        $drivereditvalues=DriverEdit::where('drivereditid',$driverid)->first();
         DB::beginTransaction();
         $exception="";
         try{
             $rules = array(
-                'driverid' => 'required',
+                'profileedit_id' => 'required',
+                'status' => 'required',
             );
             $validator = Validator::make($request->all(),$rules);
             if($validator->fails()){                
@@ -414,46 +399,13 @@ if($drivereditvalues->approved!=0){
             );
             $find_query=Driver::find($driverid);
 
-             /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-        
-         $subject = 'Profile changes Approved';
-         Mail::send('email.personalinfoapproved',
-                [
-                    
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                        
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
+             
 
 
             $find_query->update($data);
             $endStatus=1;
             }else{
               
-               /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-      
-         $subject = 'Profile changes Approved';
-         Mail::send('email.personalinfoareject',
-                [
-                    
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                        
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
         
                  $create_data=array(
                     'messageid'=>$request->message_id,
@@ -472,10 +424,31 @@ if($drivereditvalues->approved!=0){
                
             );
 
-            $find_query=DriverEdit::find($licenseeditid);
+            $find_query=DriverEdit::find($driverid);
             $find_query->update($update_licenseid_data);
             $endStatus=1;
             DB::commit();
+            $mailstatus=$request->status==1?'approved':'rejected';
+
+
+/*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+       
+         $subject = 'Your request to update Account Details has been: ' . $mailstatus . '.';
+         Mail::send('email.licensereject',
+                [
+                    'name'         => $driver_info->firstname,
+                    'mailTo'         => $mailTo,
+                    'subject'=>$subject,
+
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                       
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
         }catch(\Exception $e){
             $exception=$e->getMessage();
             DB::rollback();
@@ -549,44 +522,10 @@ if($licenseeditvalues->approved!=0){
                 'licenseexpiry'=>$licenseexpiry,
             );
             $find_query=License::find($driverid);
-        /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-        
-         $subject = 'Your request to update License Details has been approved';
-         Mail::send('email.licenseapproved',
-                [
-                    
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                      
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
-
-            $find_query->update($data);
+         $find_query->update($data);
             $endStatus=1;
             }else{
-                /*+++++++++++++Email Start Code ++++++++++++++++++*/
-                $driver_info =  Driver::where('driverid ',$find_query->driverid)->first();
-                $mailTo=$driver_info->email;
-       
-         $subject = 'Your request to update License Details has been rejected';
-         Mail::send('email.licensereject',
-                [
-                    
-                    'password'         => $randomValue,
-                    'name'         => $driver_info->username,
-                    'mailTo'         => $mailTo,
-                ], function ($message) use ($mailTo, $subject) {
-                $message->to($mailTo)
-                        ->subject($subject);
-                       
-             });
-        /*+++++++++++++Email End Code ++++++++++++++++++*/
+                
 
                  $create_data=array(
                     'messageid'=>$request->message_id,
@@ -595,7 +534,7 @@ if($licenseeditvalues->approved!=0){
                     'messagedatetime'=>$current->toDateTimeString(),
                     
                 );
-               DriverMessage::create($create_data);
+               DriverMessage::insertOrIgnore($create_data);
             }
 
             $update_licenseid_data=array(
@@ -609,11 +548,37 @@ if($licenseeditvalues->approved!=0){
             $find_query->update($update_licenseid_data);
             $endStatus=1;
             DB::commit();
+            $mailstatus=$request->status==1?'approved':'rejected';
+
+
+/*+++++++++++++Email Start Code ++++++++++++++++++*/
+                $driver_info =  Driver::where('driverid',$find_query->driverid)->first();
+                $mailTo=$driver_info->email;
+       
+         $subject = 'Your request to update License Details has been: ' . $mailstatus . '.';
+         Mail::send('email.licensereject',
+                [
+                    'name'         => $driver_info->username,
+                    'mailTo'         => $mailTo,
+                    'subject'=>$subject,
+                    
+                ], function ($message) use ($mailTo, $subject) {
+                $message->to($mailTo)
+                        ->subject($subject);
+                       
+             });
+        /*+++++++++++++Email End Code ++++++++++++++++++*/
+
+
         }catch(\Exception $e){
             $exception=$e->getMessage();
             DB::rollback();
             $endStatus=0;
         }
+
+
+
+
         if($endStatus==1){
             $res = array(
                 'status' => 1,
