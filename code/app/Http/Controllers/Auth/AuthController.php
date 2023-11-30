@@ -325,7 +325,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'email' => $request->input('email'),
                 'businessurl'=>$request->input('business_url'),
                 'password'=>md5($randomValue),
-                'password_reset_required'=>true,
+                'password_reset_required'=>1,
                 'addressline1'=>$request->input('addressline1'),
                 'addressline2'=>$request->input('addressline2'),
                 'town'=>$request->input('town'),
@@ -413,7 +413,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
 
  $mailTo=$request->input('email');
 
-         $subject = 'Welcome CabDriversDirect';
+         $subject = 'Welcome to CabDriversDirect.com';
          Mail::send('email.signup',
                 [
                     'password'         => $randomValue,

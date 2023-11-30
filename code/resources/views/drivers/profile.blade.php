@@ -52,6 +52,16 @@
                 </div>
             </div>
         @endif
+        @if ($driver->password_reset_required == 1)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-warning">
+                        We strongly recommend that you change your password for security reasons.
+                        <a href="{{ route('change_password') }}">Click here to change your password.</a>
+                    </div>
+                </div>
+            </div>
+        @endif
         <!-- Header -->
         <div class="row">
             <div class="col-12">
@@ -159,18 +169,19 @@
             <div class="col-xl-4 col-lg-5 col-md-5 mb-3">
                 <!-- Driver Messages -->
                 <div class="card card-action mb-4">
-                    
 
-                            <h2 class="accordion-header">
-                                <button type="button" class="accordion-button {{$driver->messages->count() == 0 ? 'collapsed' : '' }}" data-bs-toggle="collapse"
-                                    data-bs-target="#driver-messages" aria-expanded="false">
-                                    Driver Messages
-                                </button>
-                            </h2>
-                            
-                       
-                        {{-- Card Actions --}}
-                        {{-- <div class="card-action-element btn-pinned">
+
+                    <h2 class="accordion-header">
+                        <button type="button"
+                            class="accordion-button {{ $driver->messages->count() == 0 ? 'collapsed' : '' }}"
+                            data-bs-toggle="collapse" data-bs-target="#driver-messages" aria-expanded="false">
+                            Driver Messages
+                        </button>
+                    </h2>
+
+
+                    {{-- Card Actions --}}
+                    {{-- <div class="card-action-element btn-pinned">
                             <div class="dropdown">
                                 <button type="button" class="btn dropdown-toggle hide-arrow p-0"
                                     data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -186,12 +197,14 @@
                             </div>
                         </div> --}}
 
-                        <div id="driver-messages" class="accordion-collapse collapse {{$driver->messages->count() == 0 ? '' : 'show' }}" data-bs-parent="#driver-messages-parent">
+                    <div id="driver-messages"
+                        class="accordion-collapse collapse {{ $driver->messages->count() == 0 ? '' : 'show' }}"
+                        data-bs-parent="#driver-messages-parent">
 
-                    <div class="card-body driver-messages">
+                        <div class="card-body driver-messages">
 
-                        <div class="table-actions-jsn mb-2" style="text-align:right">
-                            {{-- <div class="form-check mt-3">
+                            <div class="table-actions-jsn mb-2" style="text-align:right">
+                                {{-- <div class="form-check mt-3">
                                 <input class="form-check-input bg-primary-checkbox" type="checkbox" value=""
                                     id="defaultCheck1" onchange="toggleUnreadMessages()" />
                                 <label class="form-check-label" for="defaultCheck1">
@@ -199,48 +212,52 @@
                                     <a href="#">Show all Messages</a>
                                 </label>
                             </div> --}}
-                            <a href="{{ route('messages') }}" class="btn btn-primary">Show Message Archive</a>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Datetime</th>
+                                <a href="{{ route('messages') }}" class="btn btn-primary">Show Message Archive</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Datetime</th>
 
-                                        <th>Message</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="driver-messages-tbody">
-
-                                    @foreach ($driver->messages as $driverMessage)
-                                        <tr
-                                            class="{{ $driverMessage->messagestatus ? 'seen-message' : 'table-danger unseen-message' }}">
-                                            <td class="col-3 p-1">
-                                                <div class="row">
-                                                    <div>{{ $driverMessage->messagedatetime->toFormattedDateString() }}
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                            <td class="col-9">{{ $driverMessage->message->messagetext }}@if ($driverMessage->messagestatus == 0)
-                                                    <div>
-                                                        <button type="button" class="btn btn-icon me-2 btn-primary"
-                                                            onclick="markMessageAsSeen(this, {{ $driverMessage->drivermessageid }})">
-                                                            <span class="tf-icons bx bx-check"></span>
-                                                        </button>
-                                                    </div>
-                                                @endif
-                                            </td>
-
+                                            <th>Message</th>
                                         </tr>
-                                    @endforeach
-                                    @if ($driver->messages->count() == 0) <tr><td colspan="2" style="text-align: center"> No unread messages ! </td></tr> @endif
-                                    
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                        {{-- <ul class=" ms-2">
+                                    </thead>
+                                    <tbody class="driver-messages-tbody">
+
+                                        @foreach ($driver->messages as $driverMessage)
+                                            <tr
+                                                class="{{ $driverMessage->messagestatus ? 'seen-message' : 'table-danger unseen-message' }}">
+                                                <td class="col-3 p-1">
+                                                    <div class="row">
+                                                        <div>{{ $driverMessage->messagedatetime->toFormattedDateString() }}
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td class="col-9">{{ $driverMessage->message->messagetext }}@if ($driverMessage->messagestatus == 0)
+                                                        <div>
+                                                            <button type="button" class="btn btn-icon me-2 btn-primary"
+                                                                onclick="markMessageAsSeen(this, {{ $driverMessage->drivermessageid }})">
+                                                                <span class="tf-icons bx bx-check"></span>
+                                                            </button>
+                                                        </div>
+                                                    @endif
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+                                        @if ($driver->messages->count() == 0)
+                                            <tr>
+                                                <td colspan="2" style="text-align: center"> No unread messages ! </td>
+                                            </tr>
+                                        @endif
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            {{-- <ul class=" ms-2">
                             @foreach ($driver->messages as $message)
                             <li class="mb-3">
                                 <div class="row">
@@ -255,8 +272,8 @@
                             <hr>
                             @endforeach
                         </ul> --}}
-                    </div>
                         </div>
+                    </div>
 
                 </div>
                 <!--/ Driver Message End -->
@@ -410,7 +427,8 @@
 
 
                                             </ul>
-                                            <hr style="
+                                            <hr
+                                                style="
                                                 margin-right: auto;
                                                 width: 80%;
                                                 margin-left: auto;
@@ -443,7 +461,8 @@
                                                     <span>{{ $driver->postcode }}</span>
                                                 </li>
                                             </ul>
-                                            <hr style="
+                                            <hr
+                                                style="
                                                 margin-right: auto;
                                                 width: 80%;
                                                 margin-left: auto;
@@ -453,7 +472,8 @@
                                             <ul class="list-unstyled mb-4 mt-3">
                                                 {{ $driver->description }}
                                             </ul>
-                                            <hr style="
+                                            <hr
+                                                style="
                                                 margin-right: auto;
                                                 width: 80%;
                                                 margin-left: auto;
@@ -530,10 +550,45 @@
                                                 </li>
                                             </ul>
 
+                                        </div>
+                                    </div>
+                                    <!--/ About User -->
+                                </div>
+                            </div>
+                        </div>
 
 
-                                            <h5>Driver Licence</h5>
-                                            <div class="license-flash"></div>
+                    </div>
+                    <!-- Accordion end -->
+
+
+                </div>
+
+                <div class="card card-action mb-4">
+                    {{-- <div class="card-header align-items-center">
+                        <h5 class="card-action-title mb-0"><i
+                                class='bx bx-list-ul bx-sm me-2'></i>{{ $driver->calls->count() ? 'Call History' : 'No Calls Yet' }}
+                        </h5>
+                        
+                    </div> --}}
+                    <!-- Accordion -->
+
+                    <div class="accordion accordion-header" id="driver-license-parent">
+                        <div class="accordion-item card">
+                            <h2 class="accordion-header">
+
+                                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#driver-license-info" aria-expanded="false">
+                                    Driver License
+                                </button>
+                            </h2>
+
+                            <div id="driver-license-info" class="accordion-collapse collapse collapse"
+                                data-bs-parent="#driver-license-parent">
+                                <div class="accordion-body">
+                                    <!-- About User -->
+                                    <div class="card mb-4 shadow-none">
+                                        <div class="card-body p-0">
                                             <ul class="list-unstyled mb-4 mt-3">
                                                 <li class="d-flex align-items-center mb-3">
 
@@ -555,12 +610,17 @@
                                                     @endif
                                                 </li>
                                                 <li class="d-flex align-items-center mb-3"><i
-                                                    class="bx bx-detail"></i><span
-                                                    class="fw-semibold mx-2">Assigning Authority:</span>
-                                                 @if (isset($driver->license->licenseauthoritymaster->licenseauthority) && $driver->license->licenseauthoritymaster->licenseauthority != '')
-                                                <span>{{ $driver->license->licenseauthoritymaster->licenseauthority }}</span>
-                                                @endif
+                                                        class="bx bx-detail"></i><span class="fw-semibold mx-2">Assigning
+                                                        Authority:</span>
+                                                    @if (isset($driver->license->licenseauthoritymaster->licenseauthority) &&
+                                                            $driver->license->licenseauthoritymaster->licenseauthority != '')
+                                                        <span>{{ $driver->license->licenseauthoritymaster->licenseauthority }}</span>
+                                                    @endif
                                                 </li>
+
+                                            </ul>
+                                            <ul class="list-unstyled mb-4 mt-3">
+
                                                 <li>
                                                     <a href="javascript:void(0)"
                                                         class="btn rounded-pill btn-primary license-edit-btn"
@@ -571,6 +631,7 @@
                                                     </a>
                                                 </li>
                                             </ul>
+
 
 
 
@@ -587,6 +648,7 @@
 
 
                 </div>
+
                 <div class="card card-action mb-4">
                     <div class="accordion-item card">
                         <h2 class="accordion-header">
@@ -601,7 +663,7 @@
 
                                 <!-- Payment History -->
                                 <div class="card card-action mb-4 payment-history-mobile d-block  shadow-none">
-                
+
                                     <div class="card-body payment-history p-0">
                                         <ul class="list-unstyled mb-0">
 
@@ -1066,7 +1128,7 @@
 
             $('.change-duty-disabled-input').change(function(e) {
                 Swal.fire({
-                    html: 'Sorry, you cannot change duty status until your account is approved by admin',
+                    html: 'Sorry, you cannot change duty status until your account is approved by an admin.',
                     icon: 'warning',
                     confirmButtonText: 'OK',
                 })

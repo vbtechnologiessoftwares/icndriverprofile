@@ -191,8 +191,7 @@ class DashboardController extends Controller
                 'lastname' => 'required',
                 'phone' => 'required|max:11',
                 'email' => 'required',
-                'businessurl' => 'required',
-                'description' => 'required',
+                
 
             );
             $rulesMessages=array(
@@ -201,8 +200,6 @@ class DashboardController extends Controller
                 'phone.required' => 'This field is required',
                 'phone.max' => 'This field must not be greater than 11 characters.',
                 'email.required' => 'This field is required',
-                'businessurl.required' => 'This field is required',
-                'description.required' => 'This field is required',
             );
             $validator = Validator::make($request->all(),$rules,$rulesMessages);
             if($validator->fails()){                

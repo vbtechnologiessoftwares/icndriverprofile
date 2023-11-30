@@ -389,7 +389,7 @@
                                                     name="4_seater_vehicle" value="1"
                                                     id="check_four_seater_vehicle">
                                                 <label class="form-check-label" for="four_seater_vehicle">
-                                                    Upto 4 Passengers
+                                                    Up to 4 Passengers
                                                 </label>
                                             </div>
                                         </div>
@@ -399,7 +399,7 @@
                                                 <input class="form-check-input" type="checkbox" name="6seatervehicle"
                                                     value="1" id="check_six_seater_vehicle">
                                                 <label class="form-check-label" for="longdistance">
-                                                    Upto 6 Passengers
+                                                    Up to 6 Passengers
                                                 </label>
                                             </div>
                                         </div>
@@ -414,7 +414,7 @@
                                                     name="8_seater_vehicle" value="1"
                                                     id="check_eight_seater_vehicle">
                                                 <label class="form-check-label" for="eight_seater_vehicle">
-                                                    Upto 8 passengers
+                                                    Up to 8 passengers
                                                 </label>
                                             </div>
                                         </div>
@@ -536,11 +536,11 @@
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <label for="relationship_to_applicant"
-                                                class="col-lg-12 control-label">License Authority Master</label>
+                                                class="col-lg-12 control-label">Licensing Authority</label>
 
                                             <select class='form-control form-select' name='licenseauthority_master'
                                                 id='licenseauthority_master' autocomplete="off" required>
-                                                <option value=''>License Authority Master</option>
+                                                <option value=''>Licensing Authority</option>
                                                 @foreach ($licenseauthoritymaster as $license)
                                                     <option value="{{ $license->rowid }}">
                                                         {{ $license->licenseauthority }}</option>
@@ -988,7 +988,7 @@
                         //$(".closeModal").trigger('click');
                         Swal.fire({
                             title: response.alert_message,
-                            html: 'You will be redirected to login page. Please login with your credentials',
+                            html: 'You will be redirected to the login page.<br/>Please check your email for your initial password.',
                             icon: 'success',
                             confirmButtonText: 'Close',
                         }).then((result) => {

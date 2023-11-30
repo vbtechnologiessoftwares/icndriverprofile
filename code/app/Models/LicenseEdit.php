@@ -12,7 +12,7 @@ class LicenseEdit extends Model
     protected $table = 'driver_licences_edits';
 
     protected $primaryKey = 'licenseeditid';
-    protected $fillable =['driverid','licensephoto','approved','approvedbyadminid','approveddatetime','licensenumber','licenseauthority','licenseexpiry'];
+    protected $fillable =['driverid','licenseeditdatetime', 'licensephoto','approved','approvedbyadminid','approveddatetime','licensenumber','licenseauthority','licenseexpiry'];
     public $timestamps = false;
 
     /**

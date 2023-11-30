@@ -33,9 +33,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Cab Drivers Direct !</h1>
         <p>Hello {{$name}},</p>
-        <p>Your Driver Details has been rejected:</p>
+        <p>Your Driver Details has been :</p>
         <ul>
             <li><strong>Name:</strong> {{$name}}</li>
             <li><strong>Email:</strong> {{$mailTo}}</li>

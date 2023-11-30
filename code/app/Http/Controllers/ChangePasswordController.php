@@ -51,7 +51,8 @@ class ChangePasswordController extends Controller
 
             #Update the new Password
             Driver::where('driverid',$driver->driverid)->update([
-                'password' => md5($request->new_password)
+                'password' => md5($request->new_password),
+                'password_reset_required' => 0
             ]);
 
             $endStatus=1;

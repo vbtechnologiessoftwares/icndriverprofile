@@ -33,17 +33,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Cab Drivers Direct !</h1>
         <p>Hello {{$name}},</p>
-    <p>{{$subject}}:</p>
-        <ul>
-            <li><strong>Name:</strong> {{$name}}</li>
-            <li><strong>Email:</strong> {{$mailTo}}</li>
-            <li><strong>Company URL:</strong> <a href="https://cabdriversdirect.com/driver/">CabDriversDirect.com</a></li>
-        </ul>
-        <p>Feel free to explore our platform and let us know if you have any questions or need assistance.</p>
-        <p>Thank you for choosing Your Company!</p>
-        <p>Best regards,<br>Your Company Team</p>
+        <p>Important: {{$subject}}:</p>
+        
+        <p>This is to notify about the update to the license update request you submitted</p>
+
+        <p>Thank you for choosing Cab Drivers Direct!</p>
+        <p>Best regards</p>
     </div>
 </body>
 </html>
