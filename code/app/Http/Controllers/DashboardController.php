@@ -140,7 +140,7 @@ class DashboardController extends Controller
         if($endStatus==1){
             $res = array(
                 'status' => 1,
-                'message' => 'Updated Successfully',
+                'message' => 'Successfully submitted for Approval',
                 'alert_class' => 'alert-success',
                 'alert_message' => 'Updated Successfully',
                 'exception'=>$exception
@@ -148,7 +148,7 @@ class DashboardController extends Controller
         }else{
             $res = array(
                 'status' =>  2,
-                'message' => 'Un-Successful Operation',
+                'message' => 'Successfully submitted for Approval',
                 'alert_class' => 'alert-danger',
                 'alert_message' => 'Un-Successful Operation',
                 'exception'=>$exception
@@ -378,9 +378,9 @@ class DashboardController extends Controller
         if($endStatus==1){
             $res = array(
                 'status' => 1,
-                'message' => 'Updated Successfully',
+                'message' => 'Successfully submitted for Approval',
                 'alert_class' => 'alert-success',
-                'alert_message' => 'Updated Successfully',
+                'alert_message' => 'Successfully submitted for Approval',
                 'exception'=>$exception
             );
         }else{
