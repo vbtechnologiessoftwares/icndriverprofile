@@ -56,6 +56,9 @@
           <li class="nav-item">
             <a class="nav-link edit-history-nav-link {{($tab=='driver')?'active':''}}" data-section="tab2" href="javascript:void(0)">Driver</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link edit-history-nav-link {{($tab=='profile_image')?'active':''}}" data-section="tab3" href="javascript:void(0)">Profile Image</a>
+          </li>
          
         </ul>
         <section id="tab1" class="tabb {{($tab=='' || $tab=='license')?'show':''}}">
@@ -207,7 +210,7 @@
          </section>
         
         <!--/ User Profile Content -->
-          <section id="tab3" class="tabb {{($tab=='profile')?'show':''}}">
+          <section id="tab3" class="tabb {{($tab=='profile_image')?'show':''}}">
 
           <div class="row">
             <div class="col-xl-12 col-lg-5 col-md-5 mb-3">
@@ -226,7 +229,7 @@
                       <div class="row">
                         <div class="col-12">
                           <div class="table-responsive">
-                            <table id="example3" class="table">
+                            <table id="example5" class="table">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -244,16 +247,15 @@
                         </div><!--col-6-->
                         <div class="col-12" style="margin-top:15px">
                           <div class="table-responsive">
-                            <table id="example4" class="table">
+                            <table id="example6" class="table">
                                 <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
-                                          <th>Profile photo</th>
+                                        <th>Profile photo</th>
                                         <th>Approved Date</th>
                                         <th>Status</th>
                                         <th>Submission Date</th>
                                         <th>Assigning Authority</th>
-                                        <th class="no-sort">Action</th>
                                     </tr>
                                 </thead>
                                 
@@ -457,6 +459,29 @@
                   }
                 });                
             }); 
+            
+            $('body').on('click', '.change-status-profile-img-btn', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                Swal.fire({
+                    title: 'Are you sure?',
+
+                    html: "You want to cancel this change request!",
+
+                    icon: 'warning',
+                    showCancelButton: true,
+                    //confirmButtonColor: '#3085d6',
+                    //cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                  
+                  if (result.isConfirmed) {
+                    changeStatusProfileImage($this);
+                  }else{
+                    //return false;
+                  }
+                });                
+            }); 
 
             $('.edit-history-nav-link').click(function(e){
               var section=$(this).data('section');
@@ -584,6 +609,66 @@
                 
             });//done
           }//changeStatusDriver
+
+          function changeStatusProfileImage($this){
+          var photoeditid=$this.data('photoeditid');
+          var status=$this.data('status');
+          var data={photoeditid:photoeditid,status:status};
+          $.ajax({
+            url: '{{route('edit_history.change_status_profile_image')}}',
+            method: 'POST',
+            dataType: 'json',
+            data: data, //4
+            //contentType: false,
+            //cache: false,
+            //processData: false,
+          }).done(function(response) {
+              console.log(response);
+              $(".invalid-feedback").html('');
+              $(".invalid-feedback").css('display', 'none');
+              if (response.status == 1) {
+                  //$(".closeModal").trigger('click');
+                  Swal.fire({
+                      html:response.alert_message,
+                      icon: 'success',
+                      confirmButtonText: 'Close',
+                  }).then((result) => {
+                    
+                    if (result.isConfirmed) {
+                      table5.ajax.reload(null,false);
+                      table6.ajax.reload(null,false);
+                    } else if (result.isDenied) {
+                      
+                    }
+                  })
+              }
+
+              if (response.status == 2) {
+                  //$(".closeModal").trigger('click');
+                  Swal.fire({
+                      html:response.alert_message,
+                      icon: 'error',
+                      confirmButtonText: 'Close',
+                  }).then((result) => {
+                    
+                    if (result.isConfirmed) {
+                      //table.ajax.reload(null,false);
+                    } else if (result.isDenied) {
+                      
+                    }
+                  })
+              }
+
+              if (response.alert_class && response.alert_message) {
+                  var alertdata = '<div class="alert ' + response.alert_class + '">' +
+                      response.alert_message + '</div>';
+                  $('.flash').html(alertdata);
+              }
+                
+            });//done
+          }//changeStatusProfileImage
+
+          
         
 
         

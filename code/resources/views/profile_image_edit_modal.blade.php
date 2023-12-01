@@ -10,7 +10,7 @@
             <div class="row">
               <div class="col-12 flash"></div>
             </div>
-            
+            @if($already_in_queue_to_approve==0)
             <div class="row" style="margin-bottom: 10px">
               <div class="col-12">
                 
@@ -24,6 +24,7 @@
               
                    				
 			     </div>
+           
            <div class="row">
              <div class="col-12">
                 <div class="form-group">
@@ -35,12 +36,19 @@
                 </div>
               </div>
            </div>
+           @else
+           <div class="alert alert-warning">
+             <p>To ensure data correctness and improve user experience, our internal team will be reviewing your change application. Once change is approved, your profile will be automatically updated. You can track the <a href="{{route('edit_history',array('tab'=>'profile_image'))}}">pending application</a> to get current status</p>
+           </div>
+           @endif
            
            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary closeModal" data-bs-dismiss="modal">Close</button>
+            @if($already_in_queue_to_approve==0)
             <button type="submit" class="btn btn-primary">Save changes</button>
+            @endif
           </div>
           </form>
         

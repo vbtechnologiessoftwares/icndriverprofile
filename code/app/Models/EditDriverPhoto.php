@@ -11,7 +11,7 @@ class EditDriverPhoto extends Model
 
     protected $table = 'driver_photos_edits';
 
-    protected $primaryKey = 'photoid';
+    protected $primaryKey = 'photoeditid';
     protected $fillable = ['driverid','photoeditdatetime','driverid','approved','approvedbyadminid', 'driversphoto'];
     public $timestamps = false;
 

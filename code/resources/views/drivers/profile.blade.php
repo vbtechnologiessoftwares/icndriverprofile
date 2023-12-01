@@ -879,7 +879,7 @@
                     if (response.status == 1) {
                         //$(".closeModal").trigger('click');
                         Swal.fire({
-                            html: response.alert_message,
+                            html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history',array('tab'=>'profile_image')) }}">clicking here</a>',
                             icon: 'success',
                             confirmButtonText: 'Close',
                         }).then((result) => {
@@ -938,7 +938,7 @@
                     if (response.status == 1) {
                         //$(".closeModal").trigger('click');
                         Swal.fire({
-                            html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history') }}">clicking here</a>',
+                            html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history',array('tab'=>'license')) }}">clicking here</a>',
                             icon: 'success',
                             confirmButtonText: 'Close',
                         }).then((result) => {
@@ -1094,7 +1094,7 @@
                     if (response.status == 1) {
                         //$(".closeModal").trigger('click');
                         Swal.fire({
-                            html: response.alert_message,
+                            html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history',array('tab'=>'driver')) }}">clicking here</a>',
                             icon: 'success',
                             confirmButtonText: 'Close',
                         }).then((result) => {
