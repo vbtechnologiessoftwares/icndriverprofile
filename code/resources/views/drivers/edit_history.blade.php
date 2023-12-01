@@ -237,7 +237,7 @@
                                         <th>Approved Date</th>
                                         <th>Status</th>
                                         <th>Submission Date</th>
-                                        <th>Assigning Authority</th>
+                                        
                                         <th class="no-sort">Action</th>
                                     </tr>
                                 </thead>
@@ -255,7 +255,7 @@
                                         <th>Approved Date</th>
                                         <th>Status</th>
                                         <th>Submission Date</th>
-                                        <th>Assigning Authority</th>
+                                
                                     </tr>
                                 </thead>
                                 
