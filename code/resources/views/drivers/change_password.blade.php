@@ -80,14 +80,14 @@
                               </div>
                               <div class="form-group">
                                 <label class="form-label">New Password</label>
-                                <input type="password" class="form-control" name="new_password" value="{{old('new_password')}}"/>
+                                <input type="password" class="form-control" name="new_password" minlength="8" value="{{old('new_password')}}"/>
                                 @if ($errors->has('new_password'))
                                   <span class="text-danger">{{ $errors->first('new_password') }}</span>
                                 @endif                                
                               </div>
                               <div class="form-group">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" name="new_password_confirmation" />
+                                <input type="password" class="form-control" minlength="8" name="new_password_confirmation" />
                                 @if ($errors->has('new_password_confirmation'))
                                   <span class="text-danger">{{ $errors->first('new_password_confirmation') }}</span>
                                 @endif

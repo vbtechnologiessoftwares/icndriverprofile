@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Cab Drivers Direct</title>
+    <title>Status Update for Change Request</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,11 +34,13 @@
 <body>
     <div class="container">
         <p>Hello {{$name}},</p>
-        <p>Important: {{$subject}}:</p>
         
-        <p>This is to notify about the update to the license update request you submitted</p>
+        <p>This is to notify about the update request you submitted. Your request was reviewed by an admin.</p>
 
-        <p>Thank you for choosing Cab Drivers Direct!</p>
+        <p>{{$message}}</p>
+
+
+        <p>Thank you for choosing CabDriversDirect.com</p>
         <p>Best regards</p>
     </div>
 </body>

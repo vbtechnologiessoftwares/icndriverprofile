@@ -340,9 +340,9 @@ class EditHistoryController extends Controller
     {
         $current = Carbon::now();
 
-        $driverid = $request->profileedit_id;
+        $drivereditid = $request->profileedit_id;
 
-        $drivereditvalues = DriverEdit::where('drivereditid', $driverid)->first();
+        $drivereditvalues = DriverEdit::where('drivereditid', $drivereditid)->first();
         DB::beginTransaction();
         $exception = "";
         try {
@@ -392,7 +392,7 @@ class EditHistoryController extends Controller
                     'county' => $county,
                     'postcode' => $postcode,
                 );
-                $find_query = Driver::find($driverid);
+                $find_query = Driver::find($drivereditvalues->driverid);
 
 
 
@@ -404,7 +404,7 @@ class EditHistoryController extends Controller
 
                 $create_data = array(
                     'messageid' => $request->message_id,
-                    'driverid' => $driverid,
+                    'driverid' => $drivereditvalues->driverid,
                     'messagestatus' => 0,
                     'messagedatetime' => $current->toDateTimeString(),
 
@@ -419,7 +419,7 @@ class EditHistoryController extends Controller
 
             );
 
-            $find_query = DriverEdit::find($driverid);
+            $find_query = DriverEdit::find($drivereditid);
             $find_query->update($update_licenseid_data);
             $endStatus = 1;
             DB::commit();
@@ -430,18 +430,17 @@ class EditHistoryController extends Controller
             $driver_info = Driver::where('driverid', $find_query->driverid)->first();
             $mailTo = $driver_info->email;
 
-            $subject = 'Your request to update Account Details has been: ' . $mailstatus . '.';
+            $content = 'Your request to update Account Details has been: ' . $mailstatus . '.';
             Mail::send(
                 'email.licensereject',
                 [
-                    'name' => $driver_info->firstname,
+                    'name' => $driver_info->firstname ?? "",
                     'mailTo' => $mailTo,
-                    'subject' => $subject,
+                    'message' => $content,
 
                 ],
-                function ($message) use ($mailTo, $subject) {
-                    $message->to($mailTo)
-                        ->subject($subject);
+                function ($message) use ($mailTo) {
+                    $message->to($mailTo);
 
                 }
             );
@@ -549,21 +548,16 @@ class EditHistoryController extends Controller
             $driver_info = Driver::where('driverid', $find_query->driverid)->first();
             $mailTo = $driver_info->email;
 
-            $subject = 'Your request to update Profile Photo has been ' . $mailstatus . '.';
+            $content = 'Your request to update Profile Photo has been ' . $mailstatus . '.';
             Mail::send(
                 'email.licensereject',
                 [
-                    'name' => $driver_info->username,
+                    'name' => $driver_info->firstname,
                     'mailTo' => $mailTo,
-                    'subject' => $subject,
-                    'resource' => 'Profile Photo',
-                    // 'submissionTime' => $licenseeditvalues->licenseeditdatetime
-
+                    'message' => $content,
                 ],
-                function ($message) use ($mailTo, $subject) {
-                    $message->to($mailTo)
-                        ->subject($subject);
-
+                function ($message) use ($mailTo) {
+                    $message->to($mailTo);
                 }
             );
             /*+++++++++++++Email End Code ++++++++++++++++++*/
@@ -678,19 +672,18 @@ class EditHistoryController extends Controller
             $driver_info = Driver::where('driverid', $find_query->driverid)->first();
             $mailTo = $driver_info->email;
 
-            $subject = 'Your request to update License Details has been: ' . $mailstatus . '.';
+            $content = 'Your request to update License Details has been: ' . $mailstatus . '.';
             Mail::send(
                 'email.licensereject',
                 [
-                    'name' => $driver_info->username,
+                    'name' => $driver_info->firstname,
                     'mailTo' => $mailTo,
-                    'subject' => $subject,
+                    'message' => $content,
                     // 'submissionTime' => $licenseeditvalues->licenseeditdatetime
 
                 ],
-                function ($message) use ($mailTo, $subject) {
-                    $message->to($mailTo)
-                        ->subject($subject);
+                function ($message) use ($mailTo) {
+                    $message->to($mailTo);
 
                 }
             );
