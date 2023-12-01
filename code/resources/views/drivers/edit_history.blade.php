@@ -207,6 +207,74 @@
          </section>
         
         <!--/ User Profile Content -->
+          <section id="tab3" class="tabb {{($tab=='profile')?'show':''}}">
+
+          <div class="row">
+            <div class="col-xl-12 col-lg-5 col-md-5 mb-3">
+                <!-- Driver Messages -->
+                <div class="card card-action mb-4">
+                    <div class="card-header align-items-center">
+                        <h5 class="card-action-title mb-0"><i
+                                class='bx bx-list-ul bx-sm me-2'></i>
+                                View Edit History
+
+                                <a href="{{route('dashboard')}}" class="btn btn-primary" style="float: right;">Back to Dashboard</a>
+                        </h5>
+                       
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="table-responsive">
+                            <table id="example3" class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Profile photo</th>
+                                        <th>Approved Date</th>
+                                        <th>Status</th>
+                                        <th>Submission Date</th>
+                                        <th>Assigning Authority</th>
+                                        <th class="no-sort">Action</th>
+                                    </tr>
+                                </thead>
+                                
+                            </table>
+                          </div>
+                        </div><!--col-6-->
+                        <div class="col-12" style="margin-top:15px">
+                          <div class="table-responsive">
+                            <table id="example4" class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                          <th>Profile photo</th>
+                                        <th>Approved Date</th>
+                                        <th>Status</th>
+                                        <th>Submission Date</th>
+                                        <th>Assigning Authority</th>
+                                        <th class="no-sort">Action</th>
+                                    </tr>
+                                </thead>
+                                
+                            </table>
+                          </div>
+                        </div><!--col-6-->
+                      </div><!--row-->
+                        
+
+                        
+                        
+                    </div>
+                </div>
+               
+               
+            </div>
+        </div>
+        
+         </section>
+        
+        <!--/ User Profile Content -->
 
 
     </div>
@@ -290,6 +358,46 @@
                "searching": false,
                "ajax": {
                   "url" : '{{route('edit_history.listing4')}}',
+                  "type" : "POST"
+                },
+               "info":false,
+               "order":[[2,'desc']],
+               "bLengthChange": false,
+               "lengthMenu": [ [10,25], [10, 25] ],
+               "columnDefs": [ {
+                  "orderable": false,
+                  "searchable": false,
+                  "sortable": false,
+                  "targets": "no-sort",
+               }],
+              });
+        var table5=$('#example5').DataTable({
+               //"dom": '<"lengthwrapper"flp><"clear">',
+               "processing": true,
+               "serverSide": true,
+               "searching": false,
+               "ajax": {
+                  "url" : '{{route('edit_history.listing5')}}',
+                  "type" : "POST"
+                },
+               "info":false,
+               "order":[[2,'desc']],
+               "bLengthChange": false,
+               "lengthMenu": [ [10,25], [10, 25] ],
+               "columnDefs": [ {
+                  "orderable": false,
+                  "searchable": false,
+                  "sortable": false,
+                  "targets": "no-sort",
+               }],
+              });
+         var table6=$('#example6').DataTable({
+               //"dom": '<"lengthwrapper"flp><"clear">',
+               "processing": true,
+               "serverSide": true,
+               "searching": false,
+               "ajax": {
+                  "url" : '{{route('edit_history.listing6')}}',
                   "type" : "POST"
                 },
                "info":false,

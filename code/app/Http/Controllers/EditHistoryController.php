@@ -62,6 +62,7 @@ class EditHistoryController extends Controller
         }*/
         $query = LicenseEdit::where($where);
 
+
         $queryCloneObj = clone $query;
         $totalCount = $queryCloneObj->count();
         $query = clone $query;
@@ -917,6 +918,105 @@ class EditHistoryController extends Controller
 
 
     }
+    public function getListing5(Request $request)
+    {
+
+        $orderArray = array(
+            '0' => 'id',
+            '1' => 'photo',
+            '2' => 'approved',
+            '3' => 'approveddatetime',
+           
+          
+        );
+        $where = array();
+        $datatableForm = $this->getDatatableData($request->all());
+        $driver = auth()->guard('driveruser')->user();
+        $driverid = $driver->driverid;
+
+        //$driver->load(['photo', 'calls.location', 'payments', 'license', 'messages']);
+
+        $where[] = ['driverid', '=', $driverid];
+        $where[] = ['approved', '!=', '0'];
+        /*if($request->input('name')){
+            $where[]=['name','LIKE','%'.$request->input('name').'%'];
+        }*/
+        $query = DriverEdit::where($where);
+
+        $queryCloneObj = clone $query;
+        $totalCount = $queryCloneObj->count();
+        $query = clone $query;
+
+        $query = $query
+            ->orderBy($orderArray[$datatableForm['orderColumn']], $datatableForm['orderMethod'])
+            ->skip($datatableForm['offset'])
+            ->take($datatableForm['length'])
+            ->get();
+        //->toarray();
+
+        $result = array("data" => array());
+        $i = 1;
+
+        foreach ($query as $key => $value) {
+
+            /*
+            0=pending;
+            1=approved;
+            2=rejected;
+            3=revoked
+            */
+            $driversphoto = $value->driversphoto;
+            $approved = $value->approved;
+          
+
+
+            $approved_by_admin = '<span style="color:red">Pending</span>';
+
+            $edit_date = $value->drivereditdatetime;
+            if (trim($value->approveddatetime) == '1000-01-01 00:00:00') {
+                $approved_date = 'NA';
+            } else {
+                $approved_date = $value->approveddatetime;
+            }
+            if ($value->approved == '0') {
+                $approved_by_admin = '<span style="color:red">Pending</span>';
+            } elseif ($value->approved == '1') {
+                $approved_by_admin = '<span style="color:green">Approved</span>';
+            } elseif ($value->approved == '2') {
+                $approved_by_admin = '<span style="color:red">Rejected</span>';
+            } elseif ($value->approved == '3') {
+                $approved_by_admin = '<span style="color:red">Revoked</span>';
+            } else {
+                $approved_by_admin = '<span style="color:red">Pending</span>';
+            }
+
+            $revoke_btn = '<button class="btn btn-primary change-status-driver-btn" data-drivereditid="' . $value->drivereditid . '" data-status="3">Revoke</button>';
+
+
+            $result["data"][$key] = array(
+                $i++,
+                $driversphoto,
+                $approved,
+                $drivereditdatetime,
+                $approved_date,
+               
+            );
+
+
+        }
+
+        $newData = array(
+            'draw' => $datatableForm['draw'],
+            'recordsTotal' => $totalCount,
+            'recordsFiltered' => $totalCount,
+            'data' => $result["data"]
+        );
+
+        return $newData;
+
+
+    }
+
     //this function is changing status of driver details edit
     public function changeStatusDriver(Request $request)
     {

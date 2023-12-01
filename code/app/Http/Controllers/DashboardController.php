@@ -10,7 +10,7 @@ use App\Models\Location;
 use App\Models\Driver;
 use App\Models\DriverPhoto;
 use App\Models\DriverEdit;
-
+use App\Models\EditDriverPhoto;
 use Validator;
 use DB;
 
