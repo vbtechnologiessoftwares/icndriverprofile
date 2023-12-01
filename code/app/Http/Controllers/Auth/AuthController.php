@@ -269,6 +269,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             $airport_runs=0;
             $six_seatervehicle=0;
             $longdistance=0;
+            $wheelchairfriendly=0;
 
              if($request->has('6seatervehicle'))
             {
@@ -301,6 +302,10 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
             if($request->has('airport_runs'))
             {
                 $airport_runs=1;
+            }
+            if($request->has('wheelchairfriendly'))
+            {
+                $wheelchairfriendly=1;
             }
 
 
@@ -341,6 +346,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'airportruns'=>$airport_runs,
                 '6seatervehicle'=>$six_seatervehicle,
                 'longdistance'=>$longdistance,
+                'wheelchairfriendly'=>$wheelchairfriendly,
 
                 'signupdate'=>date('Y-m-d')
             );

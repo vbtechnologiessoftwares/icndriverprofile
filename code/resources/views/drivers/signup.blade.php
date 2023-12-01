@@ -477,6 +477,22 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="row g-3" style="margin-bottom: 1rem !important;">
+
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="wheelchairfriendly"
+                                                    value="1" id="check_wheelchairfriendly_vehicle">
+                                                <label class="form-check-label" for="wheelchairfriendly">
+                                                    Wheelchair Friendly
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                    </div>
                                 </div>
                             </div>
 
