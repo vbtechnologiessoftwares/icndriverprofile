@@ -542,7 +542,7 @@
                                                 id='licenseauthority_master' autocomplete="off" required>
                                                 <option value=''>Licensing Authority</option>
                                                 @foreach ($licenseauthoritymaster as $license)
-                                                    <option value="{{ $license->rowid }}">
+                                                    <option value="{{ $license->licenseauthority }}">
                                                         {{ $license->licenseauthority }}</option>
                                                 @endforeach
                                             </select>
