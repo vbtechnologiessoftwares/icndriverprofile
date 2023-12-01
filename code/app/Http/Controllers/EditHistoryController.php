@@ -518,7 +518,7 @@ class EditHistoryController extends Controller
                     'driversphoto' => $driversphoto,
                    
                 );
-                $find_query = DriverPhoto::find($driverid);
+                $find_query = DriverPhoto::find($licenseeditvalues->driverid);
                 $find_query->update($data);
                 $endStatus = 1;
             } else {
@@ -526,7 +526,7 @@ class EditHistoryController extends Controller
 
                 $create_data = array(
                     'messageid' => $request->message_id,
-                    'driverid' => $driverid,
+                    'driverid' => $licenseeditvalues->driverid,
                     'messagestatus' => 0,
                     'messagedatetime' => $current->toDateTimeString(),
 
@@ -541,7 +541,7 @@ class EditHistoryController extends Controller
 
             );
 
-            $find_query = EditDriverPhoto::find($licenseeditid);
+            $find_query = EditDriverPhoto::find($photoeditid);
             $find_query->update($update_licenseid_data);
             $endStatus = 1;
             DB::commit();
@@ -549,16 +549,17 @@ class EditHistoryController extends Controller
 
 
             /*+++++++++++++Email Start Code ++++++++++++++++++*/
-            $driver_info = DriverPhoto::where('driverid', $find_query->driverid)->first();
+            $driver_info = Driver::where('driverid', $find_query->driverid)->first();
             $mailTo = $driver_info->email;
 
-            $subject = 'Your request to update Photo Details has been: ' . $mailstatus . '.';
+            $subject = 'Your request to update Profile Photo has been ' . $mailstatus . '.';
             Mail::send(
                 'email.licensereject',
                 [
                     'name' => $driver_info->username,
                     'mailTo' => $mailTo,
                     'subject' => $subject,
+                    'resource' => 'Profile Photo',
                     // 'submissionTime' => $licenseeditvalues->licenseeditdatetime
 
                 ],
@@ -1193,7 +1194,7 @@ class EditHistoryController extends Controller
                 $approved_date,
                 $approved_by_admin,
                 $edit_date,
-                '',
+                
                 $revoke_btn
                
             );

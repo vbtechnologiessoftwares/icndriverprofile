@@ -67,7 +67,7 @@ Route::prefix('cron')->group( function(){
 Route::get('/change-history-status', [ EditHistoryController::class, 'changeHistoryStatus'])
 	    ->name('changeHistoryStatus');
 
-	    Route::get('/Profile-Photo-status', [ EditHistoryController::class, 'profilephoto'])
+	    Route::get('/profile-photo-status', [ EditHistoryController::class, 'profilephoto'])
 	    ->name('profilephoto');
 
 Route::get('/change-profile', [ EditHistoryController::class, 'changeprofile'])
