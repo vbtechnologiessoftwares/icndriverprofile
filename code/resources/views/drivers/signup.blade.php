@@ -351,7 +351,7 @@
                                 <div class="col-md-6">
                                     <label for="marital_status" class="col-lg-12 control-label">Post Code</label>
                                     <input type="text" class="form-control" id="postcode" name="postcode"
-                                        required placeholder="Post Code" minlength="8" maxlength="8" />
+                                        required placeholder="Post Code" minlength="4" maxlength="8" />
                                 </div>
 
                             </div>

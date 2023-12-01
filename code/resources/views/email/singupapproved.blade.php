@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Cab Drivers Direct</title>
+    <title>Welcome to CabDriversDirect.com</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,17 +33,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome Cab Drivers Direct !</h1>
+        <h1>Welcome to CabDriversDirect.com</h1>
         <p>Hello {{$name}},</p>
-        <p>{{$subject}}:</p>
-        <ul>
-            <li><strong>Name:</strong> {{$name}}</li>
-            <li><strong>Email:</strong> {{$mailTo}}</li>
-            <li><strong>Company URL:</strong> <a href="https://cabdriversdirect.com/driver/">CabDriversDirect.com</a></li>
-        </ul>
+        <p>Your Driver Account Has Been Approved</p>
+        <p>You can now <a href="https://cabdriversdirect.com/driver/">login</a> to your driver account and mark yourself on duty.</p>
+        
         <p>Feel free to explore our platform and let us know if you have any questions or need assistance.</p>
-        <p>Thank you for choosing Your Company!</p>
-        <p>Best regards,<br>Your Company Team</p>
+   
+        <p>Best regards,<br>CabDriversDirect.com</p>
     </div>
 </body>
 </html>

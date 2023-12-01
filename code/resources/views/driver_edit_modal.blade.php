@@ -80,7 +80,7 @@
               <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label class="form-label">Post Code</label>
-                  <input  class="form-control" type="text" name="postcode" value="{{$driver_query->postcode}}"/>
+                  <input  class="form-control" type="text" minlength="4" maxlength="8" name="postcode" value="{{$driver_query->postcode}}"/>
                   <span class="invalid-feedback" id="postcode"></span>
                 </div>
               </div>

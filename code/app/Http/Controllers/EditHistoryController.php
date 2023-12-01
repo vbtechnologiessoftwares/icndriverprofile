@@ -288,24 +288,21 @@ class EditHistoryController extends Controller
             $find_query->update($update_licenseid_data);
             $endStatus = 1;
             DB::commit();
-            $mailstatus = $request->status == 1 ? 'Approved' : 'Rejected';
+            $mailTemplate = $request->status == 1 ? 'email.singupapproved' : 'email.signupreject';
 
             /*+++++++++++++Email Start Code ++++++++++++++++++*/
             $driver_info = Driver::where('driverid', $find_query->driverid)->first();
             $mailTo = $driver_info->email;
 
-            $subject = 'Your Driver Account Has Been ' . $mailstatus . '.';
             Mail::send(
-                'email.singupapproved',
+                $mailTemplate,
                 [
                     'name' => $driver_info->firstname,
                     'mailTo' => $mailTo,
-                    'subject' => $subject,
+                  
                 ],
-                function ($message) use ($mailTo, $subject) {
-                    $message->to($mailTo)
-                        ->subject($subject);
-
+                function ($message) use ($mailTo) {
+                    $message->to($mailTo);
                 }
             );
             /*+++++++++++++Email End Code ++++++++++++++++++*/
