@@ -118,12 +118,17 @@ Route::middleware('auth:driveruser')->group( function(){
 	    ->name('edit_history.listing3');
 	    Route::post('/listing4', [ EditHistoryController::class, 'getListing4'])
 	    ->name('edit_history.listing4');
-	     Route::post('/listing5', [ EditHistoryController::class, 'getListing5'])
+	     
+	    Route::post('/change-status-driver', [ EditHistoryController::class, 'changeStatusDriver'])
+	    ->name('edit_history.change_status_driver');
+	    Route::post('/listing5', [ EditHistoryController::class, 'getListing5'])
 	    ->name('edit_history.listing5');
 	    Route::post('/listing6', [ EditHistoryController::class, 'getListing6'])
 	    ->name('edit_history.listing6');
-	    Route::post('/change-status-driver', [ EditHistoryController::class, 'changeStatusDriver'])
-	    ->name('edit_history.change_status_driver');
+	    Route::post('/change-status-profile-image', [ EditHistoryController::class, 'changeStatusProfileImage'])
+	    ->name('edit_history.change_status_profile_image');
+
+	    
 	    
 
 	    

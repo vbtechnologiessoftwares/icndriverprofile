@@ -64,6 +64,16 @@ class DashboardController extends Controller
 
         //dd($driver->photo->driversphoto);
         $data['driver_query']=$driver_query; 
+
+        $already_in_queue_to_approve=0;
+        $driver_edit_count=EditDriverPhoto::where('driverid',$driverid)
+        ->where('approved','0')
+        ->count();
+        if($driver_edit_count>0)
+        {
+            $already_in_queue_to_approve=1;
+        }
+        $data['already_in_queue_to_approve']=$already_in_queue_to_approve;
         
         return view('profile_image_edit_modal')->with($data);        
     }
@@ -98,7 +108,7 @@ class DashboardController extends Controller
                 )
             );
 
-            $check_if_already_exists=DriverPhoto::where('driverid',$driverid)->first();
+            /*$check_if_already_exists=DriverPhoto::where('driverid',$driverid)->first();
             if($check_if_already_exists)
             {
                 $update_data=array(
@@ -112,7 +122,13 @@ class DashboardController extends Controller
                     'driversphoto'=>$profilephoto
                 );
                 DriverPhoto::create($create_data);
-            }
+            }*/
+
+            $create_data=array(
+                'driverid'=>$driverid,
+                'driversphoto'=>$profilephoto
+            );
+            EditDriverPhoto::create($create_data);
             
             $endStatus=1;
             DB::commit();
