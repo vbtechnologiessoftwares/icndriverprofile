@@ -142,7 +142,7 @@ class DashboardController extends Controller
                 'status' => 1,
                 'message' => 'Successfully submitted for Approval',
                 'alert_class' => 'alert-success',
-                'alert_message' => 'Updated Successfully',
+                'alert_message' => 'Successfully submitted for Approval',
                 'exception'=>$exception
             );
         }else{
