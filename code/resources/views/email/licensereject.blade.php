@@ -37,7 +37,7 @@
         
         <p>This is to notify about the update request you submitted. Your request was reviewed by an admin.</p>
 
-        <p>{{$message}}</p>
+        <p>{{$content}}</p>
 
 
         <p>Thank you for choosing CabDriversDirect.com</p>

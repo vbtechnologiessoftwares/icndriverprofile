@@ -554,9 +554,9 @@ class EditHistoryController extends Controller
                 [
                     'name' => $driver_info->firstname,
                     'mailTo' => $mailTo,
-                    'message' => $content,
+                    'content' => $content,
                 ],
-                function ($message) use ($mailTo) {
+                function ($message) use ($mailTo,$content) {
                     $message->to($mailTo);
                 }
             );
