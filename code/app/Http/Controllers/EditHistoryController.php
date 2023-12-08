@@ -265,6 +265,15 @@ class EditHistoryController extends Controller
                 $find_query->update($data);
                 $endStatus = 1;
             } else {
+                $data = array(
+                    'adminapproved' => 2,
+
+                );
+                $find_query = Driver::find($driverid);
+                $find_query->update($data);
+                $endStatus = 1;
+
+                
                 $create_data = array(
                     'messageid' => $request->message_id,
                     'driverid' => $driverid,
@@ -289,7 +298,7 @@ class EditHistoryController extends Controller
             $find_query->update($update_licenseid_data);
             $endStatus = 1;
             DB::commit();
-            $mailTemplate = $request->status == 1 ? 'email.singupapproved' : 'email.signupreject';
+            $mailTemplate = $request->status == 1 ? 'email.singupapproved' : 'email.singupreject';
 
             /*+++++++++++++Email Start Code ++++++++++++++++++*/
             $driver_info = Driver::where('driverid', $find_query->driverid)->first();
@@ -303,7 +312,8 @@ class EditHistoryController extends Controller
                   
                 ],
                 function ($message) use ($mailTo) {
-                    $message->to($mailTo);
+                    $message->to($mailTo)
+                            ->subject("Status Update For Your Driver Account");
                 }
             );
             /*+++++++++++++Email End Code ++++++++++++++++++*/
@@ -436,11 +446,12 @@ class EditHistoryController extends Controller
                 [
                     'name' => $driver_info->firstname ?? "",
                     'mailTo' => $mailTo,
-                    'message' => $content,
+                    'content' => $content,
 
                 ],
                 function ($message) use ($mailTo) {
-                    $message->to($mailTo);
+                    $message->to($mailTo)
+                            ->subject("Status Update for Change Request");
 
                 }
             );
@@ -556,8 +567,9 @@ class EditHistoryController extends Controller
                     'mailTo' => $mailTo,
                     'content' => $content,
                 ],
-                function ($message) use ($mailTo,$content) {
-                    $message->to($mailTo);
+                function ($message) use ($mailTo) {
+                    $message->to($mailTo)
+                            ->subject("Status Update for Change Request");
                 }
             );
             /*+++++++++++++Email End Code ++++++++++++++++++*/
@@ -678,12 +690,13 @@ class EditHistoryController extends Controller
                 [
                     'name' => $driver_info->firstname,
                     'mailTo' => $mailTo,
-                    'message' => $content,
+                    'content' => $content,
                     // 'submissionTime' => $licenseeditvalues->licenseeditdatetime
 
                 ],
                 function ($message) use ($mailTo) {
-                    $message->to($mailTo);
+                    $message->to($mailTo)
+                            ->subject("Status Update for Change Request");
 
                 }
             );

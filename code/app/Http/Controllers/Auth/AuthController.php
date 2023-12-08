@@ -348,7 +348,8 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'longdistance'=>$longdistance,
                 'wheelchairfriendly'=>$wheelchairfriendly,
 
-                'signupdate'=>date('Y-m-d')
+                'signupdate'=>date('Y-m-d'),
+                'paymentstatus'=>1
             );
 
 

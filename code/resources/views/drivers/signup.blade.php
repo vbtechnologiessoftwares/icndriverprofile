@@ -546,7 +546,8 @@
                                                 Expiry</label>
 
                                             <input type="date" class="form-control" id="licenseexpiry"
-                                                name="licenseexpiry" required placeholder="Licence Expiry" />
+                                                name="licenseexpiry" required placeholder="Licence Expiry" min="{{ now()->addDay()
+                                                ->format('Y-m-d') }}" />
                                         </div>
                                     </div>
                                     <div class="row g-3">
@@ -576,7 +577,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="relationship_to_applicant"
-                                                class="col-lg-12 control-label">Driver Licence Photo</label>
+                                                class="col-lg-12 control-label">Driver License Photo (Hackney/PHV License)</label>
 
                                             <input type="file" class="form-control" id="driver_licence"
                                                 name="driver_licence_photo" required placeholder="driver Licence" />
@@ -643,7 +644,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Distance</label>
                                                 <input type="range" name="distance"
-                                                    class=" location-distance-input" min="0" max="25"
+                                                    class=" location-distance-input" min="0" max="15"
                                                     value="0" />
                                                 <p id="show-range-text">0</p>
                                             </div>

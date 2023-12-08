@@ -39,7 +39,7 @@
                   <span class="invalid-feedback" id="licenseexpiry"></span>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">License Image</label>
+                  <label class="form-label">License Photo (Hackney/PHV License)</label>
                   <input id="licenseimage" class="form-control" type="file" name="licensephoto"/>
                   <span class="invalid-feedback" id="licensephoto"></span>
                 </div>

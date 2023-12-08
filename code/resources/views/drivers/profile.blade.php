@@ -716,7 +716,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <ul class="nav nav-tabs">
+                    {{-- <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link location-nav-link" data-section="tab1"
                                 href="javascript:void(0)">Location</a>
@@ -726,8 +726,8 @@
                                 Radius</a>
                         </li>
 
-                    </ul>
-                    <form action="{{ route('locations.store') }}" onsubmit="saveLocations()" method="POST">
+                    </ul> --}}
+                    {{-- <form action="{{ route('locations.store') }}" onsubmit="saveLocations()" method="POST">
                         @csrf
                         <section id="tab1" class="tabb">
                             <div class="row">
@@ -747,14 +747,14 @@
                                 Locations</button>
                         </section>
 
-                    </form>
+                    </form> --}}
                     <form action="{{ route('locations.store') }}" onsubmit="saveLocationsNear()" method="POST">
                         @csrf
-                        <section id="tab2" class="tabb show">
+                        {{-- <section id="tab2" class="tabb show"> --}}
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <div class="mb-3">
-                                        <label for="select2Basic" class="form-label">select Location nearby</label>
+                                        <label for="select2Basic" class="form-label">Search A Location</label>
                                         <select id="selectNewLocationNear" class="select2 form-select form-select-lg"
                                             data-allow-clear="true">
 
@@ -765,7 +765,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Distance</label>
                                         <input type="range" name="distance" class=" location-distance-input"
-                                            min="0" max="25" value="0" />
+                                            min="0" max="15" value="0" />
                                         <p id="show-range-text">0</p>
                                     </div>
                                 </div>
@@ -788,7 +788,7 @@
                             <button type="submit" class="btn btn-primary" disabled
                                 id="saveLocationsWithinDistanceButton" style="float: right;">Save
                                 Locations</button>
-                        </section>
+                        {{-- </section> --}}
 
                     </form>
 
@@ -879,11 +879,7 @@
                     if (response.status == 1) {
                         //$(".closeModal").trigger('click');
                         Swal.fire({
-<<<<<<< HEAD
                             html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history',array('tab'=>'profile_image')) }}">clicking here</a>',
-=======
-                            html: 'Application has been received, we will review it and your profile will be updated once it is approved internally.<br><br>You can track the pending application to get current status by <a href="{{ route('edit_history') }}">clicking here</a>',
->>>>>>> 10e2b7d (template changes)
                             icon: 'success',
                             confirmButtonText: 'Close',
                         }).then((result) => {
@@ -1548,7 +1544,7 @@
                     var results = response.data.map((location) => {
                         return {
                             id: location.locationid,
-                            text: location.town + ',' + location.county
+                            text: location.town + ', ' + location.county
                         };
                     });
                 } else {
@@ -1566,7 +1562,7 @@
                         '<input class="form-check-input location-checkbox" type="checkbox" name="location_checkbox"  id="inlineCheckbox' +
                         value.locationid + '" value="' + value.locationid + '" >';
                     checkboxes_html += '<label class="form-check-label" for="inlineCheckbox' + value
-                        .locationid + '">' + value.town + ',' + value.county + '</label>';
+                        .locationid + '">' + value.town + ', ' + value.county + '</label>';
                     checkboxes_html += '</div>';
 
 

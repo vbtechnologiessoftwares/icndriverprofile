@@ -129,6 +129,14 @@ class DashboardController extends Controller
                 'driversphoto'=>$profilephoto
             );
             EditDriverPhoto::create($create_data);
+
+            $driverEntry = Driver::where('driverid',$driverid)->first();
+
+            if ($driverEntry->adminapproved == 2) {
+                $driverEntry->update(array(
+                    'adminapproved'=>0
+                ));
+            };
             
             $endStatus=1;
             DB::commit();
@@ -366,6 +374,12 @@ class DashboardController extends Controller
 
             if($send_entries_to_edit_table==1){                
                 DriverEdit::create($edit_data);
+
+                if ($get_query->adminapproved == 2) {
+                    Driver::where('driverid',$driverid)->update(array(
+                        'adminapproved'=>0
+                    ));
+                }
             }
             
             $endStatus=1;
