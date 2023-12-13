@@ -237,9 +237,9 @@
                                                 </td>
                                                 <td class="col-9">{{ $driverMessage->message->messagetext }}@if ($driverMessage->messagestatus == 0)
                                                         <div>
-                                                            <button type="button" class="btn btn-icon me-2 btn-primary"
+                                                            <button type="button" class="btn btn-primary btn-xs"
                                                                 onclick="markMessageAsSeen(this, {{ $driverMessage->drivermessageid }})">
-                                                                <span class="tf-icons bx bx-check"></span>
+                                                                Mark as read
                                                             </button>
                                                         </div>
                                                     @endif
@@ -612,9 +612,9 @@
                                                 <li class="d-flex align-items-center mb-3"><i
                                                         class="bx bx-detail"></i><span class="fw-semibold mx-2">Assigning
                                                         Authority:</span>
-                                                    @if (isset($driver->license->licenseauthoritymaster->licenseauthority) &&
-                                                            $driver->license->licenseauthoritymaster->licenseauthority != '')
-                                                        <span>{{ $driver->license->licenseauthoritymaster->licenseauthority }}</span>
+                                                    @if (isset($driver->license->licenseauthority) &&
+                                                            $driver->license->licenseauthority != '')
+                                                        <span>{{ $driver->license->licenseauthority }}</span>
                                                     @endif
                                                 </li>
 

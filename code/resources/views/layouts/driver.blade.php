@@ -120,7 +120,7 @@
 
 
 
-                    <img src="https://cabdriversdirect.com/images/logo.png">    
+                    <a href='{{ route('dashboard') }}'><img src="https://cabdriversdirect.com/images/logo.png"> </a>   
                             
                             {{-- <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
                             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">

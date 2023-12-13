@@ -472,7 +472,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
         if ( $request->filled('search') ){
             $locations->where('town','like', "%{$request->search}%");
         }
-        return response()->json($locations->paginate(20));
+        return response()->json($locations->paginate(50));
     }
     public function listLocationsNear(Request $request)
     {
@@ -498,7 +498,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 ")
                 ->having('distance','<=',$distance)
                 ->orderBy('distance','asc');
-                return response()->json($a->paginate(40));
+                return response()->json($a->paginate(500));
             }else{
                 return response()->json(array());
             }  
