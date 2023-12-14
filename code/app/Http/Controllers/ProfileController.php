@@ -62,7 +62,7 @@ class ProfileController extends Controller
                 ->having('distance','<=',$distance)
                 ->orderBy('distance','asc');
                
-                return response()->json($a->paginate(40));
+                return response()->json($a->paginate(500));
             }else{
                 //return $this->listLocations($request);
                 return response()->json(array());

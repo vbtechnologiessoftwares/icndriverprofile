@@ -78,6 +78,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12">
+                          <h4>Pending</h4>
                           <div class="table-responsive">
                             <table id="example" class="table">
                                 <thead class="table-dark">
@@ -95,6 +96,7 @@
                             </table>
                           </div>
                         </div><!--col-6-->
+                        <h4>History</h4>
                         <div class="col-12" style="margin-top:15px">
                           <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
@@ -148,6 +150,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12">
+                          <h4>Pending</h4>
                           <div class="table-responsive">
                             <table id="example3" class="table">
                                 <thead class="table-dark">
@@ -174,13 +177,16 @@
                             </table>
                           </div>
                         </div><!--col-6-->
+                        
                         <div class="col-12" style="margin-top:15px">
+
                           <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
                                 History
 
                               
                         </h5>
+
                           <div class="table-responsive">
                             <table id="example4" class="table">
                                 <thead class="table-dark">
@@ -240,6 +246,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-12">
+                          <h4>Pending</h4>
                           <div class="table-responsive">
                             <table id="example5" class="table">
                                 <thead class="table-dark">
@@ -257,13 +264,16 @@
                             </table>
                           </div>
                         </div><!--col-6-->
+                        
                         <div class="col-12" style="margin-top:15px">
+
                           <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
                                 History
 
                               
                         </h5>
+
                           <div class="table-responsive">
                             <table id="example6" class="table">
                                 <thead class="table-dark">

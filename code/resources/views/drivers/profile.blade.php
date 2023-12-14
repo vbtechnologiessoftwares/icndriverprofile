@@ -237,9 +237,11 @@
                                                 </td>
                                                 <td class="col-9">{{ $driverMessage->message->messagetext }}@if ($driverMessage->messagestatus == 0)
                                                         <div>
+
                                                             <button type="button" class="btn btn-primary"
                                                                 onclick="markMessageAsSeen(this, {{ $driverMessage->drivermessageid }})">
                                                                 <span class="">Mark as read</span>
+
                                                             </button>
                                                         </div>
                                                     @endif
