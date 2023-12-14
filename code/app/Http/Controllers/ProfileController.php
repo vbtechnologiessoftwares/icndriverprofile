@@ -15,7 +15,7 @@ class ProfileController extends Controller
             $locations->where('town','like', "%{$request->search}%");
         }
 
-        return response()->json($locations->paginate(20));
+        return response()->json($locations->paginate(400));
 
         /*$latitude='52.1900';
         $longitude='1.0000';

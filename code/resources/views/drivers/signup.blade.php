@@ -353,6 +353,12 @@
                                     <input type="text" class="form-control" id="postcode" name="postcode"
                                         required placeholder="Post Code" minlength="4" maxlength="8" />
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="marital_status" class="col-lg-12 control-label">About</label>
+                                    <textarea id="description" name="description"  rows="6" style="width: 100%;"></textarea>
+
+                                
+                                </div>
 
                             </div>
                             <br />

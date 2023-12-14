@@ -211,6 +211,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town'=>'required',
                 'county'=>'required',
                 'postcode'=>'required',
+                'description'=>'required',
 
             /*    '4_seater_vehicle' => 'required',
                 '8_seater_vehicle' => 'required',*/
@@ -240,6 +241,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town.required'=>'This field is required',
                 'county.required'=>'This field is required',
                 'postcode.required'=>'This field is required',
+                'description.required'=>'This field is required',
                /* 'licenseauthority_master.required'=>'This field is required',*/
 
                 /*'4_seater_vehicle.required' => 'This field is required',*/
@@ -336,6 +338,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'town'=>$request->input('town'),
                 'county'=>$request->input('county'),
                 'postcode'=>$request->input('postcode'),
+                'description'=>$request->input('description'),
                 
 
                 '4seatervehicle' => $four_seatervehicle,
@@ -414,6 +417,8 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
                 'licensenumber'=>$request->input('licensenumber'),
                 'licenseexpiry'=>$request->input('licenseexpiry'),
                 'licenseauthority'=>$request->input('licenseauthority_master'),
+                'description'=>$request->input('description'),
+                
             );
             LicenseEdit::create($edit_license_data);
             //edit data ends
@@ -472,7 +477,7 @@ $licenseauthoritymaster = Licenseauthoritymaster::get();
         if ( $request->filled('search') ){
             $locations->where('town','like', "%{$request->search}%");
         }
-        return response()->json($locations->paginate(20));
+        return response()->json($locations->paginate(400));
     }
     public function listLocationsNear(Request $request)
     {

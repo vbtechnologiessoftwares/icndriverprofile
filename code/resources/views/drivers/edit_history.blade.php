@@ -69,7 +69,7 @@
                     <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
-                                View Edit History
+                                Pending
 
                                 <a href="{{route('dashboard')}}" class="btn btn-primary" style="float: right;">Back to Dashboard</a>
                         </h5>
@@ -96,6 +96,12 @@
                           </div>
                         </div><!--col-6-->
                         <div class="col-12" style="margin-top:15px">
+                          <h5 class="card-action-title mb-0"><i
+                                class='bx bx-list-ul bx-sm me-2'></i>
+                                History
+
+                              
+                        </h5>
                           <div class="table-responsive">
                             <table id="example1" class="table">
                                 <thead class="table-dark">
@@ -133,7 +139,7 @@
                     <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
-                                View Edit History
+                                Pending
 
                                 <a href="{{route('dashboard')}}" class="btn btn-primary" style="float: right;">Back to Dashboard</a>
                         </h5>
@@ -169,6 +175,12 @@
                           </div>
                         </div><!--col-6-->
                         <div class="col-12" style="margin-top:15px">
+                          <h5 class="card-action-title mb-0"><i
+                                class='bx bx-list-ul bx-sm me-2'></i>
+                                History
+
+                              
+                        </h5>
                           <div class="table-responsive">
                             <table id="example4" class="table">
                                 <thead class="table-dark">
@@ -219,7 +231,7 @@
                     <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0"><i
                                 class='bx bx-list-ul bx-sm me-2'></i>
-                                View Edit History
+                                Pending
 
                                 <a href="{{route('dashboard')}}" class="btn btn-primary" style="float: right;">Back to Dashboard</a>
                         </h5>
@@ -246,6 +258,12 @@
                           </div>
                         </div><!--col-6-->
                         <div class="col-12" style="margin-top:15px">
+                          <h5 class="card-action-title mb-0"><i
+                                class='bx bx-list-ul bx-sm me-2'></i>
+                                History
+
+                              
+                        </h5>
                           <div class="table-responsive">
                             <table id="example6" class="table">
                                 <thead class="table-dark">
